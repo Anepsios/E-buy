@@ -1,13 +1,22 @@
-﻿- use modelerror for all model errors in controllers 
-- tidy all in view and inline css to site.css
-- tidy up all scripts in renders and call them in layout
-(tidying up left to future extension)
-(- add description for each role in models and startup and display it on admin panel)(for future extention, currently hardcoded)
-- auto logout users on browser close (not urgent, future extention)
-- option to add quantity of products to cart(future extension)
-- turn everything you can to async(not urgent, future extention)
-- make admin able to change other account's passwords
-
+﻿- use modelerror for all errors in controllers
 
 - make a proper configuration seed
-- make cart items refresh live with signalR too
+
+- auto logout users on browser close (doubt we can do it)
+
+*/done/*
+-(suggestion) navbar top padding another color, background image for home, footer with same color as top padding of navbar, probably white, and fixed to bottom
+
+*/done/*
+- add an overflow to tables so they dont go out of bounds on small width screens
+- manufacturer/category and generally tables. give table lines(rows) a brighter background color.
+
+- (suggestion) make /Home searchbar look nicer
+
+- turn everything you can to async
+
+- add description for each role in models and startup and display it on admin panel 
+
+- (suggesetion) searchbar in navbar behave better
+
+- (suggestion)make addToCart use Ajax

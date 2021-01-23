@@ -1,50 +1,47 @@
 ﻿@model int?
-@{
-    ViewBag.Title = "Review Failed";
-}
+@{ ViewBag.Title = "Review Failed"; }
 
 @* OM: TODO! doesn't appear nice on small screens. Center everything, probably have the icon on top and text below it*@
 
 <div class="row">
-    <div class="col-lg-6" style="height: 300px">
-        <h2>Sorry!</h2>
-        @if (ViewBag.UserHasRated != null && ViewBag.UserHasRated)
-        {
-            <h2>
-                You have allready reviewed this product!
-            </h2>
-            <p>We'll redirect you back to the product in just a second</p>
-        }
-        else if (ViewBag.UserHasNotOrderedProduct != null && ViewBag.UserHasNotOrderedProduct)
-        {
-            <h2>
-                You can't make a review to a product you haven't bought yet!
-            </h2>
-            <p>We'll redirect you back to the product in just a second</p>
-        }
-        else
-        {
-            <h2>
-                Something went wrong!
-            </h2>
-        }
+    <div class="ratingResult" style="display:contents;">
+        <div class="col-lg-6" style="height: 300px">
+            <h2>Sorry!</h2>
+            @if (ViewBag.UserHasRated != null && ViewBag.UserHasRated)
+            {
+<h2>
+    You have allready reviewed this product!
+</h2>
+                <p>We'll redirect you back to the product in just a second</p> }
+            else if (ViewBag.UserHasNotOrderedProduct != null && ViewBag.UserHasNotOrderedProduct)
+            {
+<h2>
+    You can't make a review to a product you haven't bought yet!
+</h2>
+                <p>We'll redirect you back to the product in just a second</p> }
+            else
+            {
+<h2>
+    Something went wrong!
+</h2>}
+        </div>
+
+        <div class="col-lg-6">
+            <div id="animated-example" class="animatedError bounce"></div>
+        </div>
     </div>
-    <div class="col-lg-6">
-        <div id="animated-example" class="animated2 bounce"></div>
-    </div>
+
 </div>
 @if (Model != null)
 {
-    <div>
-        @Html.ActionLink("Back to Product", "Details", "Products", new { id = Model }, null)
-    </div>
-}
+<div>
+    @Html.ActionLink("Back to Product", "Details", "Products", new { id = Model }, null)
+</div> }
 else
 {
-    <div>
-        @Html.ActionLink("Back to List", "Index", "Products")
-    </div>
-}
+<div>
+    @Html.ActionLink("Back to List", "Index", "Products")
+</div>}
 
 @Html.Hidden("RedirectTo", Url.Action("Details", "Products", new { id = Model }))
 

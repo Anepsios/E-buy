@@ -73,33 +73,6 @@ namespace GroupProject.Models
             context.SaveChanges();
         }
 
-        public int AddToCartInt(Product product)
-        {
-            // Get the matching cart and product instances
-            var cartItem = context.Carts.SingleOrDefault(
-                           c => c.CartID == ShoppingCartId
-                           && c.ProductID == product.ID);
-            if (cartItem == null)
-            {
-                // Create a new cart item if no cart item exists
-                cartItem = new Cart
-                {
-                    ProductID = product.ID,
-                    CartID = ShoppingCartId,
-                    Quantity = 1,
-                    DateCreated = DateTime.Now
-                };
-                context.Carts.Add(cartItem);
-            }
-            else
-            {
-                // If the item does exist in the cart, then add one to the quantity
-                cartItem.Quantity++;
-            }
-            context.SaveChanges();
-            return (cartItem.Quantity);
-        }
-
         public int RemoveFromCart(int id)
         {
             // Get the cart

@@ -1,7 +1,26 @@
-﻿@model GroupProject.ViewModel.QueryParamArgs
-@{
-    ViewBag.Title = "Browse Products";
-}
+﻿@model PagedList.IPagedList<GroupProject.Models.Product>
+@using PagedList.Mvc;
+
+@{ ViewBag.Title = "Our Products"; }
+
+@* OM: TODO! Tidy filter stuff, they're not very pretty in small screens, and their look is default, maybe spice it up.
+    also move search button a couple of pixels up to center it more. move select lists a couple of pixels down too
+    (With position:relative; top:5px; bottom:5px;) *@
+
+<style>
+    .rating {
+        position: absolute;
+        top: 50px;
+    }
+
+    .product-grid {
+        background-color: white;
+    }
+</style>
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/pricing/">
 
 <main class="container">
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
@@ -9,52 +28,106 @@
         <hr />
     </div>
 
-<div id="dataModel"></div>
 
-</main>
+    <div class="container-fluid mx-auto text-center">
+        @if (ViewBag.IsAdminOrEmployee)
+        {
+<p>
+    @Html.ActionLink("Edit Product Categories", "Index", "Categories", "", new { @class = "btn btn-success" })  &nbsp;
+    @Html.ActionLink("Edit Product Manufacturers", "Index", "Manufacturers", "", new { @class = "btn btn-success" }) &nbsp;
+    @Html.ActionLink("Create New Product", "Create", "Products", "", new { @class = "btn btn-success" })
+</p>}
 
-@section SignalR{
+        @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+        {
+<div class="SearchBox">
+    <form>
+        <div class="row d-flex justify-content-center">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control col-sm", @placeholder = "Type here" })&nbsp;
+            @Html.DropDownList("SelectedCategory", null, "Category", new { @class = "form-control col-sm" })&nbsp;
+            @Html.DropDownList("SelectedManufacturer", null, "Manufacturer", new { @class = "form-control col-sm" })&nbsp;
+        </div>
+        <br />
+        <input type="submit" value="Search" class="btn btn-success btn-sm" />
+    </form>
+</div>}
 
-    <script src="~/Scripts/jQuery/jquery-2.2.4.js"></script>
-    <script src="~/Scripts/jQuery/jquery-2.2.4.min.js"></script>
+    </div>
+    <br />
+    <p style="text-align:center">
+        @Html.ActionLink("Sort by Price", "Index", new
+        {
+            sortOrder = ViewBag.SortParam,
+            searchString = ViewBag.CurrentFilter,
+            selectedCategory = ViewBag.CurrentCategory,
+            selectedManufacturer = ViewBag.CurrentManufacturer
+        }, new { @class = "sorting" })
+        @if (ViewBag.Descending)
+        {
+@:(Currently Descending)
+}
+else
+{
+@:(Currently Ascending)
+}
+    </p>
 
-    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
-    <script src="/signalr/hubs"></script>
+    <p>Showing @ViewBag.ItemCount items</p>
 
-    <script type="text/javascript">
+    <div class="row" id="productGrid">
+        @foreach (var item in Model)
+        {
+<div class="col-md-3 col-sm-6">
+    <div class="product-grid">
+        <div class="product-image">
+            <a href='@Url.Action("Details", "Products", new { id = item.ID })'>
+                <img src="@Url.Content(item.ProductImage)" alt="Image" class="pic-1" />
+                @*<img src="@Url.Content(item.ProductPic2)" alt="Image" class="pic-2" />*@
+            </a>
+            @if (!ViewBag.IsAdminOrEmployee)
+            {
+<ul class="social">
+    <li>
+        <a href='@Url.Action("AddToCart", "ShoppingCart", new { id = item.ID })'><i class="fa fa-shopping-cart"></i></a>
+    </li>
+</ul>}
+            @if (item.Offer == true)
+            {
+<span class="product-new-label">Sale</span>
+                    <span class="product-discount-label">-@Html.DisplayFor(Model => item.Discount)</span>}
+        </div>
+        <ul class="rating">
 
-        $(function () {
-            var hubNotify = $.connection.updateProductsHub;
-
-            $.connection.hub.start().done(function () {
-                getAll();
-            });
-
-            hubNotify.client.refreshCartData = function () {
-                getAll();
-            };
-        });
-
-        function getAll() {
-            var data = @Html.Raw(Json.Encode(Model));
-            var model = $('#dataModel');
-            $.ajax({
-                url: '/Products/GetProductData?SortOrder=' + data.sortOrder +
-                    '&CurrentFilter=' + data.currentFilter +
-                    '&SearchString=' + data.searchString +
-                    '&SelectedCategory=' + data.selectedCategory +
-                    '&SelectedManufacturer=' + data.selectedManufacturer +
-                    '&Page=' + data.page,
-                contentType: 'application/html ; charset:utf-8',
-                type: 'GET',
-                dataType: 'html',
-                success: function (result) {
-                    console.log(data)
-                    model.empty().append(result);
+            @{ if (item.Ratings.Where(x => x.IsApproved == true).ToList().Count > 0)
+                {
+                    int sumAvg = Convert.ToInt32((from x in item.Ratings.Where(x => x.IsApproved == true) select x.Stars).Average());
+                    for (var i = 1; i <= sumAvg; i++)
+                    {
+<li class="starOn"></li> }
+                    for (var i = sumAvg; i < 5; i++)
+                    {
+<li class="starOff"></li> }
                 }
-            });
+                else
+                {
+<h6>No rating yet</h6> } }
+        </ul>
+        <div class="product-content">
+            <h3 class="title">@item.Manufacturer.Name @item.Name</h3>
+            <div class="price">
+                @item.Price€
+                @if (item.Offer == true)
+                {
+<span class="badge badge-warning">@item.OldPrice€</span>}
+            </div>
+        </div>
+    </div>
+    <hr />
+</div>}
+    </div>
 
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-        }
-    </script>
-}  
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+                            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, selectedCategory = ViewBag.CurrentCategory, selectedManufacturer = ViewBag.CurrentManufacturer }))
+</main>

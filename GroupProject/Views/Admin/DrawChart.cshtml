@@ -1,0 +1,11 @@
+﻿@model IEnumerable<GroupProject.Models.Product>
+
+@{
+
+    var myChart = new Chart(width: 500, height: 300, theme: ChartTheme.Blue)
+        .AddTitle("Product Price")
+        .AddSeries("Default",
+                   xValue: Model, xField: "Name",
+                   yValues: Model, yFields: "Price")
+        .Write("png");
+}

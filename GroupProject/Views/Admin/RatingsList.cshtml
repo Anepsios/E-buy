@@ -7,86 +7,82 @@
 @* TODO! pagination, sort by approved status or username, search by username *@
 
 <h2>@ViewBag.Title</h2>
+<div class="tablescroll">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    No.
+                </th>
+                <th>
+                    Approval
+                </th>
+                <th>
+                    Edited
+                </th>
+                <th>
+                    Product
+                </th>
+                <th>
+                    Created
+                </th>
+                <th>
+                    Stars
+                </th>
+                <th>
+                    Reviewer
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
 
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th>
-                No.
-            </th>
-            <th>
-                Approval
-            </th>
-            <th>
-                Edited
-            </th>
-            <th>
-                Product
-            </th>
-            <th>
-                Created
-            </th>
-            <th>
-                Stars
-            </th>
-            <th>
-                Reviewer
-            </th>
-            <th>
-            </th>
-        </tr>
-    </thead>
+        @{ int rowNo = 0; }
+        @foreach (var item in Model)
+        {
+@Html.HiddenFor(modelItem => item.ProductId)
+                @Html.HiddenFor(modelItem => item.RatingText)
+                                <tr>
+                                    <td>
+                                        @(rowNo += 1)
+                                    </td>
+                                    @if (item.IsApproved == true)
+                                    {
+                    <td>
+                        <span class="badge badge-pill badge-success">Approved</span>
+                    </td> }
+                                    else
+                                    {
+                    <td>
+                        <span class="badge badge-pill badge-danger">Pending</span>
+                    </td>}
+                                    @if (item.IsEdited == true)
+                                    {
+                    <td>
+                        <span class="badge badge-pill badge-danger">Edited</span>
+                    </td> }
+                                    else
+                                    {
+                    <td>
+                        <span class="badge badge-pill badge-success">No Edit</span>
+                    </td>}
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Products.Manufacturer.Name) @Html.DisplayFor(modelItem => item.Products.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ReviewCreated)
+                                    </td>
 
-    @{ int rowNo = 0; }
-    @foreach (var item in Model)
-    {
-        @Html.HiddenFor(modelItem => item.ProductId)
-        @Html.HiddenFor(modelItem => item.RatingText)
-<tr>
-    <td>
-        @(rowNo += 1)
-    </td>
-    @if (item.IsApproved == true)
-    {
-        <td>
-            <span class="badge badge-pill badge-success">Approved</span>
-        </td>
-    }
-    else
-    {
-        <td>
-            <span class="badge badge-pill badge-danger">Pending</span>
-        </td>
-    }
-    @if (item.IsEdited == true)
-    {
-        <td>
-            <span class="badge badge-pill badge-danger">Edited</span>
-        </td>
-    }
-    else
-    {
-        <td>
-            <span class="badge badge-pill badge-success">No Edit</span>
-        </td>
-    }
-    <td>
-        @Html.DisplayFor(modelItem => item.Products.Manufacturer.Name) @Html.DisplayFor(modelItem => item.Products.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ReviewCreated)
-    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Stars)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Details", "RatingDetail", new { id = item.RatingId })
+                                    </td>
+                                </tr>}
 
-    <td>
-        @Html.DisplayFor(modelItem => item.Stars)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.UserName)
-    </td>
-    <td>
-        @Html.ActionLink("Details", "RatingDetail", new { id = item.RatingId })
-    </td>
-</tr>
-    }
-
-</table>
+    </table>
+    </div>

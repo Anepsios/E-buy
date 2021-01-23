@@ -43,68 +43,69 @@
         var json = context.get_data();
         var data = Sys.Serialization.JavaScriptSerializer.deserialize(json);
 
-        //// Update the page elements
-        //if (data.ItemCount == 0) {
-        //    $('#row-' + data.DeleteId).fadeOut('slow');
-        //} else {
-        //    $('#item-count-' + data.DeleteId).text(data.ItemCount);
-        //}
+        // Update the page elements
+        if (data.ItemCount == 0) {
+            $('#row-' + data.DeleteId).fadeOut('slow');
+        } else {
+            $('#item-count-' + data.DeleteId).text(data.ItemCount);
+        }
 
-        //$('#cart-total').text(data.CartTotal);
-        //$('#update-message').text(data.Message);
-        //$('#cart-status').text('Cart (' + data.CartCount + ')');
+        $('#cart-total').text(data.CartTotal);
+        $('#update-message').text(data.Message);
+        $('#cart-status').text('Cart (' + data.CartCount + ')');
     }
 
 </script>
-
-<h3>
-    <em>Review</em> your items:
-</h3>
-<p>
-    @Html.ActionLink("Checkout", "Index", "Checkout", null, new { @class = "btn btn-success" })
-</p>
-<div id="update-message">
-</div>
-<table>
-    <tr>
-        <th>
-            Product Name
-        </th>
-        <th>
-            Price (each)
-        </th>
-        <th>
-            Quantity
-        </th>
-        <th></th>
-    </tr>
-    @foreach (var item in Model.CartItems)
-    {
-        <tr id="row-@item.ID">
+<br/>
+<div class="carttotal">
+    <h3>
+        <em>Review</em> your items:
+    </h3>
+    <p>
+        @Html.ActionLink("Checkout", "Index", "Checkout", null, new { @class = "btn btn-success" })
+    </p>
+    <div id="update-message">
+    </div>
+    <table>
+        <tr>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Price (each)
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.CartItems)
+        {
+<tr id="row-@item.ID">
+    <td>
+        @Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.ProductID }, null)
+    </td>
+    <td>
+        @item.Product.Price€
+    </td>
+    <td id="item-count-@item.ID">
+        @item.Quantity
+    </td>
+    <td>
+        <a href="#" class="RemoveLink" data-id="@item.ID">Remove from cart</a>
+    </td>
+</tr>}
+        <tr>
             <td>
-                @Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.ProductID }, null)
+                Total
             </td>
             <td>
-                @item.Product.Price€
-            </td>
-            <td id="item-count-@item.ID">
-                @item.Quantity
             </td>
             <td>
-                <a href="#" class="RemoveLink" data-id="@item.ID">Remove from cart</a>
+            </td>
+            <td id="cart-total">
+                @Model.CartTotal
             </td>
         </tr>
-    }
-    <tr>
-        <td>
-            Total
-        </td>
-        <td>
-        </td>
-        <td>
-        </td>
-        <td id="cart-total">
-            @Model.CartTotal
-        </td>
-    </tr>
-</table>
+    </table>
+</div>

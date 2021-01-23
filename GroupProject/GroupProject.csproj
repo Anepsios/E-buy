@@ -56,12 +56,6 @@
     <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -202,7 +196,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Hubs\UpdateProductsHub.cs" />
+    <Compile Include="Migrations\202101231015546_one.cs" />
+    <Compile Include="Migrations\202101231015546_one.Designer.cs">
+      <DependentUpon>202101231015546_one.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Configuration.cs" />
     <Compile Include="Models\PayPalLogger.cs" />
@@ -219,7 +216,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />
-    <Compile Include="ViewModel\QueryParamArgs.cs" />
     <Compile Include="ViewModel\RatingViewModel.cs" />
     <Compile Include="ViewModel\ShoppingCartRemoveViewModel.cs" />
     <Compile Include="ViewModel\ShoppingCartViewModel.cs" />
@@ -232,8 +228,19 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom.css" />
+    <Content Include="Content\flaticon.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\responsive.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\versions.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\Flaticon.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="font\flaticon.html" />
+    <Content Include="font\Flaticon.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\asus.jpg" />
@@ -242,18 +249,23 @@
     <Content Include="Images\iphonebanner.jpg" />
     <Content Include="Images\laptop.jpg" />
     <Content Include="Images\login.png" />
+    <Content Include="Images\logo-hosting.png" />
     <Content Include="Images\logoff.png" />
     <Content Include="Images\samsungs20.jpeg" />
     <Content Include="Images\shop.png" />
     <Content Include="Images\shopp.jpg" />
+    <Content Include="Images\star.ico" />
     <Content Include="Images\StarFade.gif" />
     <Content Include="Images\StarGlow.gif" />
     <Content Include="Developer Notes\Notes.txt" />
     <Content Include="Developer Notes\Todo list.txt" />
+    <Content Include="Images\world-map.png" />
+    <Content Include="Scripts\all.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -273,20 +285,27 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="font\Flaticon.eot" />
+    <Content Include="font\Flaticon.ttf" />
+    <Content Include="font\Flaticon.woff" />
+    <Content Include="fonts\Flaticon.eot" />
+    <Content Include="fonts\Flaticon.ttf" />
+    <Content Include="fonts\Flaticon.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.signalR-2.2.2.js" />
-    <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\jQuery\jquery-2.2.4.js" />
-    <Content Include="Scripts\jQuery\jquery-2.2.4.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -359,7 +378,6 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="StarGlow.gif" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -399,7 +417,7 @@
     <Content Include="Views\Products\Delete.cshtml" />
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\_ProductData.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\ShoppingCart\CartSummary.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -427,11 +445,11 @@
     <Content Include="Views\PayPal\FailureView.cshtml" />
     <Content Include="Views\PayPal\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Scripts\jQuery\jquery-2.2.4.min.map" />
+    <Content Include="Views\Admin\DrawChart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Checkout\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -443,6 +461,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202101231015546_one.resx">
+      <DependentUpon>202101231015546_one.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

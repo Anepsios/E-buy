@@ -12,42 +12,44 @@
     </div>
     <!-- /.box-header -->
     <div class="panel-body">
-        <table class="table table-hover table-bordered table-condensed" id="UsersWithRoles">
-            <thead>
-                <tr>
-                    <td><b>@Html.DisplayNameFor(model => model.Username)</b></td>
-                    <td><b>@Html.DisplayNameFor(model => model.Email)</b></td>
-                    <td><b>@Html.DisplayNameFor(model => model.FirstName)</b></td>
-                    <td><b>@Html.DisplayNameFor(model => model.LastName)</b></td>
-                    <td><b>@Html.DisplayNameFor(model => model.UserRoles)</b></td>
-                    <td><b>@Html.DisplayNameFor(model => model.Created)</b></td>
-                    <td><b>@Html.DisplayNameFor(model => model.LastLogin)</b></td>
-                    <td><b>Edit</b></td>
-                </tr>
-            </thead>
-            <tbody>
-               @foreach (var user in Model)
-                {
+        <div class="tablescroll">
+            <table class="table table-hover table-bordered table-condensed" id="UsersWithRoles">
+                <thead>
                     <tr>
-                        <td>@Html.DisplayFor(model => user.Username)</td>
-                        <td>@Html.DisplayFor(model => user.Email)</td>
-                        <td>@Html.DisplayFor(model => user.FirstName)</td>
-                        <td>@Html.DisplayFor(model => user.LastName)</td>
-                        <td><b>@Html.DisplayFor(model => user.UserRoles)</b></td>
-                        <td>@Html.DisplayFor(model => user.Created)</td>
-                        <td>@Html.DisplayFor(model => user.LastLogin)</td>
-                        <td>
-                            @Html.ActionLink("Edit", "EditUser", new { id = user.UserId }) |
-                            @Html.ActionLink("Delete", "DeleteUser", new { id = user.UserId })
-                        </td>
-                    </tr> 
-                }
-            </tbody>
-        </table>
-        <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Create", "Admin")'">
+                        <td><b>@Html.DisplayNameFor(model => model.Username)</b></td>
+                        <td><b>@Html.DisplayNameFor(model => model.Email)</b></td>
+                        <td><b>@Html.DisplayNameFor(model => model.FirstName)</b></td>
+                        <td><b>@Html.DisplayNameFor(model => model.LastName)</b></td>
+                        <td><b>@Html.DisplayNameFor(model => model.UserRoles)</b></td>
+                        <td><b>@Html.DisplayNameFor(model => model.Created)</b></td>
+                        <td><b>@Html.DisplayNameFor(model => model.LastLogin)</b></td>
+                        <td><b>Edit</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+        <tr>
+            <td>@Html.DisplayFor(model => user.Username)</td>
+            <td>@Html.DisplayFor(model => user.Email)</td>
+            <td>@Html.DisplayFor(model => user.FirstName)</td>
+            <td>@Html.DisplayFor(model => user.LastName)</td>
+            <td><b>@Html.DisplayFor(model => user.UserRoles)</b></td>
+            <td>@Html.DisplayFor(model => user.Created)</td>
+            <td>@Html.DisplayFor(model => user.LastLogin)</td>
+            <td>
+                @Html.ActionLink("Edit", "EditUser", new { id = user.UserId }) |
+                @Html.ActionLink("Delete", "DeleteUser", new { id = user.UserId })
+            </td>
+        </tr>
+}
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Create", "Admin")'">
             Create New Employee
         </button>
-        <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Index", "Admin")'">
+        <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "Admin")'">
             Admin Panel
         </button>
     </div>

@@ -5,84 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Ebuy</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/custom")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <nav class="navbar py-4 navbar-top navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            @Html.ActionLink("Ebuy", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <div class="navbar-collapse collapse" id="navbarNavDropdown">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item @(ViewBag.PageName == "Products" ? "active" : "")">@Html.ActionLink("Browse", "Index", "Products", null, new { @class = "nav-link" })</li>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li class="nav-item @(ViewBag.PageName == "Admin" ? "active" : "")">@Html.ActionLink("Admin Panel", "Index", "Admin", null, new { @class = "nav-link" })</li>
-                    }
-                    @if (User.IsInRole("User"))
-                    {
-                        if (ViewBag.PageName == "Cart")
-                        {
-                            <li class="nav-item @(ViewBag.PageName == "Cart" ? "active" : "")">@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <button type="button" class="Cart @(ViewBag.PageName == "Cart" ? "active" : "")" data-toggle="modal" data-target="#Cart">@{Html.RenderAction("CartSummary", "ShoppingCart");}</button>
-                            </li>
-                        }
-                    }
-                </ul>
-
-                @Html.Partial("_LoginPartial")
-
-                @* OM: Searchbar in navbar *@
-                @using (Html.BeginForm("Index", "Products", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0 nav-search" }))
-                {
-                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { placeholder = "Search", @class = "form-control mr-sm-2 nav-search" });
-                }
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <!-- LOADER -->
+    <div id="preloader">
+        <div class="loader-container">
+            <div class="progress-br float shadow">
+                <div class="progress__item"></div>
             </div>
         </div>
+    </div>
+    <!-- END LOADER -->
+    <!-- Start header -->
+    <header class="top-navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href='@Url.Action("Index", "Home")'>
+                    <img src="~/Images/logo-hosting.png" alt="" width="160" height="60" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbars-host">
+                    <ul class="nav navbar-nav mr-auto">
+                        <li class="nav-item @(ViewBag.PageName == "Products" ? "active" : "")">@Html.ActionLink("Browse", "Index", "Products", null, new { @class = "nav-link" })</li>
+                        @if (User.IsInRole("Admin"))
+                        {
+            <li class="nav-item @(ViewBag.PageName == "Admin" ? "active" : "")">@Html.ActionLink("Admin Panel", "Index", "Admin", null, new { @class = "nav-link" })</li>}
+                        @if (User.IsInRole("User"))
+                        {
+                            if (ViewBag.PageName == "Cart")
+                            {
+            <li class="nav-item @(ViewBag.PageName == "Cart" ? "active" : "")">@{Html.RenderAction("CartSummary", "ShoppingCart");}</li> }
+                            else
+                            {
+            <li class="nav-item">
+                <button type="button" class="Cart @(ViewBag.PageName == "Cart" ? "active" : "")" data-toggle="modal" data-target="#Cart">@{Html.RenderAction("CartSummary", "ShoppingCart");}</button>
+            </li>}
+                        }
+                    </ul>
 
+                    @Html.Partial("_LoginPartial")
 
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- End header -->
 
-    </nav>
 
     <div class="container body-content">
         @RenderBody()
+    </div>
+    @if (User.IsInRole("User"))
+    {
+        // OM: Pure CSS modal
+<div class="modal fade" id="Cart" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Shopping Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @{Html.RenderAction("Cart", "ShoppingCart");}  @* OM: So ShoppingCart/Index renders in the modal *@
+            </div>
+        </div>
+    </div>
+</div>}
+    <hr />
 
-        @if (User.IsInRole("User"))
-        {
-            // OM: Pure CSS modal
-            <div class="modal fade" id="Cart" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Shopping Cart</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+                            <h3>About US</h3>
                         </div>
-                        <div class="modal-body">
-                            @{Html.RenderAction("Cart", "ShoppingCart");}  @* OM: So ShoppingCart/Index renders in the modal *@
+                        <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
+
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="widget clearfix">
+                        <div class="widget-title">
+
+
                         </div>
+                        <ul class="footer-links">
+                            @*<li><a href="#">Home</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Pricing</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Faq</a></li>
+                                <li><a href="#">Contact</a></li>*@
+                        </ul><!-- end links -->
+                    </div><!-- end clearfix -->
+                </div><!-- end col -->
+
+
+
+            </div><!-- end row -->
+        </div><!-- end container -->
+
+        <div class="copyrights">
+            <div class="container">
+                <div class="footer-distributed">
+                    <div class="footer-left">
+                        <p><a href="https://www.peoplecert.org/" style="color:white">PeopleCert</a> &copy; @DateTime.Now.Year CB12 C# FullTime - Group Project (OM, PC, MM, AK)</p>
+                    </div>
+
+                    <div class="footer-right">
+                        <ul class="footer-links-soi">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-github"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                        </ul><!-- end links -->
                     </div>
                 </div>
-            </div>
-        }
-        <hr />
-        <footer>
-            <p><a href="https://www.peoplecert.org/">PeopleCert</a> &copy; @DateTime.Now.Year CB12 C# FullTime - Group Project (OM, PC, MM, AK)</p>
-        </footer>
-    </div>
+            </div><!-- end container -->
+        </div><!-- end copyrights -->
+
+        <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+
+    </footer>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/custom")
     @RenderSection("scripts", required: false)
-    @RenderSection("SignalR", required: false)
+
 
     @* For Manage/Orders action to show order details  *@
     <script>

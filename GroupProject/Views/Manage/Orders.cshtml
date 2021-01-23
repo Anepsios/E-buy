@@ -1,11 +1,9 @@
 ﻿@model IEnumerable<GroupProject.Models.Order>
 
-@{
-    ViewBag.Title = "My Orders";
-}
+@{ ViewBag.Title = "My Orders"; }
 
 <h2>@ViewBag.Title</h2>
-
+<div class="tablescroll">
 <table class="table">
     <tr>
         <th>
@@ -33,82 +31,83 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)€
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostalCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
-            </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.TotalPrice)€
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.City)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PostalCode)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderDate)
+    </td>
 
-            <td><button class="btn btn-sm btn-secondary showdetails">Details</button></td>
-        </tr>
-        <tr class="hidden">
-            <td colspan="7">
-                <table class="table">
-                    <tr>
-                        <th>
-                            Image
-                        </th>
-                        <th>
-                            Product Name
-                        </th>
-                        <th>
-                            Manufacturer
-                        </th>
-                        <th>
-                            Category
-                        </th>
-                        <th>
-                            Quantity
-                        </th>
-                        <th>
-                            Price
-                        </th>
-                    </tr>
-                    @foreach (var item2 in item.OrderDetails)
-                    {
-                        <tr class="order-details">
-                            <td>
-                                <img src="@Url.Content(item2.Product.ProductImage)" alt="" width="80" height="80" />
-                            </td>
-                            <td>
-                                @Html.ActionLink(item2.Product.Name, "Details", "Products", new { id = item2.ProductID }, null)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(x => item2.Product.Manufacturer.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(x => item2.Product.Category.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(x => item2.Quantity)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(x => item2.Price)
-                            </td>
-                        </tr>
-                    }
-                </table>
-                <br />
-            </td>
-        </tr>
-    }
+    <td><button class="btn btn-sm btn-secondary showdetails">Details</button></td>
+</tr>
+                <tr class="hidden">
+                    <td colspan="7">
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    Image
+                                </th>
+                                <th>
+                                    Product Name
+                                </th>
+                                <th>
+                                    Manufacturer
+                                </th>
+                                <th>
+                                    Category
+                                </th>
+                                <th>
+                                    Quantity
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                            </tr>
+                            @foreach (var item2 in item.OrderDetails)
+                            {
+            <tr class="order-details">
+                <td>
+                    <img src="@Url.Content(item2.Product.ProductImage)" alt="" width="80" height="80" />
+                </td>
+                <td>
+                    @Html.ActionLink(item2.Product.Name, "Details", "Products", new { id = item2.ProductID }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item2.Product.Manufacturer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item2.Product.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item2.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(x => item2.Price)
+                </td>
+            </tr>
+}
+                        </table>
+                        <br />
+                    </td>
+                </tr>
+}
 </table>
+</div>
 
 

@@ -1,45 +1,35 @@
-﻿@{
-    ViewBag.Title = "Home";
-}
+﻿@{ ViewBag.Title = "Home"; }
 
-@* OM: TODO! make home page prettier. Maybe navbar top padding another color, 
-    background image for home, footer with same color as top padding of navbar, 
+@* OM: TODO! make home page prettier. Maybe navbar top padding another color,
+    background image for home, footer with same color as top padding of navbar,
     probably white, and fixed to bottom *@
 
-<div class="jumbotron" style="height:100px">
-    <p class="lead">
-        @using (Html.BeginForm("Index", "Products", FormMethod.Get))
-        {
-        
-            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-            <input type="submit" value="Search" class="btn btn-primary" style="position:relative; top:-2px;"/>
-        }
-    </p>
-    </div>
-
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
+<style>
+   
+</style>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="https://www.thedigitalmarketingbureau.com/wp-content/uploads/2017/04/Coloud-computing-banner.jpg" alt="First slide">
+                <img class="d-block w-100" src="https://i.ytimg.com/vi/wM_3dCqj21M/maxresdefault.jpg" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2></h2>
+                    <h3></h3>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="https://silversd.com/wp-content/uploads/2016/10/banner-background-with-black-laptop-and-phone-with-avg-ultimate-ui-1500x551.jpg" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>...</h5>
                     <p>...</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="https://www.refurbishedenterprise.com/wp-content/uploads/2019/03/laptop-banner.jpg" alt="Second slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>...</h5>
-                    <p>...</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="https://previews.123rf.com/images/pyotrme/pyotrme1906/pyotrme190600008/132041501-set-wallpaper-for-smartphone-or-tablet-vector-abstract-banner-modern-vector-illustration-template-de.jpg" alt="Third slide">
+                <img class="d-block w-100" src="https://iamarsalan.com/wp-content/uploads/2019/11/Importance-of-Computer-and-Technical-Education.jpg" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>...</h5>
                     <p>...</p>
@@ -55,3 +45,50 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    <div id="overviews" class="section lb">
+        <div class="container">
+            <div class="section-title row text-center">
+                <div class="col-md-8 offset-md-2">
+                    <h3>Features</h3>
+                    <p class="lead">Lorem Ipsum dolroin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem!</p>
+                </div>
+            </div><!-- end title -->
+
+            <hr class="invis">
+
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <i class="flaticon-apple global-radius effect-1 alignleft"></i>
+                        <h3>Premium Reseller!</h3>
+                        <p>
+                            The only one Apple Authorized Reseller and Apple Authorised Service Provider in Greece!
+                        </p>
+                    </div><!-- end icon-wrapper -->
+                </div><!-- end col -->
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
+                        <i class="flaticon-android global-radius effect-1 alignleft"></i>
+                        <h3>Android Experts!</h3>
+                        <p>
+                            Huge android stock and everything you want about googles OS!
+                        </p>
+                    </div><!-- end icon-wrapper -->
+                </div><!-- end col -->
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="icon-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
+                        <i class="flaticon-stopwatch global-radius effect-1 alignleft"></i>
+                        <h3>Fast Shipping!</h3>
+                        <p>
+                            Get your items next day!
+                        </p>
+                    </div><!-- end icon-wrapper -->
+                </div><!-- end col -->
+            </div><!-- end row -->
+
+
+        </div><!-- end row -->
+    </div><!-- end container -->
+</div><!-- end section -->

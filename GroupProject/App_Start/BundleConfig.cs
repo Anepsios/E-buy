@@ -24,8 +24,15 @@ namespace GroupProject
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/PagedList.css"));
+                      "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/custom").Include(
+                      "~/Content/style.css",
+                      "~/Content/custom.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/custom").Include(
+                "~/Scripts/all.js",
+                "~/Scripts/custom.js"));
         }
     }
 }

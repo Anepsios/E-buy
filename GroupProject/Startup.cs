@@ -16,7 +16,6 @@ namespace GroupProject
         {
             ConfigureAuth(app);
             CreateRolesandUsers(); // OM: new method to create roles and admin user
-            app.MapSignalR();
         }
 
         // In this method we will create default User roles and Admin user for login    

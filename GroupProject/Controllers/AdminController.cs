@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.Owin;
 using GroupProject.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace GroupProject.Controllers
 {
@@ -331,5 +332,34 @@ namespace GroupProject.Controllers
             await context.SaveChangesAsync();
             return RedirectToAction("RatingsList");
         }
+
+
+        //<-----------------------------------------------------CHARTS--------------------------------------------------->
+
+        public ActionResult DrawChart()
+        {
+            var product = new List<Product>();
+
+            string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=aspnet-GroupProject-20210106051819;Integrated Security=True";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT Name, Price FROM Products", con))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        product.Add(new Product { Name = reader.GetString(0), Price = reader.GetDecimal(1) });
+                    }
+                }
+            }
+
+            return View(product);
+        }
+
+     
+
     }
 }
