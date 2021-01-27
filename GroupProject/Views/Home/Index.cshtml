@@ -44,21 +44,13 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-<div class="banners img-fluid">
+<div class="row">
+<div class="banners">
     <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="Apple" })'>
         <img src='@Url.Content("~/Images/apple.png")' />
     </a>
-    <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="Samsung" })'>
-        <img src='@Url.Content("~/Images/samsung.png")' />
-    </a>
-    <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="Huawei" })'>
-        <img src='@Url.Content("~/Images/huawei.png")' />
-    </a>
     <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="Dell" })'>
         <img src='@Url.Content("~/Images/dell.png")' />
-    </a>
-    <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="Hp" })'>
-        <img src='@Url.Content("~/Images/hp.png")' />
     </a>
     <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="Asus" })'>
         <img src='@Url.Content("~/Images/Asus.png")' />
@@ -66,16 +58,28 @@
     <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="LG" })'>
         <img src='@Url.Content("~/Images/lg.png")' />
     </a>
+
+    <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="Hp" })'>
+        <img src='@Url.Content("~/Images/hp.png")' />
+    </a>
     <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="Microsoft" })'>
         <img src='@Url.Content("~/Images/microsoft.png")' />
     </a>
     <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="Xiaomi" })'>
         <img src='@Url.Content("~/Images/xiaomi.png")' />
     </a>
+
+    <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="Samsung" })'>
+        <img src='@Url.Content("~/Images/samsung.png")' />
+    </a>
     <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="Sony" })'>
         <img src='@Url.Content("~/Images/sony.png")' />
     </a>
+    <a href='@Url.Action("Index", "Products" , new { @SearchString="" ,@SelectedCategory="", @SelectedManufacturer="Huawei" })'>
+        <img src='@Url.Content("~/Images/huawei.png")' />
+    </a>
 </div>
+    </div>
 
 
     <div id="overviews" class="section lb">

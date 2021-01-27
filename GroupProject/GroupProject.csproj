@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -48,10 +49,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
@@ -262,25 +263,160 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\amazon.png" />
+    <Content Include="Images\apple.png" />
     <Content Include="Images\asus.jpg" />
+    <Content Include="Images\asus.png" />
+    <Content Include="Images\dell.png" />
     <Content Include="Images\hp.jpg" />
+    <Content Include="Images\hp.png" />
+    <Content Include="Images\huawei.png" />
     <Content Include="Images\iphone12.jpg" />
     <Content Include="Images\iphonebanner.jpg" />
     <Content Include="Images\laptop.jpg" />
+    <Content Include="Images\laptop_apple_macbookair13,3.jpeg" />
+    <Content Include="Images\laptop_apple_macbookair13.jpeg" />
+    <Content Include="Images\laptop_apple_macbookpro13.jpeg" />
+    <Content Include="Images\laptop_apple_macbookpro16 - Copy.jpeg" />
+    <Content Include="Images\laptop_apple_macbookpro16.jpeg" />
+    <Content Include="Images\laptop_asus_chromebookc523na.jpeg" />
+    <Content Include="Images\laptop_asus_rogzephyrusduo15segx551qr-hf014r.jpeg" />
+    <Content Include="Images\laptop_asus_rogzephyrusg14ga401ivbr9n6.jpeg" />
+    <Content Include="Images\laptop_asus_tufgaminga15fa506iu-hn156t.jpeg" />
+    <Content Include="Images\laptop_asus_vivobookr564ja-uh51t.jpeg" />
+    <Content Include="Images\laptop_asus_zenbook14um425ia-wb502t.jpeg" />
+    <Content Include="Images\laptop_dell_inspiron137000.jpeg" />
+    <Content Include="Images\laptop_dell_inspiron3505.jpeg" />
+    <Content Include="Images\laptop_dell_inspiron3593.jpeg" />
+    <Content Include="Images\laptop_dell_inspiron5406.jpeg" />
+    <Content Include="Images\laptop_dell_inspiron5501 - Copy.jpeg" />
+    <Content Include="Images\laptop_dell_inspiron5501.jpeg" />
+    <Content Include="Images\laptop_dell_inspiron5505.jpeg" />
+    <Content Include="Images\laptop_dell_xps159500.jpeg" />
+    <Content Include="Images\laptop_hp_14-dk1031dx.jpeg" />
+    <Content Include="Images\laptop_hp_250g7.jpeg" />
+    <Content Include="Images\laptop_hp_255g7.jpeg" />
+    <Content Include="Images\laptop_hp_omen15tdh00gaming.jpeg" />
+    <Content Include="Images\laptop_hp_pavilion15-eh0090wm.jpeg" />
+    <Content Include="Images\laptop_lenovo_ideapad3cb11ast5.jpeg" />
+    <Content Include="Images\laptop_lenovo_legion515imh05h.jpeg" />
+    <Content Include="Images\laptop_lenovo_v145.jpeg" />
+    <Content Include="Images\laptop_lenovo_yogaslim714are05.jpeg" />
+    <Content Include="Images\laptop_lg_ultra17.jpeg" />
+    <Content Include="Images\laptop_samsung_chromebook411,6.jpeg" />
+    <Content Include="Images\laptop_samsung_chromebook4plus.jpeg" />
+    <Content Include="Images\laptop_samsung_galaxybookflex13,3.jpeg" />
+    <Content Include="Images\laptop_toshiba_satelliteproc50-h-101.jpeg" />
+    <Content Include="Images\laptop_toshiba_satelliteproc50-h-10d.jpeg" />
+    <Content Include="Images\laptop_toshiba_satelliteprol50-g-1cg.jpeg" />
+    <Content Include="Images\laptop_toshiba_satelliteprol50-g-1cj.jpeg" />
+    <Content Include="Images\laptop_toshiba_satelliteprol50-g-1ck.jpeg" />
+    <Content Include="Images\laptop_xiaomi_migaming.jpeg" />
+    <Content Include="Images\laptop_xiaomi_minotebookair.jpeg" />
+    <Content Include="Images\lg.png" />
     <Content Include="Images\login.png" />
     <Content Include="Images\logo-hosting.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logoff.png" />
+    <Content Include="Images\microsoft.png" />
+    <Content Include="Images\mobile_alcatel_15033d.jpeg" />
+    <Content Include="Images\mobile_alcatel_1b.jpeg" />
+    <Content Include="Images\mobile_alcatel_1s.jpeg" />
+    <Content Include="Images\mobile_alcatel_1se.jpeg" />
+    <Content Include="Images\mobile_alcatel_3l - Copy.jpeg" />
+    <Content Include="Images\mobile_alcatel_3l.jpeg" />
+    <Content Include="Images\mobile_alcatel_3x.jpeg" />
+    <Content Include="Images\mobile_apple_iphone11 - Copy.jpeg" />
+    <Content Include="Images\mobile_apple_iphone11.jpeg" />
+    <Content Include="Images\mobile_apple_iphone11pro.jpeg" />
+    <Content Include="Images\mobile_apple_iphone12pro.jpeg" />
+    <Content Include="Images\mobile_apple_iphone12promax.jpeg" />
+    <Content Include="Images\mobile_apple_iphonese.jpeg" />
+    <Content Include="Images\mobile_apple_iphonexr.jpeg" />
+    <Content Include="Images\mobile_cubot_j9.jpeg" />
+    <Content Include="Images\mobile_cubot_kingkongcs.jpeg" />
+    <Content Include="Images\mobile_cubot_note7.jpeg" />
+    <Content Include="Images\mobile_cubot_x30.jpeg" />
+    <Content Include="Images\mobile_huawei_nova5t.jpeg" />
+    <Content Include="Images\mobile_huawei_p30produal.jpeg" />
+    <Content Include="Images\mobile_huawei_p40lite.jpeg" />
+    <Content Include="Images\mobile_huawei_p40litedual.jpeg" />
+    <Content Include="Images\mobile_huawei_p40litee.jpeg" />
+    <Content Include="Images\mobile_huawei_p40pro.jpeg" />
+    <Content Include="Images\mobile_huawei_psmarts.jpeg" />
+    <Content Include="Images\mobile_LG_g8sthinq.jpeg" />
+    <Content Include="Images\mobile_LG_k22.jpeg" />
+    <Content Include="Images\mobile_LG_k41s.jpeg" />
+    <Content Include="Images\mobile_LG_k50s.jpeg" />
+    <Content Include="Images\mobile_LG_k61.jpeg" />
+    <Content Include="Images\mobile_LG_v30plus.jpeg" />
+    <Content Include="Images\mobile_LG_velvet5g.jpeg" />
+    <Content Include="Images\mobile_LG_wing5g.jpeg" />
+    <Content Include="Images\mobile_samsung_galaxya20edual.jpeg" />
+    <Content Include="Images\mobile_samsung_galaxya21s.jpeg" />
+    <Content Include="Images\mobile_samsung_galaxya31.jpeg" />
+    <Content Include="Images\mobile_samsung_galaxya41.jpeg" />
+    <Content Include="Images\mobile_samsung_galaxya51.jpeg" />
+    <Content Include="Images\mobile_samsung_galaxya71.jpeg" />
+    <Content Include="Images\mobile_samsung_galaxys20ultra5g.jpeg" />
+    <Content Include="Images\mobile_xiaomi_pocox3nfc.jpeg" />
+    <Content Include="Images\mobile_xiaomi_redminote8pro.jpeg" />
+    <Content Include="Images\mobile_xiaomi_redminote9pro.jpeg" />
+    <Content Include="Images\mobile_xiaomi_redminote9s.jpeg" />
+    <Content Include="Images\offers.png" />
+    <Content Include="Images\samsung.png" />
     <Content Include="Images\samsungs20.jpeg" />
     <Content Include="Images\sf.png" />
     <Content Include="Images\shop.png" />
     <Content Include="Images\shopp.jpg" />
+    <Content Include="Images\sony.png" />
+    <Content Include="Images\star.ico" />
     <Content Include="Images\StarFade.gif" />
     <Content Include="Images\StarGlow.gif" />
     <Content Include="Developer Notes\Instructions.txt" />
     <Content Include="Developer Notes\Todo list.txt" />
+    <Content Include="Images\tablet_alcatel_1t.jpeg" />
+    <Content Include="Images\tablet_alcatel_smarttab7.jpeg" />
+    <Content Include="Images\tablet_amazon_fire10,1.jpeg" />
+    <Content Include="Images\tablet_amazon_fire77.jpeg" />
+    <Content Include="Images\tablet_amazon_firehd8.jpeg" />
+    <Content Include="Images\tablet_apple_ipad.jpeg" />
+    <Content Include="Images\tablet_apple_ipadair.jpeg" />
+    <Content Include="Images\tablet_apple_ipadmini.jpeg" />
+    <Content Include="Images\tablet_apple_ipadpro.jpeg" />
+    <Content Include="Images\tablet_huawei_matepadpro.jpeg" />
+    <Content Include="Images\tablet_huawei_mediapadt5.jpeg" />
+    <Content Include="Images\tablet_huawei_mediapadt5lite.jpeg" />
+    <Content Include="Images\tablet_lenovo_tabm10x505.jpeg" />
+    <Content Include="Images\tablet_microsoft_surfacepro612,3.jpeg" />
+    <Content Include="Images\tablet_microsoft_surfacepro712,3.jpeg" />
+    <Content Include="Images\tablet_samsung_galaxytaba7.jpeg" />
+    <Content Include="Images\tablet_samsung_galaxytabs7.jpeg" />
     <Content Include="Images\tv.png" />
+    <Content Include="Images\tv_lg_32LK6200.jpeg" />
+    <Content Include="Images\tv_lg_32LM6300PLA.jpeg" />
+    <Content Include="Images\tv_lg_43UN73006LC.jpeg" />
+    <Content Include="Images\tv_lg_49NANO816NA.jpeg" />
+    <Content Include="Images\tv_lg_49NANO866NA.jpeg" />
+    <Content Include="Images\tv_lg_OLED55BX6LB.jpeg" />
+    <Content Include="Images\tv_lg_OLED55CX6LA.jpeg" />
+    <Content Include="Images\tv_lg_OLED65CX6LA.jpeg" />
+    <Content Include="Images\tv_samsung_QE50Q60T.jpeg" />
+    <Content Include="Images\tv_samsung_QE55Q60T.jpeg" />
+    <Content Include="Images\tv_samsung_QE55Q70T.jpeg" />
+    <Content Include="Images\tv_samsung_QE55Q80T.jpeg" />
+    <Content Include="Images\tv_samsung_UE32T4302.jpeg" />
+    <Content Include="Images\tv_samsung_UE43TU7172.jpeg" />
+    <Content Include="Images\tv_samsung_UE55TU7172.jpeg" />
+    <Content Include="Images\tv_sony_KD-43XH8096.jpeg" />
+    <Content Include="Images\tv_sony_KD-49XH8096.jpeg" />
+    <Content Include="Images\tv_sony_KD-55AG9.jpeg" />
+    <Content Include="Images\tv_sony_KD-55XH9096.jpeg" />
+    <Content Include="Images\tv_sony_KD-75XH9096.jpeg" />
+    <Content Include="Images\tv_sony_KD-77AG9.jpeg" />
+    <Content Include="Images\tv_sony_KD-85XH8096.jpeg" />
     <Content Include="Images\world-map.png" />
+    <Content Include="Images\xiaomi.png" />
     <Content Include="MailTemplate\AccountConfirmation.html" />
     <Content Include="Scripts\loader.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -315,6 +451,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\ Ebuy.pubxml" />
+    <None Include="Properties\PublishProfiles\e-Buy - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -529,7 +667,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
