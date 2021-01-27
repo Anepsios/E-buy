@@ -84,7 +84,6 @@ textarea {
     background-color: gainsboro;
 }
 
-
 /* Fix Navbar icons for big screens */
 
 @media only screen and (min-width: 992px) {
@@ -103,6 +102,10 @@ textarea {
 }
 
 /* Fix Navbar icons for smaller screens */
+.navbar {
+    padding-top: 5px !important;
+    padding-bottom: 0px !important;
+}
 
 @media only screen and (max-width: 991px) {
     .nav li {
@@ -124,7 +127,7 @@ textarea {
     }
 
     .navbar{
-        padding-top:0px;
+        padding-top:0px !important;
         padding-bottom:5px;
     }
 
