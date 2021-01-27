@@ -351,32 +351,9 @@ namespace GroupProject.Controllers
 
         //--------------------------------------- CHARTS --------------------------------------//
 
-        //public ActionResult DrawChart()
-        //{
-        //    var orders = new List<Order>();
-
-        //    string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Ebuy;Integrated Security=True";
-
-        //    using (SqlConnection con = new SqlConnection(connectionString))
-        //    {
-        //        con.Open();
-
-        //        using (SqlCommand command = new SqlCommand("SELECT AspNetUsers.UserName, (COUNT)Orders.ID FROM Orders INNER JOIN AspNetUsers ON Orders.ApplicationUser_Id = AspNetUsers.Id", con))
-        //        using (SqlDataReader reader = command.ExecuteReader())
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                orders.Add(new Order { ID = reader.GetInt32(0), UserName = reader.GetString(1) });
-        //            }
-        //        }
-        //    }
-
-        //    return View(orders);
-        //}
-
         public ActionResult ChartBar()
         {
-            
+
 
             ArrayList xValue = new ArrayList();
             ArrayList yValue = new ArrayList();
@@ -388,8 +365,8 @@ namespace GroupProject.Controllers
                            {
                                UserName = g.Key,
                                Username = (from cust in context.Users
-                                          where cust.UserName == g.Key
-                                          select cust).ToList(),
+                                           where cust.UserName == g.Key
+                                           select cust).ToList(),
                                Count = g.Select(x => x.ID).Distinct().Count()
                            }).OrderBy(y => y.Count);
 

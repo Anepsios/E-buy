@@ -65,7 +65,7 @@ namespace GroupProject.Controllers
             // Get the name of the product, to display confirmation
             try
             {
-                string productName = context.Carts.SingleOrDefault(item => item.ID == id).Product.Name; // OM possible bug when removing stuff too fast
+                string productName = context.Carts.SingleOrDefault(item => item.ID == id).Product.Name;
 
                 // Remove from cart
                 int itemCount = cart.RemoveFromCart(id);

@@ -15,20 +15,21 @@
     <div class="bg"></div>
     <div class="bg bg2"></div>
     <div class="bg bg3"></div>
+
     <!-- LOADER -->
     <div id="preloader">
-            <div class="loader-container">
-                <div class="progress-br float shadow">
-                    <div class="progress__item"></div>
-                </div>
+        <div class="loader-container">
+            <div class="progress-br float shadow">
+                <div class="progress__item"></div>
             </div>
         </div>
+    </div>
     <!-- END LOADER -->
     <!-- Start header -->
     <header class="top-navbar sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-   
+
                 <a class="navbar-brand" href='@Url.Action("Index", "Home")'>
                     <img src="~/Images/logo-hosting.png" alt="" width="160" height="60" />
                 </a>
@@ -57,7 +58,12 @@
                                 </li>
                             }
                         }
-                        <li class="searchbar-li"><form>@Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "searchbar form-control", @placeholder = "Search for Products" })</form></li>
+                        <li class="searchbar-li">
+                            @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+                            {
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "searchbar form-control", @placeholder = "Search for Products" });
+                            }
+                        </li>
                     </ul>
 
                     @Html.Partial("_LoginPartial")
@@ -69,7 +75,7 @@
     <!-- End header -->
 
     <div class="container body-content">
-      
+
         @RenderBody()
     </div>
     @if (User.IsInRole("User"))
@@ -94,6 +100,7 @@
     <hr />
 
     <footer class="footer">
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-xs-12">
@@ -103,8 +110,8 @@
                         </div>
                         <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
 
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
+                    </div>
+                </div>
 
                 <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="widget clearfix">
@@ -113,20 +120,15 @@
 
                         </div>
                         <ul class="footer-links">
-                            @*<li><a href="#">Home</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Pricing</a></li>
-                                <li><a href="#">About</a></li>
-                                <li><a href="#">Faq</a></li>
-                                <li><a href="#">Contact</a></li>*@
-                        </ul><!-- end links -->
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
+                            <!-- links here -->
+                        </ul>
+                    </div>
+                </div>
 
 
 
-            </div><!-- end row -->
-        </div><!-- end container -->
+            </div>
+        </div>
 
         <div class="copyrights">
             <div class="container">
@@ -141,11 +143,11 @@
                             <li><a href="#"><i class="fa fa-github"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        </ul><!-- end links -->
+                        </ul>
                     </div>
                 </div>
-            </div><!-- end container -->
-        </div><!-- end copyrights -->
+            </div>
+        </div>
 
         <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 
@@ -200,6 +202,21 @@
             });
         });
 
+    </script>
+
+    @* prevent double posting client side *@
+    <script>
+        document.querySelectorAll('form').forEach((form) => {
+            form.addEventListener('submit', (e) => {
+                if (form.classList.contains('is-submitting')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                };
+
+                form.classList.add('is-submitting');
+            });
+        });
     </script>
 
 </body>

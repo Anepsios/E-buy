@@ -11,7 +11,7 @@ namespace GroupProject.Controllers
 {
     public class PayPalController : Controller
     {
-        readonly ApplicationDbContext db = new ApplicationDbContext(); // OM: make readonly
+        readonly ApplicationDbContext db = new ApplicationDbContext();
 
         //  Work with PayPal Payment
         private PayPal.Api.Payment payment;
@@ -91,7 +91,7 @@ namespace GroupProject.Controllers
                 redirect_urls = redirUrls
             };
 
-            // Create a payment using a APIContext
+            // Create a payment using an APIContext
             return this.payment.Create(apiContext);
         }
 

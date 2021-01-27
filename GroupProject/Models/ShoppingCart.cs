@@ -23,7 +23,7 @@ namespace GroupProject.Models
 
     public class ShoppingCart
     {
-        readonly ApplicationDbContext context = new ApplicationDbContext(); // OM: added readonly
+        readonly ApplicationDbContext context = new ApplicationDbContext();
 
         string ShoppingCartId { get; set; }
 

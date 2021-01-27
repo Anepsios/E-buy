@@ -7,6 +7,5 @@
 - option to add quantity of products to cart(future extension)
 - turn everything you can to async(not urgent, future extention)
 - make admin able to change other account's passwords
-
-
-- searchbar on navbar
+- if you press submit on a form fast, then multiple requests will be sent and processed... how to avoid this?
+(example) create a new product and press the create button fast, and duplicate products will be created

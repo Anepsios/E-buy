@@ -6,10 +6,7 @@
 }
 
 <link href="~/Content/Site.css" rel="stylesheet" />
-
 <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/pricing/">
-
-@*<script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>*@
 
 <script type="text/javascript">
 
@@ -25,8 +22,10 @@
                     // Successful requests get here
                     // Update the page elements
                     if (data.ItemCount == 1) {
-                        $('#cart-items #added-items').after('<tr id="row-' + data.AddId + '"><td>' + '<a href="@Url.Action("Details", "Products")">' + data.Name + '</a>' + '</td><td>' + Number(data.Price).toFixed(2) + '€</td><td id="item-count-' + data.AddId + '">1</td><td><a href="javascript:void(0);" class="RemoveLink" onclick="RemoveItem(' + data.AddId + ')" data-id="' + data.AddId + '">Remove from cart</a></td></tr>');
+                        // OM: Append new line of item in cart here
+                        $('#cart-items #added-items').after('<tr id="row-' + data.AddId + '"><td>' + '<a href="@Url.Action("Details", "Products")">' + data.Name + '</a>' + '</td><td>' + Number(data.Price).toFixed(2) + '€</td><td id="item-count-' + data.AddId + '">1</td><td><a href="javascript:void(0);" class="RemoveLink hyperlink" onclick="RemoveItem(' + data.AddId + ')" data-id="' + data.AddId + '">Remove from cart</a></td></tr>');
                     } else {
+                        // OM: Or just increase quantity of existing item here
                         $('#item-count-' + data.AddId).text(data.ItemCount);
                     }
                     $('#cart-total').text(Number(data.CartTotal).toFixed(2) + '€');
@@ -43,13 +42,6 @@
 
 </script>
 
-@*<main class="container">
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">Products</h1>
-        <hr />
-    </div>*@
-
-
 <div class="container-fluid mx-auto text-center">
     @if (ViewBag.IsAdminOrEmployee)
     {
@@ -57,7 +49,8 @@
             @Html.ActionLink("Edit Product Categories", "Index", "Categories", "", new { @class = "btn btn-warning" })  &nbsp;
             @Html.ActionLink("Edit Product Manufacturers", "Index", "Manufacturers", "", new { @class = "btn btn-warning" }) &nbsp;
             @Html.ActionLink("Create New Product", "Create", "Products", "", new { @class = "btn btn-warning" })
-        </p>}
+        </p>
+    }
 
     @using (Html.BeginForm("Index", "Products", FormMethod.Get))
     {
@@ -71,7 +64,8 @@
                 <br />
                 <input type="submit" value="Search" class="btn btn-success btn-sm" />
             </form>
-        </div>}
+        </div>
+    }
 
 </div>
 <br />
@@ -110,7 +104,6 @@ else
                 <div class="product-image">
                     <a href='@Url.Action("Details", "Products", new { id = item.ID })'>
                         <img src="@Url.Content(item.ProductImage)" alt="Image" class="pic-1" />
-                        @*<img src="@Url.Content(item.ProductPic2)" alt="Image" class="pic-2" />*@
                     </a>
                     @if (ViewBag.IsUser)
                     {
@@ -127,7 +120,7 @@ else
                     @if (item.Offer == true)
                     {
                         <span class="product-new-label">Sale</span>
-                        <span class="product-discount-label">-@Html.DisplayFor(Model => item.Discount)</span>
+                        <span class="product-discount-label">-@Html.DisplayFor(Model => item.Discount)%</span>
                     }
                 </div>
 
@@ -149,7 +142,7 @@ else
                             }
                             else
                             {
-                                <li>No rating yet</li>
+                                <li>No ratings yet</li>
                             }
                         }
                     </ul>
@@ -168,7 +161,7 @@ else
     }
 </div>
 
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, selectedCategory = ViewBag.CurrentCategory, selectedManufacturer = ViewBag.CurrentManufacturer }))
+@Html.PagedListPager(Model, page => Url.Action("Index",
+      new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, selectedCategory = ViewBag.CurrentCategory, selectedManufacturer = ViewBag.CurrentManufacturer }))

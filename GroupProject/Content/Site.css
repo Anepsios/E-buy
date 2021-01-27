@@ -75,7 +75,7 @@ textarea {
 }
 
 .searchbar{
-    margin-top:21px;
+    margin-top:18px;
     width:250px;
     border-radius:9px;
 }
@@ -128,9 +128,27 @@ textarea {
     .searchbar, .searchbar-li{
         display:none;
     }
+
+    .navbar{
+        padding-top:0px;
+        padding-bottom:5px;
+    }
+
+    /* banner icons in home page */
+    .banners a img{
+        max-width:60px;
+    }
 }
 
 /* For nav icons end */
+
+/* For Products/Details start */
+
+@media only screen and (max-width: 991px) {
+
+}
+
+/* For Products/Details end */
 
 /* For Manage/Orders start */
 
@@ -263,7 +281,6 @@ textarea {
     position: relative;
     z-index: 1;
     border-radius: 20px;
-    height: 420px;
     height: 420px !important;
     background-color: white;
 }
@@ -628,16 +645,6 @@ textarea {
     display:inline-flex;
 }
 
-@media only screen and (max-width: 900px) {
-
-    .banners img {
-        width: 50px;
-        height: auto;
-        margin-left: auto;
-        margin-right: auto;
-        align-content:center;
-    }
-}
 
     .banners img:hover {
         /* Start the shake animation and make the animation last for 0.5 seconds */

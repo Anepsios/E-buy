@@ -4,8 +4,6 @@
     ViewBag.Title = "Product Details";
 }
 
-@* OM: TODO! fix html warnings somehow, if it can't be done without breaking everything just let it be, it works for now *@
-
 <div>
     <h5>@ViewBag.AddedToCart</h5>
     <hr />
@@ -34,10 +32,7 @@
     }
     else
     {
-        for (var i = 1; i <= 5; i++)
-        {
-            <span class="starOff" style="height:30px; width:30px;"></span>
-        }
+        <span>No ratings yet</span>
     }
 
     @if (!User.IsInRole("Admin") && !User.IsInRole("Employee"))
@@ -73,7 +68,7 @@
             <div class="col-md-4">
                 <dl>
                     <dt>
-                        Product Name
+                        Name
                     </dt>
                     <dd>
                         @Html.DisplayFor(model => model.Name)
@@ -109,7 +104,7 @@
                         Back
                     </button>
 
-                    @if (User.IsInRole("Admin"))
+                    @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
                     {
                         <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Edit", new { id = Model.ID })'">
                             Edit
@@ -144,12 +139,13 @@
                                     <th>Edit/Delete</th>
                                 </tr>
                             </thead>
-
+                            @* OM: if reviews that have been approved exist *@
                             @if (ViewBag.ApprovedRatingExist)
                             {
                                 foreach (var item in Model.Ratings)
                                 {
                                     <tr>
+                                        @* OM: if item is approved, show it to everyone *@
                                         @if (item.IsApproved)
                                         {
                                             <td>
@@ -170,6 +166,13 @@
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.ReviewCreated)
+                                            </td>
+                                            <td>
+                                                @if (item.UserName == User.Identity.Name || User.IsInRole("Admin"))
+                                                {
+                                                    @Html.ActionLink("Edit", "RatingDetail", "Admin", new { id = item.RatingId }, new { @class = "hyperlink" }) @:|
+                                                    @Html.ActionLink("Delete", "Delete", "Ratings", new { id = item.RatingId }, new { @class = "hyperlink" })
+                                                }
                                             </td>
                                         }
                                         else
@@ -213,7 +216,6 @@
                                                     @Html.ActionLink("Delete", "Delete", "Ratings", new { id = item.RatingId }, new { @class = "hyperlink" })
                                                 </td>
                                             }
-
                                         }
                                     </tr>
                                 }

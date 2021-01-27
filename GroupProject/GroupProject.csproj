@@ -277,7 +277,6 @@
     <Content Include="Images\laptop_apple_macbookair13,3.jpeg" />
     <Content Include="Images\laptop_apple_macbookair13.jpeg" />
     <Content Include="Images\laptop_apple_macbookpro13.jpeg" />
-    <Content Include="Images\laptop_apple_macbookpro16 - Copy.jpeg" />
     <Content Include="Images\laptop_apple_macbookpro16.jpeg" />
     <Content Include="Images\laptop_asus_chromebookc523na.jpeg" />
     <Content Include="Images\laptop_asus_rogzephyrusduo15segx551qr-hf014r.jpeg" />
@@ -289,7 +288,6 @@
     <Content Include="Images\laptop_dell_inspiron3505.jpeg" />
     <Content Include="Images\laptop_dell_inspiron3593.jpeg" />
     <Content Include="Images\laptop_dell_inspiron5406.jpeg" />
-    <Content Include="Images\laptop_dell_inspiron5501 - Copy.jpeg" />
     <Content Include="Images\laptop_dell_inspiron5501.jpeg" />
     <Content Include="Images\laptop_dell_inspiron5505.jpeg" />
     <Content Include="Images\laptop_dell_xps159500.jpeg" />
@@ -323,10 +321,8 @@
     <Content Include="Images\mobile_alcatel_1b.jpeg" />
     <Content Include="Images\mobile_alcatel_1s.jpeg" />
     <Content Include="Images\mobile_alcatel_1se.jpeg" />
-    <Content Include="Images\mobile_alcatel_3l - Copy.jpeg" />
     <Content Include="Images\mobile_alcatel_3l.jpeg" />
     <Content Include="Images\mobile_alcatel_3x.jpeg" />
-    <Content Include="Images\mobile_apple_iphone11 - Copy.jpeg" />
     <Content Include="Images\mobile_apple_iphone11.jpeg" />
     <Content Include="Images\mobile_apple_iphone11pro.jpeg" />
     <Content Include="Images\mobile_apple_iphone12pro.jpeg" />
@@ -417,7 +413,6 @@
     <Content Include="Images\tv_sony_KD-85XH8096.jpeg" />
     <Content Include="Images\world-map.png" />
     <Content Include="Images\xiaomi.png" />
-    <Content Include="MailTemplate\AccountConfirmation.html" />
     <Content Include="Scripts\loader.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -601,9 +596,7 @@
     <Content Include="Views\Ratings\Edit.cshtml" />
     <Content Include="Views\Ratings\RatingFail.cshtml" />
     <Content Include="Views\Ratings\RatingSuccess.cshtml" />
-    <Content Include="Views\Products\RandomItems.cshtml" />
     <Content Include="Views\PayPal\FailureView.cshtml" />
-    <Content Include="Views\PayPal\Index.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Scripts\jQuery\jquery-2.2.4.min.map" />

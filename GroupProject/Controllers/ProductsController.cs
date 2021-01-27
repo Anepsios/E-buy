@@ -17,7 +17,7 @@ namespace GroupProject.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly ApplicationDbContext db = new ApplicationDbContext(); // OM: made readonly
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         //
         // GET: Products

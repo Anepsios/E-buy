@@ -8,8 +8,6 @@ namespace GroupProject.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    // OM: TODO! Make a proper configuration Seed, with like 10-20 products of each category
-
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
@@ -368,6 +366,7 @@ namespace GroupProject.Migrations
                 //    Price = 8.99M, ManufacturerID = manufacturers.Single(a => a.Name == "Asus").ID, ProductImage = "~/Images/asus.jpg" },
                 //new Product { Name = "FA706IU-H7006T", CategoryID = categories.SingleOrDefault(g => g.Name == "Laptop").ID,
                 //    Price = 8.99M, ManufacturerID = manufacturers.Single(a => a.Name == "Asus").ID, ProductImage = "~/Images/asus.jpg" },
+
             }.ForEach(s => context.Products.AddOrUpdate(a => a.Name, s));
         }
     }

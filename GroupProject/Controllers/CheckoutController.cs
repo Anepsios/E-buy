@@ -15,7 +15,7 @@ namespace GroupProject.Controllers
     public class CheckoutController : Controller
     {
 
-        readonly ApplicationDbContext context = new ApplicationDbContext(); // OM: make readonly
+        readonly ApplicationDbContext context = new ApplicationDbContext();
 
         //
         // GET: /Checkout
@@ -63,17 +63,18 @@ namespace GroupProject.Controllers
                 order.OrderDate = DateTime.Now;
                 var cart = ShoppingCart.GetCart(this.HttpContext);
                 order.TotalPrice = cart.GetTotal();
+
+                // OM: Uncomment to bypass Paypal
                 //Save Order
                 //context.Orders.Add(order);
                 //context.SaveChanges();
                 //Process the order
                 //order.ID = cart.CreateOrder(order);
+                //return RedirectToAction("Complete", new { id = order.ID });
 
                 // OM: Pass order info to PayPal payment and add the order only after payment has gone through
                 TempData["Order"] = order;
                 return RedirectToAction("PaymentWithPaypal", "PayPal");
-
-                //return RedirectToAction("Complete", new { id = order.ID });
             }
             catch
             {

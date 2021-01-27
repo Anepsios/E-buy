@@ -14,7 +14,7 @@ namespace GroupProject.Controllers
     [Authorize(Roles = "Admin, Employee")]
     public class ManufacturersController : Controller
     {
-        private readonly ApplicationDbContext db = new ApplicationDbContext(); // OM: make readonly
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         // OM: Boiler plate code mostly, it's only used by admin-employee
 
