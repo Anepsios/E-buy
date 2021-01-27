@@ -2361,7 +2361,7 @@ select.mobile-device {
 }
 
 .footer {
-    padding: 90px 0 80px !important;
+    padding: 50px 0 80px !important;
     color: #999;
     background: #333333 url("/Images/world-map.png") no-repeat center;
     height:300px;
