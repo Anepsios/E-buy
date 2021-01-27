@@ -79,7 +79,7 @@ textarea {
 }
 
 .searchbar{
-    width:200px;
+    width:250px;
     position:relative;
     top:17px;
   
@@ -87,6 +87,14 @@ textarea {
 
 .modal-content {
     background-color: gainsboro;
+}
+
+@media only screen and (max-width: 1100px){
+    .searchbar {
+        width: 175px;
+        position: relative;
+        top: 17px;
+    }
 }
 
 /* Fix Navbar icons for big screens */
@@ -559,12 +567,24 @@ textarea {
 /*----------------------------------------------- Carousel --------------------------------------------------*/
 
 .carousel img {
-    height: 450px;
+    height: 350px;
     background-size: cover;
 }
 
 .carousel {
     margin: 40px auto;
+}
+
+@media only screen and (min-width: 991px) and (max-width:1200px) {
+    .carousel img {
+        height: 440px;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .carousel img {
+        height: 550px;
+    }
 }
 
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
