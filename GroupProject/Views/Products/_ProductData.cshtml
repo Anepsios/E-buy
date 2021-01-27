@@ -57,9 +57,9 @@
         <div class="SearchBox">
             <form>
                 <div class="row d-flex justify-content-center">
-                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control col-sm", @placeholder = "Type here" })&nbsp;
-                    @Html.DropDownList("SelectedCategory", null, "Category", new { @class = "form-control col-sm", onchange = "this.form.submit();" })&nbsp;
-                    @Html.DropDownList("SelectedManufacturer", null, "Manufacturer", new { @class = "form-control col-sm", onchange = "this.form.submit(); " })&nbsp;
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control col-sm", @placeholder = ViewBag.CurrentFilter  })&nbsp;
+                    @Html.DropDownList("SelectedCategory", null, "All Categories", new { @class = "form-control col-sm", onchange = "this.form.submit();" })&nbsp;
+                    @Html.DropDownList("SelectedManufacturer", null, "All Manufacturers", new { @class = "form-control col-sm", onchange = "this.form.submit(); " })&nbsp;
                 </div>
                 <br />
                 <input type="submit" value="Search" class="btn btn-success btn-sm" />
