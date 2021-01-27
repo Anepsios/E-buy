@@ -75,21 +75,13 @@ textarea {
 }
 
 .searchbar{
-    margin-top:18px;
     width:250px;
-    border-radius:9px;
 }
 
 .modal-content {
     background-color: gainsboro;
 }
 
-
-@media only screen and (max-width: 976px) {
-    .nav-search {
-        display: none;
-    }
-}
 
 /* Fix Navbar icons for big screens */
 
@@ -144,8 +136,10 @@ textarea {
 
 /* For Products/Details start */
 
-@media only screen and (max-width: 991px) {
-
+@media only screen and (max-width: 450px) {
+    .prodet img{
+        max-height:140px;
+    }
 }
 
 /* For Products/Details end */
