@@ -76,6 +76,8 @@ textarea {
 
 .searchbar{
     width:250px;
+    position:relative;
+    top:17px;
 }
 
 .modal-content {

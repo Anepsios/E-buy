@@ -353,8 +353,6 @@ namespace GroupProject.Controllers
 
         public ActionResult ChartBar()
         {
-
-
             ArrayList xValue = new ArrayList();
             ArrayList yValue = new ArrayList();
 
@@ -374,10 +372,9 @@ namespace GroupProject.Controllers
             results.ToList().ForEach(rs => yValue.Add(rs.Count));
 
             new Chart(width: 600, height: 400, theme: ChartTheme.Blue)
-            .AddTitle("Chart for Growth [Bar Chart]")
+            .AddTitle("Orders Per Active User")
                     .AddSeries("Default", chartType: "Bar", xValue: xValue, yValues: yValue)
-                    .Write("jpeg");
-
+                    .Write("png");
             return null;
         }
     }
