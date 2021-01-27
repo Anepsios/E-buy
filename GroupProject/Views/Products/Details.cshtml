@@ -101,7 +101,7 @@
                     <button type="button" name="btnLink" class="btn btn-primary" id="btnLink" data-toggle="modal" data-target="#Reviews">Reviews</button>
 
                     <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Index")'">
-                        Back
+                        Back to Catalog
                     </button>
 
                     @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
@@ -157,11 +157,11 @@
                                             <td>
                                                 @for (var i = 1; i <= item.Stars; i++)
                                                 {
-                                                    <span class="starOn"><img src="~/Images/StarGlow.gif" /></span>
+                                                    <span class="starOn" style="height:30px; width:30px;"></span>
                                                 }
                                                 @for (var i = (item.Stars + 1); i <= 5; i++)
                                                 {
-                                                    <span class="starOff"><img src="~/Images/StarFade.gif" /></span>
+                                                    <span class="starOff" style="height:30px; width:30px;"></span>
                                                 }
                                             </td>
                                             <td>
@@ -188,11 +188,11 @@
                                                 <td>
                                                     @for (var i = 1; i <= item.Stars; i++)
                                                     {
-                                                        <span class="starOn"><img src="~/Images/StarGlow.gif" /></span>
+                                                        <span class="starOn" style="height:30px; width:30px;"></span>
                                                     }
                                                     @for (var i = (item.Stars + 1); i <= 5; i++)
                                                     {
-                                                        <span class="starOff"><img src="~/Images/StarFade.gif" /></span>
+                                                        <span class="starOff" style="height:30px; width:30px;"></span>
                                                     }
                                                 </td>
                                                 <td>
@@ -237,11 +237,11 @@
                                         <td>
                                             @for (var i = 1; i <= item.Stars; i++)
                                             {
-                                                <span class="starOn"><img src="~/Images/StarGlow.gif" /></span>
+                                                <span class="starOn" style="height:30px; width:30px;"></span>
                                             }
                                             @for (var i = (item.Stars + 1); i <= 5; i++)
                                             {
-                                                <span class="starOff"><img src="~/Images/StarFade.gif" /></span>
+                                                <span class="starOff" style="height:30px; width:30px;"></span>
                                             }
                                         </td>
                                         <td>

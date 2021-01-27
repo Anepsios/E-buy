@@ -23,7 +23,7 @@
                     // Update the page elements
                     if (data.ItemCount == 1) {
                         // OM: Append new line of item in cart here
-                        $('#cart-items #added-items').after('<tr id="row-' + data.AddId + '"><td>' + '<a href="@Url.Action("Details", "Products")">' + data.Name + '</a>' + '</td><td>' + Number(data.Price).toFixed(2) + '€</td><td id="item-count-' + data.AddId + '">1</td><td><a href="javascript:void(0);" class="RemoveLink hyperlink" onclick="RemoveItem(' + data.AddId + ')" data-id="' + data.AddId + '">Remove from cart</a></td></tr>');
+                        $('#cart-items #added-items').after('<tr id="row-' + data.AddId + '"><td>' + '<a class = "hyperlink" href="@Url.Action("Details", "Products")">' + data.Name + '</a>' + '</td><td>' + Number(data.Price).toFixed(2) + '€</td><td id="item-count-' + data.AddId + '">1</td><td><a href="javascript:void(0);" class="RemoveLink hyperlink" onclick="RemoveItem(' + data.AddId + ')" data-id="' + data.AddId + '">Remove from cart</a></td></tr>');
                     } else {
                         // OM: Or just increase quantity of existing item here
                         $('#item-count-' + data.AddId).text(data.ItemCount);
@@ -57,9 +57,9 @@
         <div class="SearchBox">
             <form>
                 <div class="row d-flex justify-content-center">
-                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control col-sm", @placeholder = "Type here" })&nbsp;
-                    @Html.DropDownList("SelectedCategory", null, "Category", new { @class = "form-control col-sm", onchange = "this.form.submit();" })&nbsp;
-                    @Html.DropDownList("SelectedManufacturer", null, "Manufacturer", new { @class = "form-control col-sm", onchange = "this.form.submit(); " })&nbsp;
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control col-sm", @placeholder = ViewBag.CurrentFilter  })&nbsp;
+                    @Html.DropDownList("SelectedCategory", null, "All Categories", new { @class = "form-control col-sm", onchange = "this.form.submit();" })&nbsp;
+                    @Html.DropDownList("SelectedManufacturer", null, "All Manufacturers", new { @class = "form-control col-sm", onchange = "this.form.submit(); " })&nbsp;
                 </div>
                 <br />
                 <input type="submit" value="Search" class="btn btn-success btn-sm" />

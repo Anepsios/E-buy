@@ -19,13 +19,13 @@
 @if (Model != null)
 {
     <div>
-        @Html.ActionLink("Back to Product", "Details", "Products", new { id = Model }, null)
+        @Html.ActionLink("Back to Product", "Details", "Products", new { id = Model }, new { @class = "hyperlink" } )
     </div>
 }
 else
 {
     <div>
-        @Html.ActionLink("Back to List", "Index", "Products")
+        @Html.ActionLink("Back to List", "Index", "Products", null, new { @class = "hyperlink" } )
     </div>
 }
 

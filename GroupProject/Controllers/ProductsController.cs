@@ -46,11 +46,13 @@ namespace GroupProject.Controllers
             products = products.OrderBy(x => x.Name); // OM: initial order, pagedlist must have been ordered at least once
 
             // OM: Searchbar
+            ViewBag.CurrentFilter = "Search for Products";
             if (!string.IsNullOrEmpty(searchString))
                 page = 1;
             else
                 searchString = currentFilter;
-            ViewBag.CurrentFilter = searchString; // OM: to keep searchstring in different pages
+            ViewBag.CurrentFilter = searchString == "" ? "Search for Products" : searchString; // OM: to keep searchstring in different pages
+            //ViewBag.CurrentFilter = searchString; 
 
             // OM: filter by category
             var categories = (from c in db.Categories select c.Name).Distinct();
@@ -66,9 +68,9 @@ namespace GroupProject.Controllers
             if (!string.IsNullOrEmpty(selectedManufacturer) && !string.IsNullOrEmpty(selectedCategory) && !string.IsNullOrEmpty(searchString))
                 products = db.Products.Where(x => x.Category.Name == selectedCategory).Where(y => y.Manufacturer.Name == selectedManufacturer).Where(s => s.Name.Contains(searchString) || searchString.Contains(s.Name));
             else if ((!string.IsNullOrEmpty(selectedManufacturer) && !string.IsNullOrEmpty(searchString)))
-                products = db.Products.Where(y => y.Manufacturer.Name == selectedManufacturer).Where(s => s.Name.Contains(searchString) || searchString.Contains(s.Name));
+                products = db.Products.Where(y => y.Manufacturer.Name == selectedManufacturer).Where(s => s.Name.Contains(searchString) || searchString.Contains(s.Name) || s.Category.Name.Contains(searchString) || searchString.Contains(s.Category.Name));
             else if ((!string.IsNullOrEmpty(selectedCategory) && !string.IsNullOrEmpty(searchString)))
-                products = db.Products.Where(x => x.Category.Name == selectedCategory).Where(s => s.Name.Contains(searchString) || searchString.Contains(s.Name));
+                products = db.Products.Where(x => x.Category.Name == selectedCategory).Where(s => s.Name.Contains(searchString) || searchString.Contains(s.Name) || searchString.Contains(s.Manufacturer.Name) || s.Manufacturer.Name.Contains(searchString));
             else if (!string.IsNullOrEmpty(selectedManufacturer) && !string.IsNullOrEmpty(selectedCategory))
                 products = db.Products.Where(x => x.Category.Name == selectedCategory).Where(y => y.Manufacturer.Name == selectedManufacturer);
             else if (!string.IsNullOrEmpty(selectedCategory))
