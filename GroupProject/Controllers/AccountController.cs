@@ -13,6 +13,8 @@ using System.Data.Entity;
 using GroupProject.Data;
 using System.IO;
 using GroupProject.Email;
+using System.Web.Caching;
+using System.Web.UI.WebControls;
 
 namespace GroupProject.Controllers
 {
@@ -93,7 +95,7 @@ namespace GroupProject.Controllers
                     return View();
                 }
             }
-
+         
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
