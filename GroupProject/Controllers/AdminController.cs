@@ -376,7 +376,7 @@ namespace GroupProject.Controllers
             new Chart(width: 600, height: 400, theme: ChartTheme.Blue)
             .AddTitle("Chart for Growth [Bar Chart]")
                     .AddSeries("Default", chartType: "Bar", xValue: xValue, yValues: yValue)
-                    .Write("png");
+                    .Write("jpeg");
 
             return null;
         }
