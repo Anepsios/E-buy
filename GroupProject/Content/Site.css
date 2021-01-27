@@ -82,6 +82,7 @@ textarea {
     width:200px;
     position:relative;
     top:17px;
+  
 }
 
 .modal-content {
@@ -563,13 +564,13 @@ textarea {
 }
 
 .carousel {
-    margin: 50px auto;
+    margin: 40px auto;
 }
 
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
 
     .carousel img {
-        height: 250px;
+        height: 300px;
     }
 }
 
