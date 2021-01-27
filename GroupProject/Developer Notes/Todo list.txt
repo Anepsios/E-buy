@@ -9,3 +9,4 @@
 - make admin able to change other account's passwords
 - if you press submit on a form fast, then multiple requests will be sent and processed... how to avoid this?
 (example) create a new product and press the create button fast, and duplicate products will be created
+- make shoppingcart/index a table that shows all data of each product

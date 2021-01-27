@@ -74,6 +74,10 @@ textarea {
     text-decoration: none;
 }
 
+.Cart:hover a{
+    color: #9dc15b !important;
+}
+
 .searchbar{
     width:250px;
     position:relative;

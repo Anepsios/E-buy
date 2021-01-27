@@ -23,7 +23,7 @@
                     // Update the page elements
                     if (data.ItemCount == 1) {
                         // OM: Append new line of item in cart here
-                        $('#cart-items #added-items').after('<tr id="row-' + data.AddId + '"><td>' + '<a href="@Url.Action("Details", "Products")">' + data.Name + '</a>' + '</td><td>' + Number(data.Price).toFixed(2) + '€</td><td id="item-count-' + data.AddId + '">1</td><td><a href="javascript:void(0);" class="RemoveLink hyperlink" onclick="RemoveItem(' + data.AddId + ')" data-id="' + data.AddId + '">Remove from cart</a></td></tr>');
+                        $('#cart-items #added-items').after('<tr id="row-' + data.AddId + '"><td>' + '<a class = "hyperlink" href="@Url.Action("Details", "Products")">' + data.Name + '</a>' + '</td><td>' + Number(data.Price).toFixed(2) + '€</td><td id="item-count-' + data.AddId + '">1</td><td><a href="javascript:void(0);" class="RemoveLink hyperlink" onclick="RemoveItem(' + data.AddId + ')" data-id="' + data.AddId + '">Remove from cart</a></td></tr>');
                     } else {
                         // OM: Or just increase quantity of existing item here
                         $('#item-count-' + data.AddId).text(data.ItemCount);
