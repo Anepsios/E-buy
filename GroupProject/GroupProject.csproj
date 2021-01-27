@@ -606,6 +606,7 @@
     <Content Include="Views\Checkout\OrderComplete.cshtml" />
     <Content Include="Views\Home\StartPage.cshtml" />
     <Content Include="Views\Products\GetApiProducts.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
