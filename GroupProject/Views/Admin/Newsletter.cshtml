@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Newsletter";
+}
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<h2>Newsletter sent</h2>
+<p>You will be redirected to admin index soon..</p>
+
+<script>
+        $(document).ready(function(){
+      setTimeout(function() {
+       window.location.href = '@Url.Action("Index", "Admin")'
+      }, 3000);
+    });
+</script>
+

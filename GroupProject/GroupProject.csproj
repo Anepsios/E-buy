@@ -257,6 +257,7 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\versions.css" />
     <Content Include="Email\AccountConfirmation.html" />
+    <Content Include="Email\Newsletter.html" />
     <Content Include="Email\OrderCompleted.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\Flaticon.svg" />
@@ -607,6 +608,7 @@
     <Content Include="Views\Home\StartPage.cshtml" />
     <Content Include="Views\Products\GetApiProducts.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Admin\Newsletter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -626,6 +628,9 @@
     <EmbeddedResource Include="Migrations\202101241437081_init.resx">
       <DependentUpon>202101241437081_init.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

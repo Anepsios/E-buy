@@ -6,7 +6,9 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+
 <style>
+    @@font-face {font-family: "Aragones"; src: url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.eot"); src: url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.woff") format("woff"), url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.svg#Aragones") format("svg"); }
     html {
         height: 100%;
     }
@@ -80,6 +82,7 @@
         top: 50%;
         z-index: 2;
         overflow: hidden;
+        text-align:center;
         opacity: 0;
         margin-top: 70px;
         -webkit-transform: translate(-50%, -50%);
@@ -90,6 +93,14 @@
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
         -webkit-animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
         animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+    }
+
+    .profile-card span{
+        position:relative;
+        top:16px;
+        font-size:30px;
+        font-family: Aragones;
+        color:#40916c;
     }
 
     .profile-card header
@@ -191,7 +202,6 @@
         0% {
             width: 0px;
             height: 0px;
-            
         }
 
         100% {
@@ -199,7 +209,6 @@
             height: 56px;
             margin-top: 0px;
             opacity: 1;
-            
         }
     }
 
@@ -392,7 +401,6 @@
     @@-webkit-keyframes ripple {
         0% {
             transform: scale3d(0, 0, 0);
-
         }
 
         50%,
@@ -448,7 +456,6 @@
                 top: 100%;
                 width: 0px;
                 padding-bottom: 0px;
-
             }
 
             100% {
@@ -498,7 +505,6 @@
         @@keyframes materia {
             0% {
                 background: #E0E0E0;
-               
             }
 
             50% {
@@ -516,6 +522,7 @@
 </style>
 
 <div class="profile-card" id="one">
+    <span>E</span>
     <header>
 
         <a target="_blank" href="https://github.com/Anepsios/">
@@ -548,6 +555,7 @@
 </div>
 
 <div class="profile-card" id="two">
+    <span>B</span>
     <header>
 
 
@@ -581,6 +589,7 @@
 </div>
 
 <div class="profile-card" id="three">
+    <span>U</span>
     <header>
 
         <a target="_blank" href="https://github.com/pauclhro01">
@@ -613,6 +622,7 @@
 </div>
 
 <div class="profile-card" id="four">
+    <span>Y</span>
     <header>
 
         <a target="_blank" href="https://github.com/LuckyLook-Ak">
