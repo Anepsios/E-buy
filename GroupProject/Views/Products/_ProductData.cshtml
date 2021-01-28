@@ -43,6 +43,7 @@
 </script>
 
 <div class="container-fluid mx-auto text-center">
+
     @if (ViewBag.IsAdminOrEmployee)
     {
         <p>
@@ -57,7 +58,7 @@
         <div class="SearchBox">
             <form>
                 <div class="row d-flex justify-content-center">
-                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control col-sm", @placeholder = ViewBag.CurrentPlaceHolder })&nbsp;
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control col-sm", @placeholder = "Search for Products" })&nbsp;
                     @Html.DropDownList("SelectedCategory", null, "All Categories", new { @class = "form-control col-sm", onchange = "this.form.submit();" })&nbsp;
                     @Html.DropDownList("SelectedManufacturer", null, "All Manufacturers", new { @class = "form-control col-sm", onchange = "this.form.submit(); " })&nbsp;
                 </div>
@@ -164,4 +165,4 @@ else
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
-      new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter, selectedCategory = ViewBag.CurrentCategory, selectedManufacturer = ViewBag.CurrentManufacturer }))
+      new { page, sortOrder = ViewBag.CurrentSort, searchString = ViewBag.CurrentFilter, selectedCategory = ViewBag.CurrentCategory, selectedManufacturer = ViewBag.CurrentManufacturer }))
