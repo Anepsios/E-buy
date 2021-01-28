@@ -1,4 +1,4 @@
-namespace GroupProject.Migrations
+﻿namespace GroupProject.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -106,11 +106,8 @@ namespace GroupProject.Migrations
                         City = c.String(),
                         PostalCode = c.String(),
                         OrderDate = c.DateTime(nullable: false),
-                        ApplicationUser_Id = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
-                .Index(t => t.ApplicationUser_Id);
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -193,7 +190,6 @@ namespace GroupProject.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Orders", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
@@ -209,7 +205,6 @@ namespace GroupProject.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Orders", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.OrderDetails", new[] { "OrderID" });
             DropIndex("dbo.OrderDetails", new[] { "ProductID" });
             DropIndex("dbo.Ratings", new[] { "ProductId" });

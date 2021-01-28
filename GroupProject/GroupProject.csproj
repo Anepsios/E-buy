@@ -216,9 +216,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\UpdateProductsHub.cs" />
-    <Compile Include="Migrations\202101241437081_init.cs" />
-    <Compile Include="Migrations\202101241437081_init.Designer.cs">
-      <DependentUpon>202101241437081_init.cs</DependentUpon>
+    <Compile Include="Migrations\202101281049003_init.cs" />
+    <Compile Include="Migrations\202101281049003_init.designer.cs">
+      <DependentUpon>202101281049003_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Configuration.cs" />
@@ -623,8 +623,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101241437081_init.resx">
-      <DependentUpon>202101241437081_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101281049003_init.resx">
+      <DependentUpon>202101281049003_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

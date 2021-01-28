@@ -21,11 +21,11 @@ namespace GroupProject.Controllers
 
         //
         // GET: Products
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, string selectedCategory, string selectedManufacturer, int? page)
+        public ActionResult Index(string sortOrder, string searchString, string selectedCategory, string selectedManufacturer, int? page)
         {
             QueryParamArgs args = new QueryParamArgs();
             args.sortOrder = sortOrder == null ? "" : sortOrder;
-            args.currentFilter = currentFilter == null ? "" : currentFilter;
+            //args.currentFilter = currentFilter == null ? "" : currentFilter;
             args.searchString = searchString == null ? "" : searchString;
             args.selectedCategory = selectedCategory == null ? "" : selectedCategory;
             args.selectedManufacturer = selectedManufacturer == "undefined" || selectedManufacturer == null ? "" : selectedManufacturer;
@@ -35,7 +35,7 @@ namespace GroupProject.Controllers
             return View(args);
         }
 
-        public ActionResult GetProductData(string sortOrder, string currentFilter, string searchString, string selectedCategory, string selectedManufacturer, int? page)
+        public ActionResult GetProductData(string sortOrder, string searchString, string selectedCategory, string selectedManufacturer, int? page)
         {
             ViewBag.PageName = "Products";
 
@@ -45,14 +45,13 @@ namespace GroupProject.Controllers
 
             products = products.OrderBy(x => x.Name); // OM: initial order, pagedlist must have been ordered at least once
 
-            // OM: Searchbar
-            if (!string.IsNullOrEmpty(searchString))
+            // OM: if no page in url, default to first page
+            if (page == null)
                 page = 1;
-            else
-                searchString = currentFilter;
-            ViewBag.CurrentFilter = searchString == "" ? "" : searchString; // OM: to keep searchstring in different pages
-            ViewBag.CurrentPlaceHolder = searchString == "" ? "Search for Products" : searchString;
-            //ViewBag.CurrentFilter = searchString; 
+
+            // OM: Searchbar
+            ViewBag.CurrentFilter = searchString; // OM: to keep searchstring in different pages
+
 
             // OM: filter by category
             var categories = (from c in db.Categories select c.Name).Distinct();
@@ -84,7 +83,7 @@ namespace GroupProject.Controllers
             // OM: sort by price
             ViewBag.sortParam = string.IsNullOrEmpty(sortOrder) ? "price_asc" : ""; // OM: default sort is price ascending
             ViewBag.CurrentSort = sortOrder; // OM: to keep sortorder in different pages
-            if (string.IsNullOrEmpty(sortOrder) ? false : sortOrder.Equals("price_asc")) // OM: !sortOrder == "price_asc" but i read somewhere sometime to use string.Equals() to compare strings. Probably simplify it later when I'm no longer emotionally attached to the ternary operator
+            if (string.IsNullOrEmpty(sortOrder) ? false : sortOrder.Equals("price_asc")) 
             {
                 products = products.OrderByDescending(x => x.Price);
                 ViewBag.Descending = true; // OM: to check in View and print it
