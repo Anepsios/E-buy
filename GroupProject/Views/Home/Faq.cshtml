@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Faq";
+}
+<style>
+    summary::-webkit-details-marker {
+        color: blue;
+    }
+
+    summary:focus {
+        outline-style: none;
+    }
+</style>
+<h2>Frequently Asked Questions</h2>
+<hr />
+<details>
+    <summary>1. How I can be a member?</summary>
+    You can click the @Html.ActionLink("Login", "Login", "Account", null, new { @class = "action" }) button at the top of the page!
+</details>
+<br />
+<details>
+    <summary>2. How can I choose the products I need?</summary>
+    You can browse our @Html.ActionLink("Catalog","Index","Products",null, new { @class = "action" }) and choose the products suits to your needs!
+</details>
+<br />
+<details>
+    <summary>3. How can I contact your customer service?</summary>
+    By email: <a href="mailto:ebuyshop2021@gmail.com" class="action">ebuyshop2021@gmail.com</a> or
+    by phone: <a href="tel:(30)6900012345" class="action">(30)6900012345</a>
+    
+</details>
+<br />
+<details>
+    <summary>4. How long it will take for my order to arrive to my home?</summary>
+    We ship in about 1-2 working days and you receive the order the next working day.
+</details>
+<br />
+<details>
+    <summary>5. How I can pay for an order?</summary>
+    At this time only paypal is accepted.
+</details>
+<br />
+
+<p>If you have any questions or need further information, please feel free to contact us. </p>
+
+<button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Index", "Home")'">
+    Back
+</button>

@@ -8,7 +8,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 
 <style>
-    @@font-face {font-family: "Aragones"; src: url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.eot"); src: url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.woff") format("woff"), url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.svg#Aragones") format("svg"); }
+    @@font-face {
+        font-family: "Aragones";
+        src: url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.eot");
+        src: url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.woff") format("woff"), url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/2869ada98a9c8438ae0e7d83874087e4.svg#Aragones") format("svg");
+    }
+
     html {
         height: 100%;
     }
@@ -62,18 +67,22 @@
         margin: 0px;
     }
 
-    #one{
-        left:20%;
+    #one {
+        left: 20%;
     }
+
     #two {
         left: 40%;
     }
+
     #three {
         left: 60%;
     }
+
     #four {
         left: 80%;
     }
+
     .profile-card {
         background: #FFB300;
         width: 56px;
@@ -82,7 +91,7 @@
         top: 50%;
         z-index: 2;
         overflow: hidden;
-        text-align:center;
+        text-align: center;
         opacity: 0;
         margin-top: 70px;
         -webkit-transform: translate(-50%, -50%);
@@ -95,32 +104,31 @@
         animation: init 0.5s 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
     }
 
-    .profile-card span{
-        position:relative;
-        top:16px;
-        font-size:30px;
-        font-family: Aragones;
-        color:#40916c;
-    }
+        .profile-card span {
+            position: relative;
+            top: 16px;
+            font-size: 30px;
+            font-family: Aragones;
+            color: #40916c;
+        }
 
-    .profile-card header
-     {
-        width: 179px;
-        height: 280px;
-        padding: 40px 20px 30px 20px;
-        display: inline-block;
-        float: left;
-        border-right: 2px dashed #EEEEEE;
-        background: #FFFFFF;
-        color: #000000;
-        margin-top: 50px;
-        opacity: 0;
-        text-align: center;
-        -webkit-animation: moveIn 1s 3.1s ease forwards;
-        animation: moveIn 1s 3.1s ease forwards;
-    }
+        .profile-card header {
+            width: 179px;
+            height: 280px;
+            padding: 40px 20px 30px 20px;
+            display: inline-block;
+            float: left;
+            border-right: 2px dashed #EEEEEE;
+            background: #FFFFFF;
+            color: #000000;
+            margin-top: 50px;
+            opacity: 0;
+            text-align: center;
+            -webkit-animation: moveIn 1s 3.1s ease forwards;
+            animation: moveIn 1s 3.1s ease forwards;
+        }
 
-            .profile-card header h1{
+            .profile-card header h1 {
                 color: #FF5722;
             }
 
@@ -151,7 +159,7 @@
                     animation: scaleIn 0.3s 3.5s ease forwards;
                 }
 
-                .profile-card header a > img{
+                .profile-card header a > img {
                     width: 120px;
                     max-width: 100%;
                     -webkit-border-radius: 50%;
@@ -653,3 +661,4 @@
     <!-- some social links to show off -->
 
 </div>
+

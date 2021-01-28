@@ -218,7 +218,7 @@ namespace GroupProject.Controllers
 
         //
         // GET: /Manage/Orders
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "User, Admin")]
         public ActionResult Orders()
         {
             ViewBag.PageName = "Manage";
@@ -226,6 +226,11 @@ namespace GroupProject.Controllers
             var user = UserManager.FindById(id);
 
             var model = context.Orders.Where(x => x.UserName == user.UserName).Include(y => y.OrderDetails.Select(z => z.Product)).ToList();
+            if(User.IsInRole("Admin"))
+            {
+                var model2 = context.Orders.ToList();
+                return View(model2);
+            }
             return View(model);
         }
 

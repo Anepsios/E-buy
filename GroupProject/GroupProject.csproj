@@ -609,6 +609,7 @@
     <Content Include="Views\Products\GetApiProducts.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Admin\Newsletter.cshtml" />
+    <Content Include="Views\Home\Faq.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
