@@ -46,12 +46,12 @@ namespace GroupProject.Controllers
             products = products.OrderBy(x => x.Name); // OM: initial order, pagedlist must have been ordered at least once
 
             // OM: Searchbar
-            ViewBag.CurrentFilter = "Search for Products";
             if (!string.IsNullOrEmpty(searchString))
                 page = 1;
             else
                 searchString = currentFilter;
-            ViewBag.CurrentFilter = searchString == "" ? "Search for Products" : searchString; // OM: to keep searchstring in different pages
+            ViewBag.CurrentFilter = searchString == "" ? "" : searchString; // OM: to keep searchstring in different pages
+            ViewBag.CurrentPlaceHolder = searchString == "" ? "Search for Products" : searchString;
             //ViewBag.CurrentFilter = searchString; 
 
             // OM: filter by category
