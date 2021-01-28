@@ -575,22 +575,22 @@ textarea {
     margin: 40px auto;
 }
 
-@media only screen and (min-width: 991px) and (max-width:1200px) {
+@media only screen and (min-width: 1010px) and (max-width:1200px) {
     .carousel img {
-        height: 440px;
+        height: 340px;
     }
 }
 
 @media only screen and (min-width: 1200px){
     .carousel img {
-        height: 550px;
+        height: 450px;
     }
 }
 
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
 
     .carousel img {
-        height: 300px;
+        height: 240px;
     }
 }
 
