@@ -567,7 +567,7 @@ textarea {
 /*----------------------------------------------- Carousel --------------------------------------------------*/
 
 .carousel img {
-    height: 350px;
+    height: 430px;
     background-size: cover;
 }
 
@@ -575,19 +575,13 @@ textarea {
     margin: 40px auto;
 }
 
-@media only screen and (min-width: 1010px) and (max-width:1200px) {
+@media only screen and (max-width: 991px) {
     .carousel img {
         height: 340px;
     }
 }
 
-@media only screen and (min-width: 1200px){
-    .carousel img {
-        height: 450px;
-    }
-}
-
-@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+@media only screen and (max-width: 760px){
 
     .carousel img {
         height: 240px;
