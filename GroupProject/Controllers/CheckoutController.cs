@@ -119,14 +119,16 @@ namespace GroupProject.Controllers
 
                 string tableOfOrders = "";
                 var currentOrder = context.Orders.Where(x => x.ID == id && x.UserName == User.Identity.Name).Single();
+                string tableOfOrdersHead = "<tr><th>Product</th><th>Price</th><th>Quantity</th></tr>";
                 foreach (var item in currentOrder.OrderDetails)
                 {
-                    tableOfOrders += "<tr><td style=\"text-align:center;\">" + item.Product.Manufacturer.Name + " " + item.Product.Name + "<td/>" +
-                                     "<td style=\"text-align:center;\">" + item.Price.ToString() + "<td/>" +
-                                     "<td style=\"text-align:center;\">" + item.Quantity.ToString() + "<td/><tr/>";
+                    tableOfOrders += "<tr style=\"text-align:center;\"><td>" + item.Product.Manufacturer.Name + " " + item.Product.Name + "</td>" +
+                                     "<td>" + item.Price.ToString() + "</td>" +
+                                     "<td>" + item.Quantity.ToString() + "</td></tr>";
                 }
-                tableOfOrders += "<tr><th>Total Price<th/><th><th/><th>" + currentOrder.TotalPrice.ToString() + "<th/><tr/>";
+                tableOfOrders += "<tr><th>Total Price</th><th></th><th>" + currentOrder.TotalPrice.ToString() + "</th></tr>";
                 body = body.Replace("{OrderDetails}", tableOfOrders);
+                body = body.Replace("{Table}", tableOfOrdersHead);
 
                 bool IsSendEmail = SendEmail.EmailSend(model.Email, "Order Completed", body, true);
                 if (IsSendEmail)
