@@ -25,7 +25,6 @@ namespace GroupProject.Controllers
         {
             QueryParamArgs args = new QueryParamArgs();
             args.sortOrder = sortOrder == null ? "" : sortOrder;
-            //args.currentFilter = currentFilter == null ? "" : currentFilter;
             args.searchString = searchString == null ? "" : searchString;
             args.selectedCategory = selectedCategory == null ? "" : selectedCategory;
             args.selectedManufacturer = selectedManufacturer == "undefined" || selectedManufacturer == null ? "" : selectedManufacturer;
@@ -101,12 +100,6 @@ namespace GroupProject.Controllers
             int pageNumber = (page ?? 1);
 
             return PartialView("_ProductData", products.ToPagedList(pageNumber, pageSize));
-        }
-
-        public ActionResult RandomItems()
-        {
-
-            return View();
         }
 
         //

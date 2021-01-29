@@ -117,6 +117,17 @@ namespace GroupProject.Controllers
                 body = body.Replace("{Email}", model.Email);
                 body = body.Replace("{TotalPrice}", order[order.Count - 1].TotalPrice.ToString());
 
+                string tableOfOrders = "";
+                var currentOrder = context.Orders.Where(x => x.ID == id && x.UserName == User.Identity.Name).Single();
+                foreach (var item in currentOrder.OrderDetails)
+                {
+                    tableOfOrders += "<tr><td style=\"text-align:center;\">" + item.Product.Manufacturer.Name + " " + item.Product.Name + "<td/>" +
+                                     "<td style=\"text-align:center;\">" + item.Price.ToString() + "<td/>" +
+                                     "<td style=\"text-align:center;\">" + item.Quantity.ToString() + "<td/><tr/>";
+                }
+                tableOfOrders += "<tr><th>Total Price<th/><th><th/><th>" + currentOrder.TotalPrice.ToString() + "<th/><tr/>";
+                body = body.Replace("{OrderDetails}", tableOfOrders);
+
                 bool IsSendEmail = SendEmail.EmailSend(model.Email, "Order Completed", body, true);
                 if (IsSendEmail)
                     return View(id);
