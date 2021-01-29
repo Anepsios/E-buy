@@ -16,6 +16,8 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Collections;
 using System.Web.Helpers;
+using System.IO;
+using GroupProject.Email;
 
 namespace GroupProject.Controllers
 {
@@ -376,6 +378,29 @@ namespace GroupProject.Controllers
                     .AddSeries("Default", chartType: "Bar", xValue: xValue, yValues: yValue)
                     .Write("png");
             return null;
+        }
+
+        //--------------------------------------------------Newsletter---------------------------------------------
+
+        public ActionResult NewsLetter()
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var list = context.Users.Select(x => x.Email).ToList();
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                string body = string.Empty;
+                using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/Newsletter.html")))
+
+                    body = reader.ReadToEnd();
+
+                body = body.Replace("{Email}", list[i].ToString());
+
+                bool IsSendEmail = SendEmail.EmailSend(list[i], "e-Buy Newsletter", body, true);
+            }
+
+
+            return View("Newsletter");
         }
     }
 }

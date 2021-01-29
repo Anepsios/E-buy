@@ -216,9 +216,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\UpdateProductsHub.cs" />
-    <Compile Include="Migrations\202101281049003_init.cs" />
-    <Compile Include="Migrations\202101281049003_init.designer.cs">
-      <DependentUpon>202101281049003_init.cs</DependentUpon>
+    <Compile Include="Migrations\202101281523187_one.cs" />
+    <Compile Include="Migrations\202101281523187_one.designer.cs">
+      <DependentUpon>202101281523187_one.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Configuration.cs" />
@@ -257,6 +257,7 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\versions.css" />
     <Content Include="Email\AccountConfirmation.html" />
+    <Content Include="Email\Newsletter.html" />
     <Content Include="Email\OrderCompleted.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\Flaticon.svg" />
@@ -607,6 +608,8 @@
     <Content Include="Views\Home\StartPage.cshtml" />
     <Content Include="Views\Products\GetApiProducts.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Admin\Newsletter.cshtml" />
+    <Content Include="Views\Home\Faq.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -623,8 +626,11 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101281049003_init.resx">
-      <DependentUpon>202101281049003_init.cs</DependentUpon>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202101281523187_one.resx">
+      <DependentUpon>202101281523187_one.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

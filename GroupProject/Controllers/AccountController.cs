@@ -15,6 +15,8 @@ using System.IO;
 using GroupProject.Email;
 using System.Web.Caching;
 using System.Web.UI.WebControls;
+using System.Collections.Generic;
+using GroupProject.ViewModel;
 
 namespace GroupProject.Controllers
 {
@@ -193,6 +195,7 @@ namespace GroupProject.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+      
         protected override void Dispose(bool disposing)
         {
             if (disposing)
