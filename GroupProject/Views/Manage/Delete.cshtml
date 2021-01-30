@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Delete Account";
+}
+
+<div class="row">
+    <div class="col" style="text-align:center;">
+        <h2>@ViewBag.Title.</h2>
+        <h4><b>Are you sure you want to delete your account?</b></h4>
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    @Html.ActionLink("Back", "Index", "Manage", null, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        }
+    </div>
+</div>

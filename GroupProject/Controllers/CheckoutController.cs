@@ -117,6 +117,7 @@ namespace GroupProject.Controllers
                 body = body.Replace("{Email}", model.Email);
                 body = body.Replace("{TotalPrice}", order[order.Count - 1].TotalPrice.ToString());
 
+                // OM: table with products bought
                 string tableOfOrders = "";
                 var currentOrder = context.Orders.Where(x => x.ID == id && x.UserName == User.Identity.Name).Single();
                 string tableOfOrdersHead = "<tr><th>Product</th><th>Price</th><th>Quantity</th></tr>";

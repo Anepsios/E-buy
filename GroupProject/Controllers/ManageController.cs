@@ -217,6 +217,27 @@ namespace GroupProject.Controllers
         }
 
         //
+        // GET: Manage/Delete
+        [Authorize(Roles = "User")]
+        public ActionResult Delete()
+        {
+            return View();
+        }
+
+        //
+        // POST: Manage/Delete
+        [HttpPost]
+        [Authorize(Roles = "User")]
+        [ActionName("Delete")]
+        public async Task<ActionResult> DeleteConfirmed()
+        {
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            await UserManager.DeleteAsync(user);
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
+        }
+
+        //
         // GET: /Manage/Orders
         [Authorize(Roles = "User, Admin")]
         public ActionResult Orders()

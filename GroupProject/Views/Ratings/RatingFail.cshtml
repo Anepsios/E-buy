@@ -4,7 +4,7 @@
 }
 
 <div class="row">
-    <div class="col-lg-6" style="height: 300px">
+    <div class="col-lg" style="text-align:center" ">
         <h2>Sorry!</h2>
         @if (ViewBag.UserHasRated != null && ViewBag.UserHasRated)
         {
@@ -26,21 +26,19 @@
                 Something went wrong!
             </h2>
         }
-    </div>
-    <div class="col-lg-6">
         <div id="animated-example" class="animatedError bounce"></div>
     </div>
 </div>
 @if (Model != null)
 {
     <div>
-        @Html.ActionLink("Back to Product", "Details", "Products", new { id = Model }, new { @class = "hyperlink" })
+        @Html.ActionLink("Back to Product", "Details", "Products", new { id = Model }, new { @class = "btn btn-secondary" })
     </div>
 }
 else
 {
     <div>
-        @Html.ActionLink("Back to List", "Index", "Products", null, new { @class = "hyperlink" })
+        @Html.ActionLink("Back to List", "Index", "Products", null, new { @class = "btn btn-secondary" })
     </div>
 }
 

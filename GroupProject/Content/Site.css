@@ -184,9 +184,9 @@ textarea {
     background-image: url(https://icons-for-free.com/iconfiles/png/512/complete+done+green+success+valid+icon-1320183462969251652.png);
     background-size: 300px 300px;
     background-repeat: no-repeat;
-    background-position: left top;
+    background-position: center;
     padding-top: 290px;
-    margin-top: 70px;
+    margin-top: 30px;
     -webkit-animation-duration: 1.5s;
     animation-duration: 1.5s;
     -webkit-animation-fill-mode: both;
@@ -197,9 +197,9 @@ textarea {
     background-image: url(https://freeiconshop.com/wp-content/uploads/edd/error-flat.png);
     background-size: 280px 280px;
     background-repeat: no-repeat;
-    background-position: left top;
+    background-position:center;
     padding-top: 290px;
-    margin-top: 70px;
+    margin-top: 30px;
     -webkit-animation-duration: 1.5s;
     animation-duration: 1.5s;
     -webkit-animation-fill-mode: both;
@@ -703,9 +703,4 @@ textarea {
 
 .action {
     color: blue;
-}
-
-
-.action:hover{
-    color:blue;
 }
