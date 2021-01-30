@@ -110,7 +110,7 @@ textarea {
         height: 90px;
         display: table-cell;
         vertical-align: middle;
-        transform:translateY(-220px;)
+        transform:translateY(-220px);
     }
 }
 
@@ -206,10 +206,10 @@ textarea {
     animation-fill-mode: both;
 }
 
-@media only screen and (max-width:767px) {
+@media only screen and (max-width:991px) {
     #animated-example {
         width: 100%;
-        margin-top: -50%;
+        margin-top: -30%;
         background-position: center;
     }
 
@@ -703,4 +703,9 @@ textarea {
 
 .action {
     color: blue;
+}
+
+
+.action:hover{
+    color:blue;
 }
