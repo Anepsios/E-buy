@@ -55,7 +55,7 @@ namespace GroupProject.Migrations
             {
 
                 // Laptops
-                
+
                 // Apples
                 new Product { Name = "MacBook Air 13.3\"", Description = "M1/8GB/256GB/Retina Display/MacOS", CategoryID = categories.SingleOrDefault(g => g.Name == "Laptop").ID,
                     Price = 1165M, ManufacturerID = manufacturers.Single(a => a.Name == "Apple").ID, ProductImage = "~/Images/laptop_apple_macbookair13,3.jpeg" },
@@ -355,19 +355,19 @@ namespace GroupProject.Migrations
 
 
 
-                // test products
-                //new Product { Name = "mobile1", CategoryID = categories.SingleOrDefault(g => g.Name == "Mobile").ID,
-                //    Price = 8.99M, ManufacturerID = manufacturers.Single(a => a.Name == "Apple").ID, ProductImage = "~/Images/iphone12.png" },
-                //new Product { Name = "mobile2", CategoryID = categories.SingleOrDefault(g => g.Name == "Mobile").ID,
-                //    Price = 8.99M, ManufacturerID = manufacturers.Single(a => a.Name == "Apple").ID, ProductImage = "~/Images/iphone12.png" },
-                //new Product { Name = "mobile3", CategoryID = categories.SingleOrDefault(g => g.Name == "Mobile").ID,
-                //    Price = 8.99M, ManufacturerID = manufacturers.Single(a => a.Name == "Apple").ID, ProductImage = "~/Images/iphone12.png" },
-                //new Product { Name = "FA506IU-HN156T", CategoryID = categories.SingleOrDefault(g => g.Name == "Laptop").ID,
-                //    Price = 8.99M, ManufacturerID = manufacturers.Single(a => a.Name == "Asus").ID, ProductImage = "~/Images/asus.jpg" },
-                //new Product { Name = "FA706IU-H7006T", CategoryID = categories.SingleOrDefault(g => g.Name == "Laptop").ID,
-                //    Price = 8.99M, ManufacturerID = manufacturers.Single(a => a.Name == "Asus").ID, ProductImage = "~/Images/asus.jpg" },
+            // test products
+            //new Product { Name = "mobile1", CategoryID = categories.SingleOrDefault(g => g.Name == "Mobile").ID,
+            //    Price = 8.99M, ManufacturerID = manufacturers.Single(a => a.Name == "Apple").ID, ProductImage = "~/Images/iphone12.png" },
+            //new Product { Name = "mobile2", CategoryID = categories.SingleOrDefault(g => g.Name == "Mobile").ID,
+            //    Price = 8.99M, ManufacturerID = manufacturers.Single(a => a.Name == "Apple").ID, ProductImage = "~/Images/iphone12.png" },
+            //new Product { Name = "mobile3", CategoryID = categories.SingleOrDefault(g => g.Name == "Mobile").ID,
+            //    Price = 8.99M, ManufacturerID = manufacturers.Single(a => a.Name == "Apple").ID, ProductImage = "~/Images/iphone12.png" },
+            //new Product { Name = "FA506IU-HN156T", CategoryID = categories.SingleOrDefault(g => g.Name == "Laptop").ID,
+            //    Price = 8.99M, ManufacturerID = manufacturers.Single(a => a.Name == "Asus").ID, ProductImage = "~/Images/asus.jpg" },
+            //new Product { Name = "FA706IU-H7006T", CategoryID = categories.SingleOrDefault(g => g.Name == "Laptop").ID,
+            //    //    Price = 8.99M, ManufacturerID = manufacturers.Single(a => a.Name == "Asus").ID, ProductImage = "~/Images/asus.jpg" },
 
-            }.ForEach(s => context.Products.AddOrUpdate(a => a.Name, s));
+        }.ForEach(s => context.Products.AddOrUpdate(a => a.Name, s));
         }
     }
 }

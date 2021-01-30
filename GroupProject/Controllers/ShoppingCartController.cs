@@ -53,7 +53,7 @@ namespace GroupProject.Controllers
             TempData["AddedToCart"] = "Product added successfully";
             return RedirectToAction("Details", "Products", new { id = (int?)id });
         }
-
+       
         //
         //AJAX:  /ShoppingCart/RemoveFromCart/5
         [HttpPost]
@@ -124,5 +124,6 @@ namespace GroupProject.Controllers
             ViewBag.CartCount = cart.GetCount();
             return PartialView("CartSummary");
         }
+
     }
 }
