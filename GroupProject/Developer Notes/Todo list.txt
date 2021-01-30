@@ -10,6 +10,3 @@
 - make shoppingcart/index a table that shows all data of each product
 - make user able to delete his account
 - add filters to orderlist, ratinglist, userlist
-
-Bugs:
-- rating success/fail animation doesnt play

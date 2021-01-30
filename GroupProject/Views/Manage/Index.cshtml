@@ -16,7 +16,7 @@
         <dt>@Html.DisplayNameFor(model => model.Email): </dt>
         <dd>@Model.Email</dd> @*OM: DisplayFor makes this appear as a hyperlink for some reason*@
         <dt>Password: </dt>
-        <dd>[ @Html.ActionLink("Change password", "ChangePassword", null, new { @class = "hyperlink" }) ]</dd>
+        <dd>@Html.ActionLink("Change password", "ChangePassword", null, new { @class = "btn btn-secondary" })</dd>
         <dt>@Html.DisplayNameFor(model => model.FirstName): </dt>
         <dd>@Html.DisplayFor(model => model.FirstName)</dd>
         <dt>@Html.DisplayNameFor(model => model.LastName): </dt>
@@ -30,10 +30,11 @@
 
     </dl>
     <p>
-    [ @Html.ActionLink("Edit Account", "Edit", null, new { @class = "hyperlink" }) ] 
+    @Html.ActionLink("Edit Account", "Edit", null, new { @class = "btn btn-warning" })
+    @Html.ActionLink("Delete Account", "Delete", null, new { @class = "btn btn-danger" })
         @if (ViewBag.IsUser) {
-            @:[ @Html.ActionLink("View Previous Orders", "Orders", null, new { @class = "hyperlink" }) ]
-            @:[ @Html.ActionLink("My Cart", "Index", "ShoppingCart", null, new { @class = "hyperlink" }) ]
+            @Html.ActionLink("View Previous Orders", "Orders", null, new { @class = "btn btn-info" })
+            @Html.ActionLink("My Cart", "Index", "ShoppingCart", null, new { @class = "btn btn-info" })
         }
     </p>
 </div>
