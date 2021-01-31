@@ -2476,7 +2476,11 @@ select.mobile-device {
     float: right;
 }
 
-
+@media only screen and (max-width:767px) {
+    .footer-links li {
+        display: none !important;
+    }
+}
 /* The search form */
 
 .footer-distributed form {

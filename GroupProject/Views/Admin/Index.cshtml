@@ -9,7 +9,7 @@
         </h3>
     </div>
 </div>
-
+<hr />
 
 <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("IndexRole", "Admin")'">
     Role List
@@ -23,13 +23,18 @@
 <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Orders", "Manage")'">
     All Orders
 </button>
-<button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("NewsLetter", "Admin")'">
-    NewsLetter
-</button>
 <hr />
+@using (Html.BeginForm("NewsLetter", "Admin", FormMethod.Post))
+{
+    <div class="col-md-4">
+    @Html.DropDownList("selectedValue", new SelectList(ViewBag.Files), "File Select", new { @class = "form-control col-sm" })
+    <input type="submit" value="Newsletter" class="btn btn-warning" />
+    </div>
+}
+    <hr />
 
-<div>
-    <img src="@Url.Action("ChartBar")" alt="Chart" />
-</div>
+    <div>
+        <img src="@Url.Action("ChartBar")" alt="Chart" />
+    </div>
 
 

@@ -49,9 +49,13 @@ namespace GroupProject.Controllers
             }
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string selectedValues)
         {
             ViewBag.PageName = "Admin";
+
+            List<string> filelist = Directory.GetFiles(@"C:\Users\paulc\source\repos\GroupProject\GroupProject\Email\Newsletters").ToList();
+
+            ViewBag.Files = filelist;
             return View();
         }
 
@@ -102,9 +106,9 @@ namespace GroupProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteUserConfirmed(string id)
         {
-            var userid = context.Users.Where(x => x.Id == id).Single();
+            var userid = context.Users.Single(x => x.Id == id);
             // OM: Delete user's cart too
-            var username = context.Users.Where(y => y.Id == id).Single().UserName;
+            var username = context.Users.Single(y => y.Id == id).UserName;
             foreach (var item in context.Carts.Where(x => x.CartID == username))
             {
                 context.Carts.Remove(item);
@@ -246,8 +250,8 @@ namespace GroupProject.Controllers
             }
             else
                 return RedirectToAction("Index", "Home");
-            var Roles = context.Roles.ToList();
-            return View(Roles);
+            var roles = context.Roles.ToList();
+            return View(roles);
         }
 
         public Boolean IsAdminUser()
@@ -256,8 +260,8 @@ namespace GroupProject.Controllers
             {
                 var user = User.Identity;
                 ApplicationDbContext context = new ApplicationDbContext();
-                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-                var s = UserManager.GetRoles(user.GetUserId());
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+                var s = userManager.GetRoles(user.GetUserId());
                 if (s[0].ToString() == "Admin")
                     return true;
                 else
@@ -269,8 +273,8 @@ namespace GroupProject.Controllers
         public ActionResult CreateRole()
         {
             ViewBag.PageName = "Admin";
-            var Role = new IdentityRole();
-            return View(Role);
+            var role = new IdentityRole();
+            return View(role);
         }
 
         /// <summary>
@@ -355,8 +359,8 @@ namespace GroupProject.Controllers
 
         public ActionResult ChartBar()
         {
-            ArrayList xValue = new ArrayList();
-            ArrayList yValue = new ArrayList();
+            var xValue = new ArrayList();
+            var yValue = new ArrayList();
 
             var results = (from c in context.Users
                            join o in context.Orders on c.UserName equals o.UserName
@@ -385,22 +389,26 @@ namespace GroupProject.Controllers
         public ActionResult NewsLetter()
         {
             ApplicationDbContext context = new ApplicationDbContext();
-            var list = context.Users.Select(x => x.Email).ToList();
+            var list = context.Users.Where(x=>x.Subscribe == true).Select(x => x.Email).ToList();
+            var selectedValue = Request.Form["selectedValue"].ToString();
+            
+            string body = string.Empty;
 
-            for (int i = 0; i < list.Count; i++)
-            {
-                string body = string.Empty;
-                using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/Newsletter.html")))
+            foreach (var e in list)
+                {
+                    
+                    using (var reader = new StreamReader(selectedValue))
 
-                    body = reader.ReadToEnd();
+                        body = reader.ReadToEnd();
 
-                body = body.Replace("{Email}", list[i].ToString());
+                    body = body.Replace("{Email}", e.ToString());
 
-                bool IsSendEmail = SendEmail.EmailSend(list[i], "e-Buy Newsletter", body, true);
-            }
-
+                SendEmail.EmailSend(e, "e-Buy Newsletter", body, true);
+                }
+            
 
             return View("Newsletter");
         }
+
     }
 }

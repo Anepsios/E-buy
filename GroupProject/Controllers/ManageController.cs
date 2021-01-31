@@ -132,7 +132,9 @@ namespace GroupProject.Controllers
                 LastName = user.LastName,
                 Address = user.Address,
                 City = user.City,
-                PostalCode = user.PostalCode
+                PostalCode = user.PostalCode,
+                Subscribe = user.Subscribe
+                
             };
             return View(model);
         }
@@ -141,11 +143,11 @@ namespace GroupProject.Controllers
         // POST: /Manage/Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Username, Email, FirstName, LastName, Address, City, PostalCode")] IndexViewModel model)
+        public async Task<ActionResult> Edit([Bind(Include = "Username, Email, FirstName, LastName, Address, City, PostalCode, Subscribe")] IndexViewModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
-
+            
             // OM: Check if Username or Email already exists and throw error if yes 
             bool alreadyExists = false;
             var userEmail = UserManager.FindById(User.Identity.GetUserId()).Email;

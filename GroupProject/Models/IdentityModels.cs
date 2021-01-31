@@ -35,6 +35,7 @@ namespace GroupProject.Models
         [Display(Name = "Postal Code")]
         [StringLength(5, MinimumLength = 5, ErrorMessage = "Invalid Postal Code")]
         public string PostalCode { get; set; }
+        public bool Subscribe { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

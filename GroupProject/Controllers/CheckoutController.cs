@@ -5,6 +5,7 @@ using GroupProject.ViewModel;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -124,7 +125,7 @@ namespace GroupProject.Controllers
                 foreach (var item in currentOrder.OrderDetails)
                 {
                     tableOfOrders += "<tr style=\"text-align:center;\"><td>" + item.Product.Manufacturer.Name + " " + item.Product.Name + "</td>" +
-                                     "<td>" + item.Price.ToString() + "</td>" +
+                                     "<td>" + item.Price.ToString(CultureInfo.InvariantCulture) + "</td>" +
                                      "<td>" + item.Quantity.ToString() + "</td></tr>";
                 }
                 tableOfOrders += "<tr><th>Total Price</th><th></th><th>" + currentOrder.TotalPrice.ToString() + "</th></tr>";
