@@ -27,6 +27,11 @@
         <dd>@Html.DisplayFor(model => model.Created)</dd>
         <dt>@Html.DisplayNameFor(model => model.LastLogin): </dt>
         <dd>@Html.DisplayFor(model => model.LastLogin)</dd>
+        <dt>@Html.DisplayNameFor(model => model.Subscribe): </dt>
+        <dd>@if (Model.Subscribe == false)
+             {<p>Unsuscribed</p>}
+             else { <p>Subscribed</p>}
+        </dd>
 
     </dl>
     <p>

@@ -49,8 +49,8 @@ namespace GroupProject.Controllers
             }
 
             // OM: check if user has already bought the product, if no then redirect to error page
-            bool UserHasBoughtProduct = db.Orders.Where(x => x.UserName == currentUserUsername).SelectMany(y => y.OrderDetails.Where(z => z.ProductID == id)).Count() > 0;
-            if (!UserHasBoughtProduct)
+            bool userHasBoughtProduct = db.Orders.Where(x => x.UserName == currentUserUsername).SelectMany(y => y.OrderDetails.Where(z => z.ProductID == id)).Count() > 0;
+            if (!userHasBoughtProduct)
             {
                 TempData["UserHasNotOrderedProduct"] = true;
                 return RedirectToAction("RatingFail", "Ratings", new { id });

@@ -209,7 +209,7 @@ textarea {
 @media only screen and (max-width:991px) {
     #animated-example {
         width: 100%;
-        margin-top: -30%;
+        
         background-position: center;
     }
 

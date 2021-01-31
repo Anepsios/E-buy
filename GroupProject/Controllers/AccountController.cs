@@ -139,7 +139,7 @@ namespace GroupProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Created = DateTime.Now, CurrentLog = DateTime.Now, FirstName = model.FirstName, LastName = model.LastName, Address = model.Address, City = model.City, PostalCode = model.PostalCode };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Created = DateTime.Now, CurrentLog = DateTime.Now, FirstName = model.FirstName, LastName = model.LastName, Address = model.Address, City = model.City, PostalCode = model.PostalCode, Subscribe = true };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -178,6 +178,7 @@ namespace GroupProject.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
+            
             if (userId == null || code == null || await UserManager.FindByIdAsync(userId) == null)
                 return View("Error");
             var result = await UserManager.ConfirmEmailAsync(userId, code);
