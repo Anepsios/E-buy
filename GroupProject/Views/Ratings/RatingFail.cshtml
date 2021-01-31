@@ -12,6 +12,7 @@
                 You have allready reviewed this product!
             </h2>
             <p>We'll redirect you back to the product in just a second</p>
+            <div id="animated-example" class="animatedError bounce"style="margin-top:30px;"></div>
         }
         else if (ViewBag.UserHasNotOrderedProduct != null && ViewBag.UserHasNotOrderedProduct)
         {
@@ -19,14 +20,15 @@
                 You can't make a review to a product you haven't bought yet!
             </h2>
             <p>We'll redirect you back to the product in just a second</p>
+            <div id="animated-example" class="animatedError bounce" style="margin-top:30px;"></div>
         }
         else
         {
             <h2>
                 Something went wrong!
             </h2>
+            <div id="animated-example" class="animatedError bounce"></div>
         }
-        <div id="animated-example" class="animatedError bounce"></div>
     </div>
 </div>
 @if (Model != null)
