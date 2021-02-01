@@ -78,7 +78,8 @@ namespace GroupProject.Controllers
                 LastName = user.LastName,
                 Address = user.Address,
                 Created = user.Created,
-                LastLogin = user.LastLog
+                LastLogin = user.LastLog,
+                Subscribe = user.Subscribe
             };
             var s = UserManager.GetRoles(userId);
             if (s[0].ToString().Equals("User"))
@@ -180,6 +181,7 @@ namespace GroupProject.Controllers
                 user.City = model.City;
             if (model.PostalCode != null)
                 user.PostalCode = model.PostalCode;
+            user.Subscribe = model.Subscribe;
             //
 
             var result = await UserManager.UpdateAsync(user);
