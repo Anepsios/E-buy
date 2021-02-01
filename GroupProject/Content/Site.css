@@ -111,6 +111,8 @@ textarea {
         display: table-cell;
         vertical-align: middle;
         transform:translateY(-220px)
+        /*display:none;*/
+        /*transform:translateY(-220px);*/
     }
 }
 
