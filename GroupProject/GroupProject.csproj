@@ -272,6 +272,7 @@
     <Content Include="Images\asus.jpg" />
     <Content Include="Images\asus.png" />
     <Content Include="Images\dell.png" />
+    <Content Include="Images\favicon.ico" />
     <Content Include="Images\hp.jpg" />
     <Content Include="Images\hp.png" />
     <Content Include="Images\huawei.png" />
@@ -281,6 +282,7 @@
     <Content Include="Images\laptop_apple_macbookair13,3.jpeg" />
     <Content Include="Images\laptop_apple_macbookair13.jpeg" />
     <Content Include="Images\laptop_apple_macbookpro13.jpeg" />
+    <Content Include="Images\laptop_apple_macbookpro16 - Copy.jpeg" />
     <Content Include="Images\laptop_apple_macbookpro16.jpeg" />
     <Content Include="Images\laptop_asus_chromebookc523na.jpeg" />
     <Content Include="Images\laptop_asus_rogzephyrusduo15segx551qr-hf014r.jpeg" />
