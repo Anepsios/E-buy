@@ -122,9 +122,11 @@ namespace GroupProject.Controllers
                 string tableOfOrders = "";
                 var currentOrder = context.Orders.Where(x => x.ID == id && x.UserName == User.Identity.Name).Single();
                 string tableOfOrdersHead = "<tr><th>Product</th><th>Price</th><th>Quantity</th></tr>";
+                string productUrl;
                 foreach (var item in currentOrder.OrderDetails)
                 {
-                    tableOfOrders += "<tr style=\"text-align:center;\"><td>" + item.Product.Manufacturer.Name + " " + item.Product.Name + "</td>" +
+                    productUrl = this.Url.Action("Details", "Products", new { id = item.ProductID }, this.Request.Url.Scheme).ToString();
+                    tableOfOrders += "<tr style=\"text-align:center;\"><td><a href=\""+ productUrl +"\">" + item.Product.Manufacturer.Name + " " + item.Product.Name + "</a></td>" +
                                      "<td>" + item.Price.ToString(CultureInfo.InvariantCulture) + "</td>" +
                                      "<td>" + item.Quantity.ToString() + "</td></tr>";
                 }
