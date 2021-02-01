@@ -70,15 +70,24 @@
             @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
         </div>
     </div>
-
-
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-primary" value="Register" />
+        @Html.LabelFor(m => m.Subscribe, "Subscribe to Newsletters", new { @class = "col-md-3 control-label" })
+        <div class="col-md-10">
+            <label class="switch">
+                @Html.CheckBoxFor(model => model.Subscribe)
+                <div class="slider round">
+                </div>
+            </label>
+            </div>
         </div>
-    </div>
-}
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-primary" value="Register" />
+            </div>
+        </div>
+        }
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

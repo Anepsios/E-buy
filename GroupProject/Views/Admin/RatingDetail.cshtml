@@ -66,15 +66,16 @@
                 @Html.HiddenFor(model => model.RatingText)
                 @Html.HiddenFor(model => model.UserName)
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.IsApproved, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.IsApproved)
-                            @Html.ValidationMessageFor(model => model.IsApproved, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.IsApproved,"Approve Review", new { @class = "col-md-3 control-label" })
+                <div class="col-md-10">
+                    <label class="switch">
+                        @Html.CheckBoxFor(model => model.IsApproved)
+                        <div class="slider round">
                         </div>
-                    </div>
+                    </label>
                 </div>
+            </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Save" class="btn btn-warning" />

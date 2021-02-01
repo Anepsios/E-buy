@@ -139,7 +139,7 @@ namespace GroupProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Created = DateTime.Now, CurrentLog = DateTime.Now, FirstName = model.FirstName, LastName = model.LastName, Address = model.Address, City = model.City, PostalCode = model.PostalCode, Subscribe = true };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Created = DateTime.Now, CurrentLog = DateTime.Now, FirstName = model.FirstName, LastName = model.LastName, Address = model.Address, City = model.City, PostalCode = model.PostalCode, Subscribe = model.Subscribe };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

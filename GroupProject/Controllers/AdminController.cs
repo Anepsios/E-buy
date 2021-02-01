@@ -52,9 +52,7 @@ namespace GroupProject.Controllers
         public ActionResult Index(string selectedValues)
         {
             ViewBag.PageName = "Admin";
-
-            List<string> filelist = Directory.GetFiles(@"C:\Users\paulc\source\repos\GroupProject\GroupProject\Email\Newsletters").ToList();
-
+            List<string> filelist = Directory.GetFiles(Server.MapPath("~/Email/Newsletters")).ToList();
             ViewBag.Files = filelist;
             return View();
         }
@@ -391,22 +389,15 @@ namespace GroupProject.Controllers
             ApplicationDbContext context = new ApplicationDbContext();
             var list = context.Users.Where(x=>x.Subscribe == true).Select(x => x.Email).ToList();
             var selectedValue = Request.Form["selectedValue"].ToString();
-            
             string body = string.Empty;
-
-            foreach (var e in list)
-                {
-                    
-                    using (var reader = new StreamReader(selectedValue))
-
-                        body = reader.ReadToEnd();
-
-                    body = body.Replace("{Email}", e.ToString());
-
-                SendEmail.EmailSend(e, "e-Buy Newsletter", body, true);
-                }
             
-
+            foreach (var e in list)
+            {
+                   using (var reader = new StreamReader(selectedValue))
+                   body = reader.ReadToEnd();
+                   body = body.Replace("{Email}", e.ToString());
+                   SendEmail.EmailSend(e, "e-Buy Newsletter", body, true);
+            }
             return View("Newsletter");
         }
 
