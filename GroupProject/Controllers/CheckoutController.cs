@@ -125,6 +125,7 @@ namespace GroupProject.Controllers
                 string productUrl;
                 foreach (var item in currentOrder.OrderDetails)
                 {
+                    // OM: Get url of details page of product to send in email
                     productUrl = this.Url.Action("Details", "Products", new { id = item.ProductID }, this.Request.Url.Scheme).ToString();
                     tableOfOrders += "<tr style=\"text-align:center;\"><td><a href=\""+ productUrl +"\">" + item.Product.Manufacturer.Name + " " + item.Product.Name + "</a></td>" +
                                      "<td>" + item.Price.ToString(CultureInfo.InvariantCulture) + "</td>" +

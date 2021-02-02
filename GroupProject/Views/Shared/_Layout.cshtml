@@ -218,7 +218,8 @@
     </script>
 
     @* prevent double posting client side *@
-    <script>
+    @*<script>
+
         document.querySelectorAll('form').forEach((form) => {
             form.addEventListener('submit', (e) => {
                 if (form.classList.contains('is-submitting')) {
@@ -226,11 +227,11 @@
                     e.stopPropagation();
                     return false;
                 };
-
                 form.classList.add('is-submitting');
             });
         });
-    </script>
+
+    </script>*@
 
 </body>
 </html>

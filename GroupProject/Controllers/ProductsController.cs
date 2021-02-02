@@ -149,7 +149,7 @@ namespace GroupProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID, Name, Description, ProductImage, Price, CategoryID, ManufacturerID")] Product product)
+        public ActionResult Create([Bind(Include = "Name, Description, ProductImage, Price, CategoryID, ManufacturerID")] Product product)
         {
             product.ProductImage = "~/Images/" + product.ProductImage;
             if (ModelState.IsValid)
