@@ -11,35 +11,59 @@
     <hr />
     <dl class="dl-horizontal">
 
-        <dt>@Html.DisplayNameFor(model => model.Username): </dt>
+        <dt><i class="fa fa-user"></i> @Html.DisplayNameFor(model => model.Username): </dt>
         <dd>@Html.DisplayFor(model => model.Username)</dd>
-        <dt>@Html.DisplayNameFor(model => model.Email): </dt>
+        <dt><i class="fa fa-envelope"></i> @Html.DisplayNameFor(model => model.Email): </dt>
         <dd>@Model.Email</dd> @*OM: DisplayFor makes this appear as a hyperlink for some reason*@
-        <dt>Password: </dt>
+        <dt><i class="fa fa-hand-grab-o"></i> Password: </dt>
         <dd>@Html.ActionLink("Change password", "ChangePassword", null, new { @class = "btn btn-secondary" })</dd>
-        <dt>@Html.DisplayNameFor(model => model.FirstName): </dt>
+        <dt><i class="fa fa-edit"></i> @Html.DisplayNameFor(model => model.FirstName): </dt>
         <dd>@Html.DisplayFor(model => model.FirstName)</dd>
-        <dt>@Html.DisplayNameFor(model => model.LastName): </dt>
+        <dt><i class="fa fa-edit"></i> @Html.DisplayNameFor(model => model.LastName): </dt>
         <dd>@Html.DisplayFor(model => model.LastName)</dd>
-        <dt>@Html.DisplayNameFor(model => model.Address): </dt>
+        <dt><i class="fa fa-address-book"></i> @Html.DisplayNameFor(model => model.Address): </dt>
         <dd>@Html.DisplayFor(model => model.Address)</dd>
-        <dt>@Html.DisplayNameFor(model => model.Created): </dt>
+        <dt><i class="fa fa-calendar"></i> @Html.DisplayNameFor(model => model.Created): </dt>
         <dd>@Html.DisplayFor(model => model.Created)</dd>
-        <dt>@Html.DisplayNameFor(model => model.LastLogin): </dt>
+        <dt><i class="fa fa-calendar"></i> @Html.DisplayNameFor(model => model.LastLogin): </dt>
         <dd>@Html.DisplayFor(model => model.LastLogin)</dd>
-        <dt>@Html.DisplayNameFor(model => model.Subscribe): </dt>
-        <dd>@if (Model.Subscribe == false)
-             {<p>Unsuscribed</p>}
-             else { <p>Subscribed</p>}
+        <dt>
+            <i class="fa fa-envelope"></i> Newsletter subscription @if (Model.Subscribe == false)
+            {<p>(Unsuscribed)</p>}
+            else
+            { <p>(Subscribed)</p>}
+        </dt>
+        <dd>
+            @using (Html.BeginForm("Edit", "Manage", FormMethod.Post))
+            {
+                @Html.HiddenFor(model => model.Email)
+                @Html.HiddenFor(model => model.Username)
+                @Html.AntiForgeryToken()
+                @*@Html.LabelFor(m => m.Subscribe, "Subscribe to Newsletters")*@
+                <div class="control-label">
+                    <label class="switch">
+                        @Html.CheckBoxFor(model => model.Subscribe, new { onchange = "this.form.submit();" })
+                        <div class="slider round">
+                        </div>
+                    </label>
+                </div>
+            }
         </dd>
-
+        <dt>
+           
+        </dt>
     </dl>
-    <p>
+    </div>
+   
+
+
+<p>
     @Html.ActionLink("Edit Account", "Edit", null, new { @class = "btn btn-warning" })
     @Html.ActionLink("Delete Account", "Delete", null, new { @class = "btn btn-danger" })
-        @if (ViewBag.IsUser) {
-            @Html.ActionLink("View Previous Orders", "Orders", null, new { @class = "btn btn-info" })
-            @Html.ActionLink("My Cart", "Index", "ShoppingCart", null, new { @class = "btn btn-info" })
-        }
-    </p>
+    @if (ViewBag.IsUser)
+    {
+        @Html.ActionLink("View Previous Orders", "Orders", null, new { @class = "btn btn-info" })
+        @Html.ActionLink("My Cart", "Index", "ShoppingCart", null, new { @class = "btn btn-info" })
+    }
+</p>
 </div>
