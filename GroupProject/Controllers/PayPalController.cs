@@ -104,7 +104,9 @@ namespace GroupProject.Controllers
             return this.payment.Execute(apiContext, paymentExecution);
         }
 
-
+        //
+        // GET: /PayPal/PaymentWithPaypal
+        [Authorize(Roles = "User")]
         public ActionResult PaymentWithPaypal() // OM: add order
         {
             // OM: get order from POST:/Checkout, if null show error view
@@ -182,12 +184,19 @@ namespace GroupProject.Controllers
             return RedirectToAction("Complete", "Checkout", new { order.ID });
         }
 
-        public ActionResult PaymentWithCreditCard(CreditCardViewModel model)
+        //
+        // GET: /Paypal/PaymentWithCreditCart
+        [Authorize(Roles = "User")]
+        public ActionResult PaymentWithCreditCard()
         {
             Models.Order order = TempData["Order"] as Models.Order;
             if (order == null)
                 return View("FailureView");
-            
+
+            CreditCardViewModel model = TempData["model"] as CreditCardViewModel;
+            if (model == null)
+                return View("FailureView");
+
             var cart = ShoppingCart.GetCart(this.HttpContext);
             var cartItems = cart.GetCartItems();
 

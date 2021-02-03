@@ -131,6 +131,7 @@ namespace GroupProject.Controllers
 
                 // OM: Pass order info to PayPal payment and add the order only after payment has gone through
                 TempData["Order"] = order;
+                TempData["model"] = model;
                 return RedirectToAction("PaymentWithCreditCard", "PayPal");
             }
             catch
