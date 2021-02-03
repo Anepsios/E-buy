@@ -177,6 +177,8 @@ namespace GroupProject.Controllers
             // OM: Update database Orders with current after payment is complete
             SaveOrder(order);
 
+            TempData["RedirectedFromPayment"] = true; // Flag to check that user was redirected to Checkout/Complete. Prevents ability to refresh said page and send duplicate emails
+
             return RedirectToAction("Complete", "Checkout", new { order.ID });
         }
 
@@ -299,7 +301,10 @@ namespace GroupProject.Controllers
             order.Address = model.Address;
             order.City = model.City;
             order.PostalCode = model.PostalCode;
+
             SaveOrder(order);
+
+            TempData["RedirectedFromPayment"] = true; // Flag to check that user was redirected to Checkout/Complete. Prevents ability to refresh said page and send duplicate emails
 
             return RedirectToAction("Complete", "Checkout", new { order.ID });
         }
