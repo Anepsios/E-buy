@@ -182,9 +182,15 @@ namespace GroupProject.Controllers
 
         public ActionResult PaymentWithCreditCard(CreditCardViewModel model)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("CreditCard", "Checkout");
+            }
+
             Models.Order order = TempData["Order"] as Models.Order;
             if (order == null)
-                return View("FailureView");
+            return View("FailureView");
             
             var cart = ShoppingCart.GetCart(this.HttpContext);
             var cartItems = cart.GetCartItems();
@@ -288,10 +294,10 @@ namespace GroupProject.Controllers
                     return View("FailureView");
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                PayPalLogger.Log("Error" + ex.Message);
+                //System.Diagnostics.Debug.WriteLine(ex.Message); //Wrong path on azure *TO BE FIXED*
+                //PayPalLogger.Log("Error" + ex.Message);
                 return View("FailureView");
             }
             order.FirstName = model.Firstname;

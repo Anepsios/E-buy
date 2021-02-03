@@ -80,6 +80,7 @@ namespace GroupProject.Controllers
 
         public ActionResult CreditCard()
         {
+           
             ViewBag.PageName = "Cart";
             var cart = ShoppingCart.GetCart(this.HttpContext);
             ViewBag.NoOrders = false;
@@ -88,9 +89,6 @@ namespace GroupProject.Controllers
                 ViewBag.NoOrders = true;
                 return View();
             }
-
-            var user = context.Users.Single(x => x.UserName == User.Identity.Name);
-
             ViewBag.Cards = new List<SelectListItem>()
                     {
                         new SelectListItem() {Text="MasterCard", Value = "mastercard" },
@@ -98,6 +96,7 @@ namespace GroupProject.Controllers
                         new SelectListItem() {Text="Discover", Value = "discover" },
                         new SelectListItem() {Text="Amex", Value = "amex" }
                     };
+          
             var model = new CreditCardViewModel();
             var order = new Order();
             TryUpdateModel(order);
@@ -106,6 +105,7 @@ namespace GroupProject.Controllers
             order.TotalPrice = cart.GetTotal();
        
             TempData["Order"] = order;
+           
             return View(model);
         }
 
