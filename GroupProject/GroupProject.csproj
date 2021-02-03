@@ -232,6 +232,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModel\ApiProduct.cs" />
+    <Compile Include="ViewModel\CreditCardViewModel.cs" />
     <Compile Include="ViewModel\ManageViewModels.cs" />
     <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Models\Order.cs" />
@@ -452,6 +453,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="my_app.log" />
     <None Include="Properties\PublishProfiles\ Ebuy.pubxml" />
     <None Include="Properties\PublishProfiles\e-Buy - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -616,6 +618,7 @@
     <Content Include="Views\Admin\Newsletter.cshtml" />
     <Content Include="Views\Home\Faq.cshtml" />
     <Content Include="Views\Manage\Delete.cshtml" />
+    <Content Include="Views\Checkout\CreditCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

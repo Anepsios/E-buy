@@ -15,7 +15,7 @@
         <dd>@Html.DisplayFor(model => model.Username)</dd>
         <dt><i class="fa fa-envelope"></i> @Html.DisplayNameFor(model => model.Email): </dt>
         <dd>@Model.Email</dd> @*OM: DisplayFor makes this appear as a hyperlink for some reason*@
-        <dt><i class="fa fa-hand-grab-o"></i> Password: </dt>
+        <dt><i class="fa fa-lock"></i> Password: </dt>
         <dd>@Html.ActionLink("Change password", "ChangePassword", null, new { @class = "btn btn-secondary" })</dd>
         <dt><i class="fa fa-edit"></i> @Html.DisplayNameFor(model => model.FirstName): </dt>
         <dd>@Html.DisplayFor(model => model.FirstName)</dd>
@@ -66,4 +66,4 @@
         @Html.ActionLink("My Cart", "Index", "ShoppingCart", null, new { @class = "btn btn-info" })
     }
 </p>
-</div>
+

@@ -301,7 +301,7 @@ namespace GroupProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteRoleConfirmed(string id)
         {
-            var roled = context.Roles.Where(x => x.Id == id).Single();
+            var roled = context.Roles.Single(x => x.Id == id);
             context.Roles.Remove(roled);
             context.SaveChanges();
             return RedirectToAction("IndexRole");
@@ -386,17 +386,17 @@ namespace GroupProject.Controllers
 
         public ActionResult NewsLetter()
         {
-            ApplicationDbContext context = new ApplicationDbContext();
-            var list = context.Users.Where(x=>x.Subscribe == true).Select(x => x.Email).ToList();
-            var selectedValue = Request.Form["selectedValue"].ToString();
-            string body = string.Empty;
-            
+            var db = new ApplicationDbContext();
+            var list = db.Users.Where(x=>x.Subscribe == true).Select(x => x.Email).ToList();
+            var selectedValue = Request.Form["selectedValue"];
+
+            string body;
             foreach (var e in list)
             {
-                   using (var reader = new StreamReader(selectedValue))
+                using (var reader = new StreamReader(selectedValue))
                    body = reader.ReadToEnd();
-                   body = body.Replace("{Email}", e.ToString());
-                   SendEmail.EmailSend(e, "e-Buy Newsletter", body, true);
+                body = body.Replace("{Email}", e.ToString());
+                SendEmail.EmailSend(e, "e-Buy Newsletter", body, true);
             }
             return View("Newsletter");
         }

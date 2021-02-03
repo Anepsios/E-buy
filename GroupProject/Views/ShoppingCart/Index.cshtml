@@ -52,7 +52,8 @@
     <em>Review</em> your items:
 </h3>
 <p>
-    @Html.ActionLink("Checkout", "Index", "Checkout", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Pay With Paypal", "Index", "Checkout", null, new { @class = "btn btn-success" })
+    @Html.ActionLink("Pay With Card", "CreditCard", "Checkout", null, new { @class = "btn btn-success" })
 </p>
 <div id="update-message">
 </div>
