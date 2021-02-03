@@ -41,7 +41,7 @@ namespace GroupProject.Controllers
                 City = user.City,
                 PostalCode = user.PostalCode
             };
-
+           
             return View(model);
         }
 
@@ -65,14 +65,7 @@ namespace GroupProject.Controllers
                 var cart = ShoppingCart.GetCart(this.HttpContext);
                 order.TotalPrice = cart.GetTotal();
 
-                // OM: Uncomment to bypass Paypal
-                //Save Order
-                //context.Orders.Add(order);
-                //context.SaveChanges();
-                //Process the order
-                //order.ID = cart.CreateOrder(order);
-                //return RedirectToAction("Complete", new { id = order.ID });
-
+               
                 // OM: Pass order info to PayPal payment and add the order only after payment has gone through
                 TempData["Order"] = order;
                 return RedirectToAction("PaymentWithPaypal", "PayPal");
@@ -82,6 +75,38 @@ namespace GroupProject.Controllers
                 ViewBag.NoOrders = false; // OM: because GET: /Checkout uses this Viewbag bool for a check, so it cant be null
                 return View(model);
             }
+           
+        }
+
+        public ActionResult CreditCard()
+        {
+            ViewBag.PageName = "Cart";
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+            ViewBag.NoOrders = false;
+            if (cart.GetCartItems().Count == 0)
+            {
+                ViewBag.NoOrders = true;
+                return View();
+            }
+
+            var user = context.Users.Single(x => x.UserName == User.Identity.Name);
+
+            ViewBag.Cards = new List<SelectListItem>()
+                    {
+                        new SelectListItem() {Text="MasterCard", Value = "mastercard" },
+                        new SelectListItem() {Text="Visa", Value = "visa" },
+                        new SelectListItem() {Text="Discover", Value = "discover" },
+                        new SelectListItem() {Text="Amex", Value = "amex" }
+                    };
+            var model = new CreditCardViewModel();
+            var order = new Order();
+            TryUpdateModel(order);
+            order.UserName = User.Identity.GetUserName();
+            order.OrderDate = DateTime.Now;
+            order.TotalPrice = cart.GetTotal();
+       
+            TempData["Order"] = order;
+            return View(model);
         }
 
         [Authorize(Roles = "User")]

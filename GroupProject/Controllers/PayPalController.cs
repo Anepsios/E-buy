@@ -1,5 +1,6 @@
 ﻿using GroupProject.Data;
 using GroupProject.Models;
+using GroupProject.ViewModel;
 using PayPal.Api;
 using System;
 using System.Collections.Generic;
@@ -179,7 +180,129 @@ namespace GroupProject.Controllers
             return RedirectToAction("Complete", "Checkout", new { order.ID });
         }
 
+        public ActionResult PaymentWithCreditCard(CreditCardViewModel model)
+        {
+            Models.Order order = TempData["Order"] as Models.Order;
+            if (order == null)
+                return View("FailureView");
+            
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+            var cartItems = cart.GetCartItems();
 
+            List<Item> orderItems = new List<Item>();
+
+            foreach (var cartItem in cartItems)
+            {
+                var item = new Item();
+
+                item.name = cartItem.Product.Name;
+                item.currency = "EUR";
+                item.price = cartItem.Product.Price.ToString();
+                item.quantity = cartItem.Quantity.ToString();
+
+                orderItems.Add(item);
+            }
+            ItemList itemList = new ItemList();
+            itemList.items = orderItems;
+
+            //Address for the payment
+            Address billingAddress = new Address();
+            billingAddress.country_code = "GR";
+            billingAddress.line1 = model.Address;
+            billingAddress.postal_code = model.PostalCode.ToString();
+            billingAddress.city = model.City;
+
+            //Now Create an object of credit card and add above details to it
+            CreditCard card = new CreditCard();
+            card.billing_address = billingAddress;
+            card.cvv2 = model.CVV.ToString();
+            card.expire_month = model.ExMonth;
+            card.expire_year = model.ExYear;
+            card.first_name = model.Firstname;
+            card.last_name = model.Lastname;
+            card.number = model.CardNumber.ToString();
+            card.type = model.CardType;
+
+
+            var total = cart.GetTotal();
+            // Specify details of your payment amount.
+            Details details = new Details();
+
+            details.subtotal = total.ToString();
+        
+            // Specify your total payment amount and assign the details object
+            Amount amount = new Amount();
+            amount.currency = "EUR";
+            // Total = shipping tax + subtotal.
+            amount.total = total.ToString();
+            amount.details = details;
+
+            var invoice = GetInvoice();
+            // Now make a trasaction object and assign the Amount object
+            var transactionList = new List<Transaction>();
+            transactionList.Add(new Transaction()
+            {
+                description = "sales",
+                invoice_number = order.ID.ToString() + invoice,
+                amount = amount,
+                item_list = itemList
+            });
+
+            // Now, we have to make a list of trasaction and add the trasactions object
+            // to this list. You can create one or more object as per your requirements
+           
+            // Now we need to specify the FundingInstrument of the Payer
+            // for credit card payments, set the CreditCard which we made above
+            FundingInstrument fundInstrument = new FundingInstrument();
+            fundInstrument.credit_card = card;
+
+            // The Payment creation API requires a list of FundingIntrument
+            List<FundingInstrument> fundingInstrumentList = new List<FundingInstrument>();
+            fundingInstrumentList.Add(fundInstrument);
+
+            // Now create Payer object and assign the fundinginstrument list to the object
+            Payer payr = new Payer();
+            payr.funding_instruments = fundingInstrumentList;
+            payr.payment_method = "credit_card";
+
+            // finally create the payment object and assign the payer object & transaction list to it
+            Payment pymnt = new Payment();
+            pymnt.intent = "sale";
+            pymnt.payer = payr;
+            pymnt.transactions = transactionList;
+
+            try
+            {
+                //getting context from the paypal, basically we are sending the clientID and clientSecret key in this function 
+                //to the get the context from the paypal API to make the payment for which we have created the object above.
+                // Basically, apiContext has a accesstoken which is sent by the paypal to authenticate the payment to facilitator account. An access token could be an alphanumeric string
+                APIContext apiContext = Configuration.GetAPIContext();
+
+                // Create is a Payment class function which actually sends the payment details to the paypal API for the payment. The function is passed with the ApiContext which we received above.
+                Payment payment = pymnt.Create(apiContext);
+
+                //if the createdPayment.State is "approved" it means the payment was successfull else not
+                if (payment.state.ToLower() != "approved")
+                {
+
+                    return View("FailureView");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                PayPalLogger.Log("Error" + ex.Message);
+                return View("FailureView");
+            }
+            order.FirstName = model.Firstname;
+            order.LastName = model.Lastname;
+            order.Address = model.Address;
+            order.City = model.City;
+            order.PostalCode = model.PostalCode;
+            SaveOrder(order);
+
+            return RedirectToAction("Complete", "Checkout", new { order.ID });
+        }
         // OM: Helper methods
 
         private void SaveOrder(Models.Order order)

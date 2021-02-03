@@ -12,10 +12,10 @@
 <div class="form-horizontal">
     <hr />
 
-    <strong class="control-label col-md-4">(* Required fields)</strong>
+    <strong class="control-label col-md-4 fa fa-asterisk" style="color:red"> = Required fields</strong>
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.Username, "Username*", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Username, " Username", htmlAttributes: new { @class = "control-label col-md-2 fa fa-asterisk" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
@@ -23,7 +23,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Email, "Email*", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Email, " Email", htmlAttributes: new { @class = "control-label col-md-2 fa fa-asterisk" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
