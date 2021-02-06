@@ -17,14 +17,15 @@
 }
 else
 {
-    using (Html.BeginForm("PaymentWithCreditCard", "Paypal"))
+    using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
             <h4>Delivery Details</h4>
             <hr />
-            @Html.ValidationSummary("Please fill in all the required fields.", new { @class = "text-danger" })
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="row">
                 <div class="col-md-6" style="text-align:left;">
                     <div class="input-group">
@@ -33,35 +34,44 @@ else
                         </div>
                         @Html.EditorFor(model => model.CardNumber, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
+                        @Html.ValidationMessageFor(model => model.CardNumber, "", new { @class = "text-danger" })
                     <br />
+
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-calendar-o"> Exp. Month</i></span>
                         </div>
-                        @Html.EditorFor(model => model.ExMonth, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.EditorFor(model => model.ExMonth, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
+                        @Html.ValidationMessageFor(model => model.ExMonth, "", new { @class = "text-danger" })
                     <br />
+
                     <div class="input-group ">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-calendar-times-o"> Exp. Year</i></span>
                         </div>
                         @Html.EditorFor(model => model.ExYear, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
+                        @Html.ValidationMessageFor(model => model.ExYear, "", new { @class = "text-danger" })
                     <br />
+
                     <div class="input-group ">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-credit-card-alt"> Cvv</i></span>
                         </div>
-                        @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.EditorFor(model => model.CVV, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
+                        @Html.ValidationMessageFor(model => model.CVV, "", new { @class = "text-danger" })
                     <br />
+
                     <div class="input-group ">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-credit-card"> Card Type</i></span>
                         </div>
-                        @Html.DropDownListFor(model => model.CardType, (IEnumerable<SelectListItem>)ViewBag.Cards, new { @class = "form-control"})
+                        @Html.DropDownListFor(model => model.CardType, (IEnumerable<SelectListItem>)ViewBag.Cards, new { @class = "form-control" })
                     </div>
                     <br />
+
                 </div>
                 <div class="col-md-6" style="text-align:left">
                     <div class="input-group ">
@@ -69,36 +79,44 @@ else
                             <span class="input-group-text"><i class="fa fa-user"> Firstname</i></span>
                         </div>
                         @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
                     </div>
+                        @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
                     <br />
+
                     <div class="input-group ">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-user"> Lastname</i></span>
                         </div>
-                        @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
+                        @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
                     <br />
+
                     <div class="input-group ">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-address-book"> Address</i></span>
                         </div>
                         @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                     <br />
+
                     <div class="input-group ">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-map"> City</i></span>
                         </div>
                         @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
+                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
                     <br />
+
                     <div class="input-group ">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-map-pin"> Postal c.</i></span>
                         </div>
                         @Html.EditorFor(model => model.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
+                        @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
                     <br />
                 </div>
 
