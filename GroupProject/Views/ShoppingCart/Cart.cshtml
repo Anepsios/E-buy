@@ -12,56 +12,74 @@
         $(".RemoveLink").click(function () {
             // Get the id from the link
             var recordToDelete = $(this).attr("data-id");
-
             if (recordToDelete != '') {
-
                 // Perform the ajax post
                 var url = '@Url.Action("RemoveFromCart", "ShoppingCart")';
-                        $.post(url, { "id": recordToDelete }, function (data) {
-                        // Successful requests get here
-                        // Update the page elements
-                        if (data.ItemCount == 0) {
-                            // OM: Append new line of item in cart here
-                            $('#row-' + data.DeleteId).fadeOut('slow');
-                        } else {
-                            // OM: Or just increase quantity of existing item here
-                            $('#item-count-' + data.DeleteId).text(data.ItemCount);
-                        }
-                        $('#cart-total').text(data.CartTotal);
-                        $('#update-message').text(data.Message);
-                        $('#cart-status').text('Cart (' + data.CartCount + ')');
-                    });
+                $.post(url, { "id": recordToDelete }, function (data) {
+                    // Successful requests get here
+                    // Update the page elements
+                    if (data.ItemCount == 0) {
+                        // OM: fadeout product with 0 quantity
+                        $('#row-' + data.DeleteId).fadeOut('slow');
+                    } else {
+                        // OM: Or just show new product quantity
+                        $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                    }
+                    $('#cart-total').text(data.CartTotal);
+                    // OM: convert " character since it doesnt pass correctly in js from json
+                    let updateMessage = GetUpdateMessage(data.Message);
+                    $('#update-message').text(updateMessage);
+                    $('#cart-status').text('Cart (' + data.CartCount + ')');
+                    WaitAndFadeOut();
+                });
             }
         });
     });
 
         // OM: this one is to be given to dynamically created cart items on its onclick attribute, since the above doesnt work with dynamically created elements for some reason
-        function RemoveItem(itemToDelete) {
-            if (itemToDelete != '') {
-                // Perform the ajax post
-                var url = '@Url.Action("RemoveFromCart", "ShoppingCart")';
-                        $.post(url, { "id": itemToDelete }, function (data) {
-                        // Successful requests get here
-                        // Update the page elements
-                        if (data.ItemCount == 0) {
-                            // OM: Append new line of item in cart here
-                            $('#row-' + data.DeleteId).fadeOut('slow');
-                        } else {
-                            // OM: Or just increase quantity of existing item here
-                            $('#item-count-' + data.DeleteId).text(data.ItemCount);
-                        }
-                        $('#cart-total').text(data.CartTotal);
-                        $('#update-message').text(data.Message);
-                        $('#cart-status').text('Cart (' + data.CartCount + ')');
-                    });
-            }
+    function RemoveItem(itemToDelete) {
+        if (itemToDelete != '') {
+            // Perform the ajax post
+            var url = '@Url.Action("RemoveFromCart", "ShoppingCart")';
+            $.post(url, { "id": itemToDelete }, function (data) {
+                // Update the page elements
+                if (data.ItemCount == 0) {
+                    // OM: fadeout product with 0 quantity
+                    $('#row-' + data.DeleteId).fadeOut('slow');
+                } else {
+                    // OM: Or just show new product quantity
+                    $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                }
+                $('#cart-total').text(data.CartTotal);
+                // OM: convert " character since it doesnt pass correctly in js from json
+                let updateMessage = GetUpdateMessage(data.Message);
+                $('#update-message').text(updateMessage);
+                $('#cart-status').text('Cart (' + data.CartCount + ')');
+                WaitAndFadeOut();
+            });
         }
-
-    function handleUpdate() {
-        // Load and deserialize the returned JSON data
-        var json = context.get_data();
-        var data = Sys.Serialization.JavaScriptSerializer.deserialize(json);
     }
+
+    function GetUpdateMessage(updateMessage) {
+        let message;
+        if (updateMessage.includes('&quot;')) {
+            message = updateMessage.split('&quot;');
+            message = message[0] + '"' + message[1];
+        }
+        else {
+            message = updateMessage;
+        }
+        return (message);
+    }
+
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    async function WaitAndFadeOut() {
+        await delay(1400);
+        $('#update-message').fadeOut('slow');
+        await delay(600);
+        $('#update-message').empty();
+        $('#update-message').fadeIn('fast');
+    };
 
 </script>
 

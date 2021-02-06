@@ -15,26 +15,27 @@
         $(".RemoveLink").click(function () {
             // Get the id from the link
             var recordToDelete = $(this).attr("data-id");
-
             if (recordToDelete != '') {
-
                 // Perform the ajax post
                 var url = '@Url.Action("RemoveFromCart", "ShoppingCart")';
-                        $.post(url, { "id": recordToDelete }, function (data) {
-                        // Successful requests get here
-                        // Update the page elements
-                        if (data.ItemCount == 0) {
-                            // OM: Append new line of item in cart here
-                            $('#row-' + data.DeleteId).fadeOut('slow');
-                        } else {
-                            // OM: Or just increase quantity of existing item here
-                            $('#item-count-' + data.DeleteId).text(data.ItemCount);
-                        }
-
-                        $('#cart-total').text(data.CartTotal);
-                        $('#update-message').text(data.Message);
-                        $('#cart-status').text('Cart (' + data.CartCount + ')');
-                    });
+                $.post(url, { "id": recordToDelete }, function (data) {
+                    // Successful requests get here
+                    // Update the page elements
+                    if (data.ItemCount == 0) {
+                        // OM: fadeout product with 0 quantity
+                        $('#row-' + data.DeleteId).fadeOut('slow');
+                    } else {
+                        // OM: Or just show new product quantity
+                        $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                    }
+                    $('#cart-total').text(data.CartTotal);
+                    // OM: convert " character since it doesnt pass correctly in js from json
+                    let updateMessage = data.Message;
+                    updateMessage = updateMessage.split('&quot;');
+                    updateMessage = updateMessage[0] + '"' + updateMessage[1];
+                    $('#update-message').text(updateMessage);
+                    $('#cart-status').text('Cart (' + data.CartCount + ')');
+                });
             }
         });
 

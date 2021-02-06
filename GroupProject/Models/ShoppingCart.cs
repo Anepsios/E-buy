@@ -73,6 +73,7 @@ namespace GroupProject.Models
             context.SaveChanges();
         }
 
+        // OM: overload that returns quantity used in scripts to add dynamically new products to cart
         public int AddToCartInt(Product product)
         {
             // Get the matching cart and product instances
@@ -109,15 +110,15 @@ namespace GroupProject.Models
             int itemCount = 0;
             if (cartItem != null)
             {
-                //if (cartItem.Quantity > 1)
-                //{
-                //    cartItem.Quantity--;
-                //    itemCount = cartItem.Quantity;
-                //}
-                //else
-                //{
+                if (cartItem.Quantity > 1)
+                {
+                    cartItem.Quantity--;
+                    itemCount = cartItem.Quantity;
+                }
+                else
+                {
                     context.Carts.Remove(cartItem);
-                //}
+                }
                 context.SaveChanges();
             }
             return itemCount;
