@@ -30,9 +30,7 @@
                     }
                     $('#cart-total').text(data.CartTotal);
                     // OM: convert " character since it doesnt pass correctly in js from json
-                    let updateMessage = data.Message;
-                    updateMessage = updateMessage.split('&quot;');
-                    updateMessage = updateMessage[0] + '"' + updateMessage[1];
+                    let updateMessage = GetUpdateMessage(data.Message);
                     $('#update-message').text(updateMessage);
                     $('#cart-status').text('Cart (' + data.CartCount + ')');
                 });
@@ -40,6 +38,18 @@
         });
 
     });
+
+    function GetUpdateMessage(updateMessage) {
+        let message;
+        if (updateMessage.includes('&quot;')) {
+            message = updateMessage.split('&quot;');
+            message = message[0] + '"' + message[1];
+        }
+        else {
+            message = updateMessage;
+        }
+        return (message);
+    }
 
     function handleUpdate() {
         // Load and deserialize the returned JSON data
