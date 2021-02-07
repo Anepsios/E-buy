@@ -10,7 +10,7 @@
     </div>
 </div>
 <hr />
-<div class="col-md-8">
+<div>
     <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("IndexRole", "Admin")'">
         Role List
     </button>
@@ -27,14 +27,16 @@
 <br />
 @using (Html.BeginForm("NewsLetter", "Admin", FormMethod.Post))
 {
-<div class="col-md-4">
-    @Html.DropDownList("selectedValue", new SelectList(ViewBag.Files), "File Select", new { @class = "form-control col-sm", required = "required" })
-    <input type="submit" value="Newsletter" class="btn btn-warning" />
-</div>
+    <div class="input-group">
+        @Html.DropDownList("selectedValue", new SelectList(ViewBag.Files), "NewsLetter Files", new { @class = "form-control", required = "required" })
+        <div class="input-group-append">
+            <input type="submit" value="Send" class="btn btn-warning" />
+        </div>
+    </div>
 }
 <hr />
 
-<div>
-    <img src="@Url.Action("ChartBar")" alt="Chart" />
+<div class="mychart">
+    <img src="@Url.Action("ChartBar")" alt="Chart"/>
 </div>
 

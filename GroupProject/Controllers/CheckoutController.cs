@@ -81,6 +81,7 @@ namespace GroupProject.Controllers
         [Authorize(Roles = "User")]
         public ActionResult CreditCard()
         {
+           
             ViewBag.PageName = "Cart";
             var cart = ShoppingCart.GetCart(this.HttpContext);
             ViewBag.NoOrders = false;

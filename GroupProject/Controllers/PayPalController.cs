@@ -1,4 +1,5 @@
 ﻿using GroupProject.Data;
+using GroupProject.Hubs;
 using GroupProject.Models;
 using GroupProject.ViewModel;
 using PayPal.Api;
@@ -189,6 +190,12 @@ namespace GroupProject.Controllers
         [Authorize(Roles = "User")]
         public ActionResult PaymentWithCreditCard()
         {
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("CreditCard", "Checkout");
+            }
+
             Models.Order order = TempData["Order"] as Models.Order;
             if (order == null)
                 return View("FailureView");
@@ -284,11 +291,12 @@ namespace GroupProject.Controllers
 
             try
             {
+               
                 //getting context from the paypal, basically we are sending the clientID and clientSecret key in this function 
                 //to the get the context from the paypal API to make the payment for which we have created the object above.
                 // Basically, apiContext has a accesstoken which is sent by the paypal to authenticate the payment to facilitator account. An access token could be an alphanumeric string
                 APIContext apiContext = Configuration.GetAPIContext();
-
+               
                 // Create is a Payment class function which actually sends the payment details to the paypal API for the payment. The function is passed with the ApiContext which we received above.
                 Payment payment = pymnt.Create(apiContext);
 
@@ -299,10 +307,10 @@ namespace GroupProject.Controllers
                     return View("FailureView");
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                PayPalLogger.Log("Error" + ex.Message);
+                //System.Diagnostics.Debug.WriteLine(ex.Message); //Wrong path on azure *TO BE FIXED*
+                //PayPalLogger.Log("Error" + ex.Message);
                 return View("FailureView");
             }
             order.FirstName = model.Firstname;

@@ -79,9 +79,9 @@ textarea {
 }
 
 .searchbar{
-    width:250px;
     position:relative;
-    top:17px;
+   top:17px;
+   margin-left:5px;
   
 }
 
@@ -122,7 +122,7 @@ textarea {
     padding-bottom: 0px !important;
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 992px) {
     .nav li {
         height: 60px;
         text-align: center;
@@ -137,10 +137,10 @@ textarea {
         margin-top: 5px;
     }
 
-    .searchbar, .searchbar-li{
-        display:none;
+    .searchbar, .searchbar-li {
+        display: none;
     }
-
+    
     .navbar{
         padding-top:0px !important;
         padding-bottom:5px;
@@ -152,528 +152,531 @@ textarea {
     }
 }
 
-/* For nav icons end */
 
-/* For Products/Details start */
+    /* For nav icons end */
 
-@media only screen and (max-width: 450px) {
-    .prodet img{
-        max-height:140px;
+    /* For Products/Details start */
+
+    @media only screen and (max-width: 450px) {
+        .prodet img {
+            max-height: 140px;
+        }
     }
-}
 
-/* For Products/Details end */
+    /* For Products/Details end */
 
-/* For Manage/Orders start */
+    /* For Manage/Orders start */
 
-.hidden {
-    display: none;
-}
+    .hidden {
+        display: none;
+    }
 
-.order-details td {
-    vertical-align: baseline;
-}
+    .order-details td {
+        vertical-align: baseline;
+    }
 
-/* For Manage/Orders end */
+    /* For Manage/Orders end */
 
-/*----------------------------------PAVLOS CSS---------------------------*/
+    /*----------------------------------PAVLOS CSS---------------------------*/
 
-.modal-body table thead tbody th td tr {
-    display: block;
-}
+    .modal-body table thead tbody th td tr {
+        display: block;
+    }
 
-.animatedSuccess {
-    background-image: url(https://icons-for-free.com/iconfiles/png/512/complete+done+green+success+valid+icon-1320183462969251652.png);
-    background-size: 300px 300px;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding-top: 290px;
-    margin-top: 30px;
-    -webkit-animation-duration: 1.5s;
-    animation-duration: 1.5s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-}
-
-.animatedError {
-    background-image: url(https://freeiconshop.com/wp-content/uploads/edd/error-flat.png);
-    background-size: 280px 280px;
-    background-repeat: no-repeat;
-    background-position:center;
-    padding-top: 290px;
-    margin-top: 30px;
-    -webkit-animation-duration: 1.5s;
-    animation-duration: 1.5s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-}
-
-@media only screen and (max-width:991px) {
-    #animated-example {
-        width: 100%;
-        
+    .animatedSuccess {
+        background-image: url(https://icons-for-free.com/iconfiles/png/512/complete+done+green+success+valid+icon-1320183462969251652.png);
+        background-size: 300px 300px;
+        background-repeat: no-repeat;
         background-position: center;
+        padding-top: 290px;
+        margin-top: 30px;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
     }
 
-    .ratingResult {
-        text-align: center;
-    }
-}
-
-@-webkit-keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        -webkit-transform: translateY(0);
-    }
-
-    40% {
-        -webkit-transform: translateY(-30px);
-    }
-
-    60% {
-        -webkit-transform: translateY(-15px);
-    }
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
+    .animatedError {
+        background-image: url(https://freeiconshop.com/wp-content/uploads/edd/error-flat.png);
+        background-size: 280px 280px;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding-top: 290px;
+        margin-top: 30px;
+        -webkit-animation-duration: 1.5s;
+        animation-duration: 1.5s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
     }
 
-    40% {
-        transform: translateY(-30px);
+    @media only screen and (max-width:991px) {
+        #animated-example {
+            width: 100%;
+            background-position: center;
+        }
+
+        .ratingResult {
+            text-align: center;
+        }
     }
 
-    60% {
-        transform: translateY(-15px);
+    @-webkit-keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            -webkit-transform: translateY(0);
+        }
+
+        40% {
+            -webkit-transform: translateY(-30px);
+        }
+
+        60% {
+            -webkit-transform: translateY(-15px);
+        }
     }
-}
 
-.bounce {
-    -webkit-animation-name: bounce;
-    animation-name: bounce;
-}
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
 
-/*--------------------------STAR GIFS REVIEW----------------------------------------*/
+        40% {
+            transform: translateY(-30px);
+        }
 
-.starOff {
-    background-image: url("../Images/StarFade.gif");
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-}
-
-.starOn {
-    background-image: url("../Images/StarGlow.gif");
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-}
-
-@media only screen and (max-width:991px) {
-    .starOff, .starOn {
-        background-size: contain;
-        height: 20px;
-        width: 20px;
+        60% {
+            transform: translateY(-15px);
+        }
     }
-}
 
-@media only screen and (max-width:767px) {
-    .starOff, .starOn {
-        height: 30px;
+    .bounce {
+        -webkit-animation-name: bounce;
+        animation-name: bounce;
+    }
+
+    /*--------------------------STAR GIFS REVIEW----------------------------------------*/
+
+    .starOff {
+        background-image: url("../Images/StarFade.gif");
         width: 30px;
+        height: 30px;
+        display: inline-block;
     }
-}
 
-/*---------------------------------------------------------------------------*/
-
-.product-grid {
-    font-family: Raleway, sans-serif;
-    text-align: center;
-    padding: 0 0 172px;
-    border: 1px solid rgba(0, 0, 0, .1);
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-    border-radius: 20px;
-    height: 420px !important;
-    background-color: white;
-}
-
-
-.product-review {
-    top: 20px;
-    position: relative;
-}
-
-#product {
-    position: relative;
-    top: 30px;
-}
-
-
-.product-grid .product-image {
-    position: relative;
-    top: 30px;
-    transition: all .3s ease 0s;
-}
-
-.product-grid .product-image a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    line-height: 100%;
-}
-
-.product-grid .product-image img {
-    width: 75%;
-    position: center;
-    max-height: 230px;
-}
-
-.product-grid .pic-1 {
-    opacity: 1;
-    transition: all .3s ease-out 0s;
-}
-
-.product-grid:hover .pic-1 {
-    opacity: 0.5;
-}
-
-
-.product-grid .social {
-    width: 150px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    opacity: 0;
-    transform: translateY(-50%) translateX(-50%);
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    z-index: 1;
-    transition: all .3s ease 0s
-}
-
-.product-grid:hover .social {
-    opacity: 1;
-    top: 50%
-}
-
-.product-grid .social li {
-    display: inline-block
-}
-
-.product-grid .social li a {
-    color: #fff;
-    background-color: #333;
-    font-size: 16px;
-    line-height: 40px;
-    text-align: center;
-    height: 40px;
-    width: 40px;
-    margin: 0 2px;
-    display: block;
-    position: relative;
-    transition: all .3s ease-in-out
-}
-
-.product-grid .social li a:hover {
-    color: #fff;
-    background-color: #ef5777;
-}
-
-.product-grid .social li a:after, .product-grid .social li a:before {
-    color: #fff;
-    background-color: #ef5777;
-    font-size: 12px;
-    letter-spacing: 1px;
-    line-height: 20px;
-    padding: 1px 5px;
-    white-space: nowrap;
-    opacity: 0;
-    transform: translateX(-50%);
-    position: absolute;
-    left: 50%;
-    top: -30px
-}
-
-.product-grid .social li a:after {
-    content: '';
-    height: 15px;
-    width: 15px;
-    border-radius: 0;
-    transform: translateX(-50%) rotate(45deg);
-    top: -20px;
-    z-index: -1
-}
-
-.product-grid .social li a:hover:after, .product-grid .social li a:hover:before {
-     opacity: 1
-}
-
-.product-grid .product-discount-label, .product-grid .product-new-label {
-    color: #fff;
-    background-color: #ef5777;
-    font-size: 12px;
-    text-transform: uppercase;
-    padding: 2px 7px;
-    display: block;
-    position: absolute;
-    top: 10px;
-    left: 0
-}
-
-.product-grid .product-discount-label {
-    background-color: #333;
-    left: auto;
-    right: 0
-}
-
-.product-grid .rating {
-    color: #FFD200;
-    font-size: 12px;
-    padding: 12px 0 0;
-    margin: 0;
-    list-style: none;
-    position: relative;
-    z-index: -1;
-    text-align: center;
-}
-
-.product-grid .rating li.disable {
-    color: rgba(0, 0, 0, .2)
-}
-
-.product-grid .product-content {
-    background-color: #fff;
-    text-align: center;
-    padding: 12px 0;
-    margin: 0 auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 10px;
-    z-index: 1;
-    transition: all .3s;
-}
-
-.product-grid:hover .product-content {
-    bottom: 0
-}
-
-.product-grid .title {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: .5px;
-    text-transform: capitalize;
-    margin: 0 0 10px;
-    transition: all .3s ease 0s
-}
-
-.product-grid .title a {
-    color: #828282
-}
-
-.product-grid .title a:hover, .product-grid:hover .title a {
-    color: #ef5777
-}
-
-.product-grid .price {
-    color: #333;
-    font-size: 17px;
-    font-family: Montserrat, sans-serif;
-    font-weight: 700;
-    letter-spacing: .6px;
-    margin-bottom: 8px;
-    text-align: center;
-    transition: all .3s
-}
-
-.product-grid .price span {
-    color: #999;
-    font-size: 13px;
-    font-weight: 400;
-    text-decoration: line-through;
-    margin-left: 3px;
-    display: inline-block
-}
-
-.product-grid .add-to-cart {
-    color: #000;
-    font-size: 13px;
-    font-weight: 600
-}
-
-.modal-body {
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
-}
-
-.modal {
-    top: 20%;
-}
-
-/*----------------------------------------------------*/
-
-@media only screen and (max-width:576px) {
-    .product-grid .product-image a {
-        max-width: 300px;
-        max-height:300px;
-        position: relative;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
+    .starOn {
+        background-image: url("../Images/StarGlow.gif");
+        width: 30px;
+        height: 30px;
+        display: inline-block;
     }
+
+    @media only screen and (max-width:991px) {
+        .starOff, .starOn {
+            background-size: contain;
+            height: 20px;
+            width: 20px;
+        }
+    }
+
+    @media only screen and (max-width:767px) {
+        .starOff, .starOn {
+            height: 30px;
+            width: 30px;
+        }
+    }
+
+    /*---------------------------------------------------------------------------*/
+
     .product-grid {
-        height: 450px;
-    }
-}
-
-/*----------------------------------------------------*/
-
-#myTable, #myTable thead, #myTable tbody, #myTable th, #myTable td, #myTable tr {
-    display: block;
-}
-
-#myTable thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-}
-
-#myTable tr {
-    border: 1px solid #ccc;
-}
-
-#myTable td {
-    border: none;
-    border-bottom: 1px solid #eee;
-    position: relative;
-}
-
-#myTable td:before {
-     position: absolute;
-     top: 6px;
-     left: 6px;
-     width: 45%;
-     padding-right: 10px;
-     white-space: nowrap;
-}
-
-.modal-body {
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
-}
-
-/*----------------------------------------------- Carousel --------------------------------------------------*/
-
-.carousel img {
-    height: 430px;
-    background-size: cover;
-}
-
-.carousel {
-    margin: 40px auto;
-}
-
-@media only screen and (max-width: 991px) {
-    .carousel img {
-        height: 340px;
-    }
-}
-
-@media only screen and (max-width: 760px){
-
-    .carousel img {
-        height: 240px;
-    }
-}
-
-/*----------------------------------------- Sorting Text ---------------------------------------------------*/
-
-.hyperlink {
-    color: blue;
-}
-
-/*--------------------------------------------Footer to bottom-----------------------------------------------*/
-
-
-.container {
-    min-height: 100%;
-    margin-top: 10px;
-}
-
-
-@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
-
-    .tablescroll {
-        overflow-x: scroll;
+        font-family: Raleway, sans-serif;
+        text-align: center;
+        padding: 0 0 172px;
+        border: 1px solid rgba(0, 0, 0, .1);
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+        border-radius: 20px;
+        height: 420px !important;
+        background-color: white;
     }
 
-    .row, .SearchBox {
+
+    .product-review {
+        top: 20px;
+        position: relative;
+    }
+
+    #product {
+        position: relative;
+        top: 30px;
+    }
+
+
+    .product-grid .product-image {
+        position: relative;
+        top: 30px;
+        transition: all .3s ease 0s;
+    }
+
+        .product-grid .product-image a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            line-height: 100%;
+        }
+
+        .product-grid .product-image img {
+            width: 75%;
+            position: center;
+            max-height: 230px;
+        }
+
+    .product-grid .pic-1 {
+        opacity: 1;
+        transition: all .3s ease-out 0s;
+    }
+
+    .product-grid:hover .pic-1 {
+        opacity: 0.5;
+    }
+
+
+    .product-grid .social {
+        width: 150px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        opacity: 0;
+        transform: translateY(-50%) translateX(-50%);
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        z-index: 1;
+        transition: all .3s ease 0s
+    }
+
+    .product-grid:hover .social {
+        opacity: 1;
+        top: 50%
+    }
+
+    .product-grid .social li {
+        display: inline-block
+    }
+
+        .product-grid .social li a {
+            color: #fff;
+            background-color: #333;
+            font-size: 16px;
+            line-height: 40px;
+            text-align: center;
+            height: 40px;
+            width: 40px;
+            margin: 0 2px;
+            display: block;
+            position: relative;
+            transition: all .3s ease-in-out
+        }
+
+            .product-grid .social li a:hover {
+                color: #fff;
+                background-color: #ef5777;
+            }
+
+            .product-grid .social li a:after, .product-grid .social li a:before {
+                color: #fff;
+                background-color: #ef5777;
+                font-size: 12px;
+                letter-spacing: 1px;
+                line-height: 20px;
+                padding: 1px 5px;
+                white-space: nowrap;
+                opacity: 0;
+                transform: translateX(-50%);
+                position: absolute;
+                left: 50%;
+                top: -30px
+            }
+
+            .product-grid .social li a:after {
+                content: '';
+                height: 15px;
+                width: 15px;
+                border-radius: 0;
+                transform: translateX(-50%) rotate(45deg);
+                top: -20px;
+                z-index: -1
+            }
+
+            .product-grid .social li a:hover:after, .product-grid .social li a:hover:before {
+                opacity: 1
+            }
+
+    .product-grid .product-discount-label, .product-grid .product-new-label {
+        color: #fff;
+        background-color: #ef5777;
+        font-size: 12px;
+        text-transform: uppercase;
+        padding: 2px 7px;
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 0
+    }
+
+    .product-grid .product-discount-label {
+        background-color: #333;
+        left: auto;
+        right: 0
+    }
+
+    .product-grid .rating {
+        color: #FFD200;
+        font-size: 12px;
+        padding: 12px 0 0;
+        margin: 0;
+        list-style: none;
+        position: relative;
+        z-index: -1;
         text-align: center;
     }
-}
 
-.bg {
-    animation: slide 3s ease-in-out infinite alternate;
-    background-image: linear-gradient(-60deg, #B7E4C7 50%, #40916c 50%);
-    bottom: 0;
-    left: -50%;
-    opacity: .5;
-    position: fixed;
-    right: -50%;
-    top: 0;
-    z-index: -1;
-    animation-duration: 10s;
-}
+        .product-grid .rating li.disable {
+            color: rgba(0, 0, 0, .2)
+        }
 
-.bg2 {
-    animation-direction: alternate-reverse;
-    animation-duration: 12s;
-}
-
-.bg3 {
-    animation-duration: 13s;
-}
-
-@keyframes slide {
-    0% {
-        transform: translateX(-25%);
+    .product-grid .product-content {
+        background-color: #fff;
+        text-align: center;
+        padding: 12px 0;
+        margin: 0 auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 10px;
+        z-index: 1;
+        transition: all .3s;
     }
 
-    100% {
-        transform: translateX(25%);
+    .product-grid:hover .product-content {
+        bottom: 0
     }
-}
 
-.product-img {
-    float: right;
-    position: relative;
-    top: 17px;
-    border: outset;
-    border-radius: 15px;
-}
-.banners {
-    margin:auto;
-}
-.banners img {
-    width: 75px;
-    height: auto;
-    margin-bottom: 5%;
-    border-radius: 10px;
-    margin-right: 8px;
-    display:inline-flex;
-}
-
-
-    .banners img:hover {
-        /* Start the shake animation and make the animation last for 0.5 seconds */
-        animation: shake 0.5s;
-        /* When the animation is finished, start again */
-        /* animation-iteration-count: infinite;*/
+    .product-grid .title {
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: .5px;
+        text-transform: capitalize;
+        margin: 0 0 10px;
+        transition: all .3s ease 0s
     }
+
+        .product-grid .title a {
+            color: #828282
+        }
+
+            .product-grid .title a:hover, .product-grid:hover .title a {
+                color: #ef5777
+            }
+
+    .product-grid .price {
+        color: #333;
+        font-size: 17px;
+        font-family: Montserrat, sans-serif;
+        font-weight: 700;
+        letter-spacing: .6px;
+        margin-bottom: 8px;
+        text-align: center;
+        transition: all .3s
+    }
+
+        .product-grid .price span {
+            color: #999;
+            font-size: 13px;
+            font-weight: 400;
+            text-decoration: line-through;
+            margin-left: 3px;
+            display: inline-block
+        }
+
+    .product-grid .add-to-cart {
+        color: #000;
+        font-size: 13px;
+        font-weight: 600
+    }
+
+    .modal-body {
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+    }
+
+    .modal {
+        top: 20%;
+    }
+
+    /*----------------------------------------------------*/
+
+    @media only screen and (max-width:576px) {
+        .product-grid .product-image a {
+            max-width: 300px;
+            max-height: 300px;
+            position: relative;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .product-grid {
+            height: 450px;
+        }
+    }
+
+    /*----------------------------------------------------*/
+
+    #myTable, #myTable thead, #myTable tbody, #myTable th, #myTable td, #myTable tr {
+        display: block;
+    }
+
+        #myTable thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        #myTable tr {
+            border: 1px solid #ccc;
+        }
+
+        #myTable td {
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+            #myTable td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+            }
+
+    .modal-body {
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+    }
+
+    /*----------------------------------------------- Carousel --------------------------------------------------*/
+
+    .carousel img {
+        height: 430px;
+        background-size: cover;
+    }
+
+    .carousel {
+        margin: 40px auto;
+    }
+
+    @media only screen and (max-width: 991px) {
+        .carousel img {
+            height: 340px;
+        }
+    }
+
+    @media only screen and (max-width: 760px) {
+
+        .carousel img {
+            height: 240px;
+        }
+    }
+
+    /*----------------------------------------- Sorting Text ---------------------------------------------------*/
+
+    .hyperlink {
+        color: blue;
+    }
+
+    /*--------------------------------------------Footer to bottom-----------------------------------------------*/
+
+
+    .container {
+        min-height: 100%;
+        margin-top: 10px;
+    }
+
+
+    @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+
+        .tablescroll {
+            overflow-x: scroll;
+        }
+
+        .row, .SearchBox {
+            text-align: center;
+        }
+    }
+
+    .bg {
+        animation: slide 3s ease-in-out infinite alternate;
+        background-image: linear-gradient(-60deg, #B7E4C7 50%, #40916c 50%);
+        bottom: 0;
+        left: -50%;
+        opacity: .5;
+        position: fixed;
+        right: -50%;
+        top: 0;
+        z-index: -1;
+        animation-duration: 10s;
+    }
+
+    .bg2 {
+        animation-direction: alternate-reverse;
+        animation-duration: 12s;
+    }
+
+    .bg3 {
+        animation-duration: 13s;
+    }
+
+    @keyframes slide {
+        0% {
+            transform: translateX(-25%);
+        }
+
+        100% {
+            transform: translateX(25%);
+        }
+    }
+
+    .product-img {
+        float: right;
+        position: relative;
+        top: 17px;
+        border: outset;
+        border-radius: 15px;
+    }
+
+    .banners {
+        margin: auto;
+    }
+
+        .banners img {
+            width: 75px;
+            height: auto;
+            margin-bottom: 5%;
+            border-radius: 10px;
+            margin-right: 8px;
+            display: inline-flex;
+        }
+
+
+            .banners img:hover {
+                /* Start the shake animation and make the animation last for 0.5 seconds */
+                animation: shake 0.5s;
+                /* When the animation is finished, start again */
+                /* animation-iteration-count: infinite;*/
+            }
 
     @keyframes shake {
         0% {
@@ -703,69 +706,80 @@ textarea {
 
     /*-------------------------------------start page----------------------------------------*/
 
-.action {
-    color: blue;
-}
-
-
-
-/*------------------------------------------Switches---------------------------------------------------*/
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-
-    .switch input {
-        display: none;
+    .action {
+        color: blue;
     }
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-}
 
-    .slider:before {
+
+    /*------------------------------------------Switches---------------------------------------------------*/
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+        .switch input {
+            display: none;
+        }
+
+    .slider {
         position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
         transition: .4s;
     }
 
-/* include generated hidden field here */
-input[type="checkbox"]:checked + input[type="hidden"] + .slider,
-input[type="checkbox"]:checked + .slider {
-    background-color: #2196F3;
-}
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
 
-/* include generated hidden field here */
-input[type="checkbox"]:focus + input[type="hidden"] + .slider,
-input[type="checkbox"]:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-}
-
-/* include generated hidden field here */
-input[type="checkbox"]:checked + input[type="hidden"] + .slider:before,
-input[type="checkbox"]:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-    border-radius: 34px;
-}
-
-    .slider.round:before {
-        border-radius: 50%;
+    /* include generated hidden field here */
+    input[type="checkbox"]:checked + input[type="hidden"] + .slider,
+    input[type="checkbox"]:checked + .slider {
+        background-color: #2196F3;
     }
+
+    /* include generated hidden field here */
+    input[type="checkbox"]:focus + input[type="hidden"] + .slider,
+    input[type="checkbox"]:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    /* include generated hidden field here */
+    input[type="checkbox"]:checked + input[type="hidden"] + .slider:before,
+    input[type="checkbox"]:checked + .slider:before {
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+
+        /*-------------------------------------Charts-----------------------------------------------*/
+
+@media only screen and (max-width: 991px) {
+
+    .mychart img{
+        width:100%;
+        height:auto;
+    }
+}
