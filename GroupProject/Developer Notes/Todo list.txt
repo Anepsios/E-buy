@@ -7,6 +7,7 @@
 - option to add quantity of products to cart(future extension)
 - turn everything you can to async(not urgent, future extention)
 - make admin able to change other account's passwords
+
 - make shoppingcart/index a table that shows all data of each product
-- make user able to delete his account
-- add filters to orderlist, ratinglist, userlist
+
+- add filters to orderlist, ratinglist, userlist (sort by username, date for orders. sort by status, edited, username, product, date for ratings)
