@@ -202,6 +202,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ChartThemes\MyChartTheme.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
@@ -261,6 +262,7 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\versions.css" />
     <Content Include="Email\AccountConfirmation.html" />
+    <Content Include="Email\Newsletters\NewsLetter Test.html" />
     <Content Include="Email\Newsletters\Newsletter.html" />
     <Content Include="Email\OrderCompleted.html" />
     <Content Include="favicon.ico" />
@@ -273,6 +275,7 @@
     <Content Include="Images\asus.jpg" />
     <Content Include="Images\asus.png" />
     <Content Include="Images\dell.png" />
+    <Content Include="Images\ebuylogo.png" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\hp.jpg" />
     <Content Include="Images\hp.png" />
@@ -366,10 +369,8 @@
     <Content Include="Images\mobile_xiaomi_redminote8pro.jpeg" />
     <Content Include="Images\mobile_xiaomi_redminote9pro.jpeg" />
     <Content Include="Images\mobile_xiaomi_redminote9s.jpeg" />
-    <Content Include="Images\offers.png" />
     <Content Include="Images\samsung.png" />
     <Content Include="Images\samsungs20.jpeg" />
-    <Content Include="Images\sf.png" />
     <Content Include="Images\shop.png" />
     <Content Include="Images\shopp.jpg" />
     <Content Include="Images\sony.png" />
@@ -395,7 +396,6 @@
     <Content Include="Images\tablet_microsoft_surfacepro712,3.jpeg" />
     <Content Include="Images\tablet_samsung_galaxytaba7.jpeg" />
     <Content Include="Images\tablet_samsung_galaxytabs7.jpeg" />
-    <Content Include="Images\tv.png" />
     <Content Include="Images\tv_lg_32LK6200.jpeg" />
     <Content Include="Images\tv_lg_32LM6300PLA.jpeg" />
     <Content Include="Images\tv_lg_43UN73006LC.jpeg" />
@@ -420,6 +420,8 @@
     <Content Include="Images\tv_sony_KD-85XH8096.jpeg" />
     <Content Include="Images\world-map.png" />
     <Content Include="Images\xiaomi.png" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\loader.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />

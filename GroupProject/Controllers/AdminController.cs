@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.Owin;
 using GroupProject.Data;
 using System.Data.Entity;
-using System.Data.SqlClient;
 using System.Collections;
 using System.Web.Helpers;
 using System.IO;
 using GroupProject.Email;
+using GroupProject.ChartThemes;
 
 namespace GroupProject.Controllers
 {
@@ -49,11 +49,18 @@ namespace GroupProject.Controllers
             }
         }
 
-        public ActionResult Index(string selectedValues)
+        public ActionResult Index(string selectedValue)
         {
             ViewBag.PageName = "Admin";
             List<string> filelist = Directory.GetFiles(Server.MapPath("~/Email/Newsletters")).ToList();
-            ViewBag.Files = filelist;
+            List<string> newFiles = new List<string>();
+            foreach (var file in filelist)
+            {
+                var replace = file.Replace(Server.MapPath("~/Email/Newsletters/"), "" );
+                newFiles.Add(replace);
+            }
+            ViewBag.Files = newFiles;
+            
             return View();
         }
 
@@ -374,8 +381,7 @@ namespace GroupProject.Controllers
 
             results.ToList().ForEach(rs => xValue.Add(rs.UserName));
             results.ToList().ForEach(rs => yValue.Add(rs.Count));
-
-            new Chart(width: 600, height: 400, theme: ChartTheme.Blue)
+            new Chart(width: 600, height: 400, theme: MyChartTheme.PChr)
             .AddTitle("Orders Per Active User")
                     .AddSeries("Default", chartType: "Bar", xValue: xValue, yValues: yValue)
                     .Write("png");
@@ -388,18 +394,21 @@ namespace GroupProject.Controllers
         {
             var db = new ApplicationDbContext();
             var list = db.Users.Where(x=>x.Subscribe == true).Select(x => x.Email).ToList();
-            var selectedValue = Request.Form["selectedValue"];
+            var selectedValue = Server.MapPath("/Email/Newsletters/") + Request.Form["selectedValue"];
 
             string body;
             foreach (var e in list)
             {
                 using (var reader = new StreamReader(selectedValue))
-                   body = reader.ReadToEnd();
+                body = reader.ReadToEnd();
                 body = body.Replace("{Email}", e.ToString());
                 SendEmail.EmailSend(e, "e-Buy Newsletter", body, true);
             }
             return View("Newsletter");
         }
+
+
+
 
     }
 }
