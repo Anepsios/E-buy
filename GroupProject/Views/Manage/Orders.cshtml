@@ -3,6 +3,19 @@
 @{
     ViewBag.Title = "My Orders";
 }
+
+@section ManageOrdersDetailsButton{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('.showdetails').click(function () {
+                $('.hidden').eq($(this).index('.showdetails')).toggle();
+            });
+        });
+
+    </script>
+}
+
 @if (!User.IsInRole("Admin"))
 {
 <h2>@ViewBag.Title</h2>
@@ -10,6 +23,7 @@
 {
     <h2>Order List</h2>
 }
+
 <div class="tablescroll">
     <table class="table table-hover">
         <tr>
