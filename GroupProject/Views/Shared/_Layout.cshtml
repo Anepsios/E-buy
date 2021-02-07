@@ -61,6 +61,8 @@
                                 </li>
                             }
                         }
+                        
+                        <li class="nav-item">@Html.ActionLink("About Us", "About", "Home", null, new { @class = "nav-link" })</li>
                    
                         <li class="searchbar-li">
                             @using (Html.BeginForm("Index", "Products", FormMethod.Get))
@@ -69,8 +71,8 @@
                             }
                         </li>
                     
-                        <li class="nav-item">@Html.ActionLink("About Us", "About", "Home", null, new { @class = "nav-link" })</li>
                     </ul>
+
                     @Html.Partial("_LoginPartial")
 
                 </div>
@@ -222,20 +224,27 @@
     </script>
 
     @* prevent double posting client side *@
-    @*<script>
+    <script>
 
+        // OM: Compare form values between last and current submit, and if there's a change make submit usable again
         document.querySelectorAll('form').forEach((form) => {
             form.addEventListener('submit', (e) => {
                 if (form.classList.contains('is-submitting')) {
+                    let currentFormData = $('form').serialize(); 
+                    if (currentFormData !== formData) { 
+                        formData = $('form').serialize();
+                        return true;
+                    }
                     e.preventDefault();
                     e.stopPropagation();
                     return false;
                 };
                 form.classList.add('is-submitting');
+                formData = $('form').serialize();
             });
         });
 
-    </script>*@
+    </script>
 
 </body>
 </html>
