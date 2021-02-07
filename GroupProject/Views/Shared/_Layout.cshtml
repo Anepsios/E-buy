@@ -47,28 +47,30 @@
                         {
                             <li class="nav-item @(ViewBag.PageName == "Admin" ? "active" : "")">@Html.ActionLink("Admin Panel", "Index", "Admin", null, new { @class = "nav-link" })</li>
                         }
+
                         @if (User.IsInRole("User"))
                         {
                             if (ViewBag.PageName == "Cart")
                             {
-                                <li class="nav-item @(ViewBag.PageName == "Cart" ? "active" : "")">@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
+                                <li class=" @(ViewBag.PageName == "Cart" ? "active" : "")">@{Html.RenderAction("CartSummary", "ShoppingCart");}</li>
                             }
                             else
                             {
-                                <li class="nav-item">
+                                <li class="">
                                     <button type="button" class="Cart @(ViewBag.PageName == "Cart" ? "active" : "")" data-toggle="modal" data-target="#Cart">@{Html.RenderAction("CartSummary", "ShoppingCart");}</button>
                                 </li>
                             }
                         }
-                        <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
+                   
                         <li class="searchbar-li">
                             @using (Html.BeginForm("Index", "Products", FormMethod.Get))
                             {
-                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "searchbar form-control", @placeholder = "Search for Products" });
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "searchbar form-control", @placeholder = "Search Catalog  " });
                             }
                         </li>
+                    
+                        <li class="nav-item">@Html.ActionLink("About Us", "About", "Home", null, new { @class = "nav-link" })</li>
                     </ul>
-
                     @Html.Partial("_LoginPartial")
 
                 </div>

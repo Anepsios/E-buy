@@ -1,4 +1,12 @@
-﻿@Html.ActionLink("Cart (" + ViewData["CartCount"] + ")",
+﻿<style>
+    #cart-status {
+        top: 7px;
+        position: relative;
+        color: darkseagreen;
+    }
+</style>
+@Html.ActionLink(" (" + ViewData["CartCount"] + ")",
     "Index",
     "ShoppingCart",
-    new { @class = "nav-link", id = "cart-status" })
+    new { @class = "nav-link fa fa-shopping-cart", @style= "font-size:18px",  id = "cart-status" })
+
