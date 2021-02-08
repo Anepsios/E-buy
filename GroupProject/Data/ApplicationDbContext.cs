@@ -27,5 +27,6 @@ namespace GroupProject.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<Rating> Ratings { get; set; }
+        public DbSet<OldUsers> OldUsers { get; set; }
     }
 }
