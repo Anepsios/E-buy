@@ -149,7 +149,7 @@ namespace GroupProject.Controllers
             if (TempData["RedirectedFromPayment"] == null || !(bool)TempData["RedirectedFromPayment"])
                 return RedirectToAction("Index", "Home");
 
-            if (id == null)
+            if (id is null)
                 return View("Error");
 
             ViewBag.PageName = "Cart";
