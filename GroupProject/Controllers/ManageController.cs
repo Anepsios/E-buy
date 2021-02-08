@@ -273,10 +273,14 @@ namespace GroupProject.Controllers
             var id = User.Identity.GetUserId();
             var user = UserManager.FindById(id);
 
-            var model = context.Orders.Where(x => x.UserName == user.UserName).Include(y => y.OrderDetails.Select(z => z.Product)).ToList();
-            if (!User.IsInRole("Admin")) return View(model);
-            var model2 = context.Orders.ToList();
-            return View(model2);
+            var model = orders.Where(x => x.UserName == user.UserName).Include(y => y.OrderDetails.Select(z => z.Product)).ToList();
+            if (User.IsInRole("Admin"))
+            {
+
+                return View(orders.ToList());
+            }
+
+            return View(model);
         }
 
         protected override void Dispose(bool disposing)
