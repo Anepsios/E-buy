@@ -62,7 +62,7 @@
     @Html.ActionLink("Delete Account", "Delete", null, new { @class = "btn btn-danger" })
     @if (ViewBag.IsUser)
     {
-        @Html.ActionLink("View Previous Orders", "Orders", null, new { @class = "btn btn-info" })
+        @Html.ActionLink("View Previous Orders", "Orders", null, new { @class = "btn btn-info" }) @: 
         @Html.ActionLink("My Cart", "Index", "ShoppingCart", null, new { @class = "btn btn-info" })
     }
 </p>

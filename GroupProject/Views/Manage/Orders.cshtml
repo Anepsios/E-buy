@@ -3,7 +3,12 @@
 @{
     ViewBag.Title = "My Orders";
 }
-
+<style>
+    
+    .fa:hover{
+        color:green;
+    }
+</style>
 @section ManageOrdersDetailsButton{
     <script type="text/javascript">
 
@@ -28,7 +33,9 @@
     <table class="table table-hover">
         <tr>
             <th>
+                @Html.ActionLink(" ", "Orders", new { sortOrder = ViewBag.PriceSortParamDesc }, new { @class = "fa fa-arrow-up" })
                 @Html.DisplayNameFor(model => model.TotalPrice)
+                @Html.ActionLink(" ", "Orders", new { sortOrder = ViewBag.PriceSortParamAsc }, new { @class = "fa fa-arrow-down" })
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
@@ -46,9 +53,11 @@
                 @Html.DisplayNameFor(model => model.PostalCode)
             </th>
             <th>
+                @Html.ActionLink(" ", "Orders", new { sortOrder = ViewBag.DateSortParmAsc }, new { @class = "fa fa-arrow-up" })
                 @Html.DisplayNameFor(model => model.OrderDate)
+                @Html.ActionLink(" ", "Orders", new { sortOrder = ViewBag.DateSortParmDesc }, new { @class = "fa fa-arrow-down" })
             </th>
-            <th></th>
+            <th class="fa fa-arrow-"></th>
         </tr>
         @foreach (var item in Model)
         {
