@@ -244,19 +244,39 @@ namespace GroupProject.Controllers
         //
         // GET: /Manage/Orders
         [Authorize(Roles = "User, Admin")]
-        public ActionResult Orders()
+        public ActionResult Orders(string sortOrder)
         {
+            var orders = from o in context.Orders
+                         select o;
+            ViewBag.DateSortParmAsc = sortOrder == "" ? "Date" : "Date";
+            ViewBag.DateSortParmDesc = sortOrder == "" ? "date_desc" : "date_desc";
+            ViewBag.PriceSortParamAsc = sortOrder == "" ? "" : "";
+            ViewBag.PriceSortParamDesc = sortOrder == "" ? "price_desc" : "price_desc";
+
+            switch (sortOrder)
+            {
+                case "date_desc":
+                    orders = orders.OrderByDescending(o => o.OrderDate);
+                    break;
+                case "Date":
+                    orders = orders.OrderBy(o => o.OrderDate);
+                    break;
+                case "price_desc":
+                    orders = orders.OrderByDescending(o => o.TotalPrice);
+                    break;
+                default:
+                    orders = orders.OrderBy(o => o.TotalPrice);
+                    break;
+                
+            }
             ViewBag.PageName = "Manage";
             var id = User.Identity.GetUserId();
             var user = UserManager.FindById(id);
 
             var model = context.Orders.Where(x => x.UserName == user.UserName).Include(y => y.OrderDetails.Select(z => z.Product)).ToList();
-            if(User.IsInRole("Admin"))
-            {
-                var model2 = context.Orders.ToList();
-                return View(model2);
-            }
-            return View(model);
+            if (!User.IsInRole("Admin")) return View(model);
+            var model2 = context.Orders.ToList();
+            return View(model2);
         }
 
         protected override void Dispose(bool disposing)
@@ -269,13 +289,7 @@ namespace GroupProject.Controllers
             base.Dispose(disposing);
         }
 
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
+        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
 
         private void AddErrors(IdentityResult result)
         {
