@@ -2,10 +2,10 @@
 @{
     ViewBag.Title = "Manage Account";
 }
-
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <h2>@ViewBag.Title.</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
+<p class="alert alert-success">@ViewBag.StatusMessage</p>
 <div>
     <h4>Change your account settings</h4>
     <hr />
@@ -50,11 +50,11 @@
             }
         </dd>
         <dt>
-           
+
         </dt>
     </dl>
-    </div>
-   
+</div>
+
 
 
 <p>
@@ -62,8 +62,19 @@
     @Html.ActionLink("Delete Account", "Delete", null, new { @class = "btn btn-danger" })
     @if (ViewBag.IsUser)
     {
-        @Html.ActionLink("View Previous Orders", "Orders", null, new { @class = "btn btn-info" }) @: 
+        @Html.ActionLink("View Previous Orders", "Orders", null, new { @class = "btn btn-info" }) @:
         @Html.ActionLink("My Cart", "Index", "ShoppingCart", null, new { @class = "btn btn-info" })
     }
 </p>
 
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        window.setTimeout(function () {
+            $(".alert").fadeTo(1500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 3000);
+
+    });
+</script>
