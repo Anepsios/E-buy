@@ -3,9 +3,9 @@ using GroupProject.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
-using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Cookies;
 using Owin;
-using System.Net;
+using System;
 
 [assembly: OwinStartupAttribute(typeof(GroupProject.Startup))]
 namespace GroupProject
@@ -14,6 +14,7 @@ namespace GroupProject
     {
         public void Configuration(IAppBuilder app)
         {
+            
             ConfigureAuth(app);
             CreateRolesandUsers(); // OM: new method to create roles and admin user
             app.MapSignalR();
@@ -66,5 +67,7 @@ namespace GroupProject
                 roleManager.Create(role);
             }
         }
+
+        
     }
 }

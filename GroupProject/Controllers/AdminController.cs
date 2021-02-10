@@ -114,6 +114,7 @@ namespace GroupProject.Controllers
             var userid = context.Users.Single(x => x.Id == id);
             // OM: Delete user's cart too
             var username = context.Users.Single(y => y.Id == id).UserName;
+
             foreach (var item in context.Carts.Where(x => x.CartID == username))
             {
                 context.Carts.Remove(item);

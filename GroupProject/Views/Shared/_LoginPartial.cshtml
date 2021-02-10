@@ -11,7 +11,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()" id="logout">Log off</a>
             </li>
         </ul>
     }
@@ -23,3 +23,25 @@ else
         <li class="nav-item">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link", id = "loginLink" })</li>
     </ul>
 }
+
+<script>
+    $('#logout').on('click', function (evt) {
+        evt.preventDefault();
+        swal({
+            title: "Are you sure you want to leave?",
+            text: "",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#df4759",
+            confirmButtonText: "Yes, I'm sure",
+            closeOnConfirm: false
+        },
+            function (isConfirm) {
+                if (isConfirm) {
+                    $("#logoutForm").submit(); 
+                } else {
+                    evt.preventDefault();
+                }
+            });
+    });
+</script>
