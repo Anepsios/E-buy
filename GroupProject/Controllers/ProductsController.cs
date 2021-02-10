@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -149,9 +150,15 @@ namespace GroupProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name, Description, ProductImage, Price, CategoryID, ManufacturerID")] Product product)
+        public ActionResult Create([Bind(Include = "Name, Description, ProductImage, Price, CategoryID, ManufacturerID")] Product product, HttpPostedFileBase file)
         {
-            product.ProductImage = "~/Images/" + product.ProductImage;
+            if (file != null && file.ContentLength > 0)
+            {
+                string path = Path.Combine(Server.MapPath("~/Images"),
+                                      Path.GetFileName(file.FileName));
+                file.SaveAs(path);
+                product.ProductImage = path.Replace(path, ("~/Images/") + file.FileName);
+            }
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
@@ -168,14 +175,14 @@ namespace GroupProject.Controllers
         //
         // GET: Products/Edit/5
         [Authorize(Roles = "Admin, Employee")]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, HttpPostedFileBase file)
         {
             ViewBag.PageName = "Products";
-
+            
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             Product product = db.Products.Find(id);
-            if (product == null)
+                if (product == null)
                 return HttpNotFound();
 
             ViewBag.CategoryID = new SelectList(db.Categories, "ID", "Name", product.CategoryID);
@@ -189,7 +196,7 @@ namespace GroupProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID, Name, Description, ProductImage, Price, OldPrice, CategoryID, ManufacturerID, Offer, Discount")] Product product)
+        public ActionResult Edit([Bind(Include = "ID, Name, Description, ProductImage, Price, OldPrice, CategoryID, ManufacturerID, Offer, Discount")] Product product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -200,6 +207,20 @@ namespace GroupProject.Controllers
                     product.Offer = false;
                     ModelState.AddModelError("Offer", "Discount cannot be empty.");
                     return View(product);
+                }
+             
+                if (file != null && file.ContentLength > 0)
+                {
+                    string completePath = Server.MapPath(product.ProductImage);
+                    string path = Path.Combine(Server.MapPath("~/Images"),
+                                          Path.GetFileName(file.FileName));
+                    file.SaveAs(path);
+                    product.ProductImage = path.Replace(path, ("~/Images/") + file.FileName);
+                    
+                    if (path != completePath)
+                    {
+                        System.IO.File.Delete(completePath);
+                    }
                 }
 
                 // OM: Switch prices between old and new according to discount and in case price is editied while on discount
@@ -216,7 +237,6 @@ namespace GroupProject.Controllers
                     product.Price = product.OldPrice;
                     product.OldPrice = 0;
                 }
-
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
 
@@ -267,6 +287,11 @@ namespace GroupProject.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Products.Find(id);
+            string completePath = Server.MapPath(product.ProductImage);
+            if (System.IO.File.Exists(completePath))
+            {
+                System.IO.File.Delete(completePath);
+            }
             db.Products.Remove(product);
             db.SaveChanges();
             UpdateProductsHub.BroadcastData();
