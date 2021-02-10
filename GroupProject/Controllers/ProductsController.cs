@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -149,9 +150,15 @@ namespace GroupProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name, Description, ProductImage, Price, CategoryID, ManufacturerID")] Product product)
+        public ActionResult Create([Bind(Include = "Name, Description, ProductImage, Price, CategoryID, ManufacturerID")] Product product, HttpPostedFileBase file)
         {
-            product.ProductImage = "~/Images/" + product.ProductImage;
+            if (file != null && file.ContentLength > 0)
+            {
+                string path = Path.Combine(Server.MapPath("~/Images"),
+                                      Path.GetFileName(file.FileName));
+                file.SaveAs(path);
+                product.ProductImage = path.Replace(path, ("~/Images/") + file.FileName);
+            }
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
