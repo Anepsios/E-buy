@@ -18,7 +18,7 @@ body.stop-scrolling {
 
 .sweet-alert {
   background-color: white;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'QuickSand', sans-serif;
   width: 478px;
   padding: 17px;
   border-radius: 5px;
@@ -169,7 +169,8 @@ body.stop-scrolling {
     margin-top: 4px;
     opacity: 0;
     visibility: hidden; }
-  .sweet-alert button {
+.sweet-alert button {
+    font: 'QuickSand', sans-serif;
     background-color: #8CD4F5;
     color: white;
     border: none;
@@ -180,7 +181,8 @@ body.stop-scrolling {
     border-radius: 5px;
     padding: 10px 32px;
     margin: 26px 5px 0 5px;
-    cursor: pointer; }
+    cursor: pointer;
+}
     .sweet-alert button:focus {
       outline: none;
       box-shadow: 0 0 2px rgba(128, 179, 235, 0.5), inset 0 0 0 1px rgba(0, 0, 0, 0.05); }

@@ -24,6 +24,7 @@ namespace GroupProject.Controllers
         // GET: Products
         public ActionResult Index(string sortOrder, string searchString, string selectedCategory, string selectedManufacturer, int? page)
         {
+           
             QueryParamArgs args = new QueryParamArgs();
             args.sortOrder = sortOrder == null ? "" : sortOrder;
             args.searchString = searchString == null ? "" : searchString;

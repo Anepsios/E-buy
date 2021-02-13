@@ -111,7 +111,7 @@ namespace GroupProject.Controllers
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 if (user != null)
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess});
             }
             AddErrors(result);
             return View(model);
@@ -214,7 +214,7 @@ namespace GroupProject.Controllers
 
                 // OM: Sign in user after edit to update Session. Else user will stay signed in on wrong account.
                 await SignInManager.SignInAsync(user, true, true);
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangeAccountDetailsSuccess });
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangeAccountDetailsSuccess});
             }
             AddErrors(result);
             return View(model);
