@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="~/Content/Site.css" />
 <script type="text/javascript">
 
-    $(function () {
+    @*$(function () {
         // Document.ready -> link up remove event handler
         $(".AddLink").click(function () {
             // Get the id from the link
@@ -44,7 +44,7 @@
         // Load and deserialize the returned JSON data
         var json = context.get_data();
         var data = Sys.Serialization.JavaScriptSerializer.deserialize(json);
-    }
+    }*@
 
 
 </script>
@@ -115,7 +115,7 @@ else
                     </a>
                     @if (ViewBag.IsUser)
                     {
-                        <button href="javascript:void(0);" class="bubbly-button AddLink social " data-id="@item.ID">
+                        <button href="javascript:void(0);" class="bubbly-button AddLink social" data-id="@item.ID">
                             <i class="cartA fa fa-shopping-cart"></i>
                         </button>
                     }
