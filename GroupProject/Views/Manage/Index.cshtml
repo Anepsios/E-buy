@@ -6,12 +6,12 @@
 
 <h2>@ViewBag.Title.</h2>
 
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>@ViewBag.StatusMessage </strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+    <div class="alert alert-success alert-dismissible fade show" id="alerts" role="alert">
+        <strong>@ViewBag.StatusMessage </strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     <div>
         <h4>Change your account settings</h4>
         <hr />
@@ -72,3 +72,15 @@
             @Html.ActionLink("My Cart", "Index", "ShoppingCart", null, new { @class = "btn btn-info" })
         }
     </p>
+    <script>
+    $(document).ready(function () {
+        if('@ViewBag.StatusMessage'!="")
+        {
+            $('.alert').show();
+            }
+            else
+        {
+            $('.alert').hide();
+            }
+                });
+    </script>

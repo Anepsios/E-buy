@@ -29,12 +29,42 @@
                     // OM: convert " character since it doesnt pass correctly in js from json
                     let updateMessage = GetUpdateMessage(data.Message);
                     $('#update-message').text(updateMessage);
-                    $('#cart-status').text('Cart (' + data.CartCount + ')');
+                    $('#cart-status').text(' (' + data.CartCount + ' )');
                     WaitAndFadeOut();
                 });
             }
         });
     });
+
+      @*$(function () {
+        // Document.ready -> link up remove event handler
+        $(".AddLink").click(function () {
+            // Get the id from the link
+            var productToAdd = $(this).attr("data-id");
+            if (productToAdd != '') {
+                // Perform the ajax post
+                var url = '@Url.Action("AddToCartJson", "ShoppingCart")';
+                $.post(url, { "id": productToAdd }, function (data) {
+                    // Successful requests get here
+                    // Update the page elements
+                    if (data.ItemCount == 1) {
+                        // OM: Append new line of item in cart here
+                        $('#cart-items #added-items').after('<tr id="row-' + data.AddId + '"><td>' + '<a class = "hyperlink" href="@Url.Action("Details", "Products")">'
+                            + data.Name + '</a>' + '</td><td>' + Number(data.Price).toFixed(2) + '€</td><td id="item-count-'
+                            + data.AddId + '">1</td><td><button href="javascript:void(0);" class="RemoveLink closebtn " onclick="RemoveItem(' + data.AddId + ')" data-id="'
+                            + data.AddId + '"<i class="fa fa-minus"></i></button> / <button href="javascript:void(0);" class="AddLink closebtn" ><i class="fa fa-plus"></i></button></td></tr>');
+                    } else {
+                        // OM: Or just increase quantity of existing item here
+                        $('#item-count-' + data.AddId).text(data.ItemCount);
+                    }
+                    $('#cart-total').text(Number(data.CartTotal).toFixed(2) + '€');
+                    $('#cart-status').text(' (' + data.CartCount + ')');
+
+
+                });
+            }
+        });
+    });*@
 
         // OM: this one is to be given to dynamically created cart items on its onclick attribute, since the above doesnt work with dynamically created elements for some reason
     function RemoveItem(itemToDelete) {
@@ -54,7 +84,7 @@
                 // OM: convert " character since it doesnt pass correctly in js from json
                 let updateMessage = GetUpdateMessage(data.Message);
                 $('#update-message').text(updateMessage);
-                $('#cart-status').text('Cart (' + data.CartCount + ')');
+                $('#cart-status').text(' (' + data.CartCount + ')');
                 WaitAndFadeOut();
             });
         }
@@ -80,6 +110,8 @@
         $('#update-message').empty();
         $('#update-message').fadeIn('fast');
     };
+
+
 
 </script>
 
@@ -118,10 +150,18 @@
                     @item.Product.Price€
                 </td>
                 <td id="item-count-@item.ID">
+                   
                     @item.Quantity
+                   
                 </td>
                 <td>
-                    <a href="javascript:void(0);" class="RemoveLink hyperlink" data-id="@item.ID">Remove from cart</a>
+                    <button href="javascript:void(0);" class="RemoveLink closebtn" data-id="@item.ID">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    /
+                    <button href="javascript:void(0);" class="AddLink closebtn" data-id="@item.ProductID">
+                        <i class="fa fa-plus"></i>
+                    </button>
                 </td>
             </tr>
         }
