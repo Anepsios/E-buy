@@ -66,14 +66,15 @@ namespace GroupProject.Controllers
             try
             {
                 string productName = context.Carts.SingleOrDefault(item => item.ID == id).Product.Name;
-
+                var quantity = context.Carts.SingleOrDefault(item => item.ID == id).Quantity;
+                string productQuantity = (quantity - 1).ToString();
+                string manufacturer = context.Carts.SingleOrDefault(item => item.ID == id).Product.Manufacturer.Name;
                 // Remove from cart
                 int itemCount = cart.RemoveFromCart(id);
                 // Display the confirmation message
                 var results = new ShoppingCartRemoveViewModel
                 {
-                    Message = Server.HtmlEncode(productName) +
-                        " has been removed from your shopping cart.",
+                    Message ="The product has been removed. "+"\'"+ Server.HtmlEncode(productQuantity) + "\'" + " " + Server.HtmlEncode(manufacturer) + " " + Server.HtmlEncode(productName) + " left in the cart.",
                     CartTotal = cart.GetTotal(),
                     CartCount = cart.GetCount(),
                     ItemCount = itemCount,
@@ -102,15 +103,19 @@ namespace GroupProject.Controllers
 
             if (cartId == null)
                 return View("Error");
-
+            string productName = context.Products.Single(item => item.ID == id).Name;
+            var quantity = itemCount;
+            string manufacturer = context.Products.SingleOrDefault(item => item.ID == id).Manufacturer.Name;
             var results = new
             {
+                Message = "Product succesfully added! There are " + "\'" + Server.HtmlEncode(quantity.ToString())  +"\'" + " " + Server.HtmlEncode(manufacturer) + " " + Server.HtmlEncode(productName) + " in cart!",
                 CartTotal = cart.GetTotal(),
                 CartCount = cart.GetCount(),
                 ItemCount = itemCount,
                 AddId = cartId,
                 Price = product.Price,
-                Name = product.Name
+                Name = product.Name,
+                Manufacturer = manufacturer
             };
             return Json(results);
         }
