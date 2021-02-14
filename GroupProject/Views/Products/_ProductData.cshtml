@@ -1,9 +1,7 @@
 ﻿@model PagedList.IPagedList<GroupProject.Models.Product>
 @using PagedList.Mvc;
 
-@{
-    ViewBag.Title = "Browse Products";
-}
+@{ ViewBag.Title = "Browse Products"; }
 
 
 <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/pricing/">
@@ -53,27 +51,25 @@
 
     @if (ViewBag.IsAdminOrEmployee)
     {
-        <p>
-            @Html.ActionLink("Edit Product Categories", "Index", "Categories", "", new { @class = "btn btn-warning" })  &nbsp;
-            @Html.ActionLink("Edit Product Manufacturers", "Index", "Manufacturers", "", new { @class = "btn btn-warning" }) &nbsp;
-            @Html.ActionLink("Create New Product", "Create", "Products", "", new { @class = "btn btn-warning" })
-        </p>
-    }
+<p>
+    @Html.ActionLink("Edit Product Categories", "Index", "Categories", "", new { @class = "btn btn-warning" })  &nbsp;
+    @Html.ActionLink("Edit Product Manufacturers", "Index", "Manufacturers", "", new { @class = "btn btn-warning" }) &nbsp;
+    @Html.ActionLink("Create New Product", "Create", "Products", "", new { @class = "btn btn-warning" })
+</p>}
 
     @using (Html.BeginForm("Index", "Products", FormMethod.Get))
     {
-        <div class="SearchBox">
-            <form>
-                <div class="row d-flex justify-content-center">
-                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control col-sm", @placeholder = "Search for Products" })&nbsp;
-                    @Html.DropDownList("SelectedCategory", null, "All Categories", new { @class = "form-control col-sm", onchange = "this.form.submit();" })&nbsp;
-                    @Html.DropDownList("SelectedManufacturer", null, "All Manufacturers", new { @class = "form-control col-sm", onchange = "this.form.submit(); " })&nbsp;
-                </div>
-                <br />
-                <input type="submit" value="Search" class="btn btn-success btn-sm" />
-            </form>
+<div class="SearchBox">
+    <form>
+        <div class="row d-flex justify-content-center">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { @class = "form-control col-sm", @placeholder = "Search for Products" })&nbsp;
+            @Html.DropDownList("SelectedCategory", null, "All Categories", new { @class = "form-control col-sm", onchange = "this.form.submit();" })&nbsp;
+            @Html.DropDownList("SelectedManufacturer", null, "All Manufacturers", new { @class = "form-control col-sm", onchange = "this.form.submit(); " })&nbsp;
         </div>
-    }
+        <br />
+        <input type="submit" value="Search" class="btn btn-success btn-sm" />
+    </form>
+</div>}
 
 </div>
 <br />
@@ -87,80 +83,69 @@
     }, new { @class = "hyperlink" })
     @if (ViewBag.Descending)
     {
-        @:(Currently Descending)
-    }
-    else
-    {
-        @:(Currently Ascending)
-    }
+@:(Currently Descending)
+}
+else
+{
+@:(Currently Ascending)
+}
 </p>
 
 @if (ViewBag.ItemCount == 0)
 {
-    <h3>Oops, we didn't find any of the products you're looking for :(</h3>
-}
-else
-{
-    <p>Showing @ViewBag.ItemCount items</p>
-}
+<h3>Oops, we didn't find any of the products you're looking for :(</h3> }
+            else
+            {
+<p>Showing @ViewBag.ItemCount items</p>}
 
 <div class="row" id="productGrid">
     @foreach (var item in Model)
     {
-        <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="product-grid">
-                <div class="product-image">
-                    <a href='@Url.Action("Details", "Products", new { id = item.ID })'>
-                        <img src="@Url.Content(item.ProductImage)" alt="Image" class="pic-1" />
-                    </a>
-                    @if (ViewBag.IsUser)
-                    {
-                        <button href="javascript:void(0);" class="bubbly-button AddLink social" data-id="@item.ID">
-                            <i class="cartA fa fa-shopping-cart"></i>
-                        </button>
-                    }
-                    @if (item.Offer == true)
-                    {
-                        <span class="product-new-label">Sale</span>
-                        <span class="product-discount-label">-@Html.DisplayFor(Model => item.Discount)%</span>
-                    }
-                </div>
-
-                <div class="product-content">
-                    <ul class="rating">
-
-                        @{
-                            if (item.Ratings.Where(x => x.IsApproved == true).ToList().Count > 0)
-                            {
-                                int sumAvg = Convert.ToInt32((from x in item.Ratings.Where(x => x.IsApproved == true) select x.Stars).Average());
-                                for (var i = 1; i <= sumAvg; i++)
-                                {
-                                    <li class="starOn"></li>
-                                }
-                                for (var i = sumAvg; i < 5; i++)
-                                {
-                                    <li class="starOff"></li>
-                                }
-                            }
-                            else
-                            {
-                                <li>No ratings yet</li>
-                            }
-                        }
-                    </ul>
-                    <h3 class="title">@item.Manufacturer.Name @item.Name</h3>
-                    <div class="price">
-                        @item.Price€
-                        @if (item.Offer == true)
-                        {
-                            <span class="badge badge-warning">@item.OldPrice€</span>
-                        }
-                    </div>
-                </div>
-            </div>
-            <hr />
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="product-grid">
+        <div class="product-image">
+            <a href='@Url.Action("Details", "Products", new { id = item.ID })'>
+                <img src="@Url.Content(item.ProductImage)" alt="Image" class="pic-1" />
+            </a>
+            @if (ViewBag.IsUser)
+            {
+<button href="javascript:void(0);" class="bubbly-button AddLink social" data-id="@item.ID">
+    <i class="cartA fa fa-shopping-cart"></i>
+</button>}
+            @if (item.Offer == true)
+            {
+<span class="product-new-label">Sale</span>
+                    <span class="product-discount-label">-@Html.DisplayFor(Model => item.Discount)%</span>}
         </div>
-    }
+
+        <div class="product-content">
+            <ul class="rating">
+
+                @{ if (item.Ratings.Where(x => x.IsApproved == true).ToList().Count > 0)
+                                    {
+                                        int sumAvg = Convert.ToInt32((from x in item.Ratings.Where(x => x.IsApproved == true) select x.Stars).Average());
+                                        for (var i = 1; i <= sumAvg; i++)
+                                        {
+                    <li class="starOn"></li> }
+                                        for (var i = sumAvg; i < 5; i++)
+                                        {
+                    <li class="starOff"></li> }
+                                    }
+                                    else
+                                    {
+                    <li>No ratings yet</li> } }
+            </ul>
+            <h3 class="title">@item.Manufacturer.Name @item.Name</h3>
+            <div class="price">
+                @item.Price€
+                @if (item.Offer == true)
+                {
+<span class="badge badge-warning">@item.OldPrice€</span>}
+            </div>
+        </div>
+    </div>
+    <hr />
+</div>}
 </div>
 
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
@@ -168,20 +153,19 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
 @Html.PagedListPager(Model, page => Url.Action("Index",
       new { page, sortOrder = ViewBag.CurrentSort, searchString = ViewBag.CurrentFilter, selectedCategory = ViewBag.CurrentCategory, selectedManufacturer = ViewBag.CurrentManufacturer }))
 <script>
-    //$(document).ready(function () {
-    //    $('.social').on('click', function () {
-    //        $('.cartA').removeClass('fa-shopping-cart');
-    //        $('.cartA').addClass('fa-check');
+    $(document).ready(function () {
+        $('.AddLink').on('click', function () {
+            $('.cartA').removeClass('fa-shopping-cart');
+            $('.cartA').addClass('fa-check');
 
-    //    });
-    //});
+        });
+    });
+    $(window).mouseleave(function () {
+        $('.cartA').removeClass('fa-check');
+        $('.cartA').addClass('fa-shopping-cart');
 
-    //$(window).mouseleave(function () {
-    //    $('.cartA').removeClass('fa-check');
-    //    $('.cartA').addClass('fa-shopping-cart');
 
-
-    //});
+    });
 
     var animateButton = function (e) {
 
