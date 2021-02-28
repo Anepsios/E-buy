@@ -1,15 +1,13 @@
 ﻿@model GroupProject.Models.Product
 
-@{
-    ViewBag.Title = "Product Details";
-}
+@{ ViewBag.Title = "Product Details"; }
 
 <div>
     <div class="alert alert-success alert-dismissible fade show" id="alerts" role="alert">
-        <strong>@ViewBag.AddedToCart </strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <strong>@ViewBag.AddedToCart <i class="fa fa-check"></i> </strong>
+        @*<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>*@
     </div>
     <hr />
 
@@ -27,27 +25,23 @@
 
         for (var i = 1; i <= sumAvg; i++)
         {
-            <span class="starOn" style="height:30px; width:30px;"></span>
-        }
-        for (var i = sumAvg; i < 5; i++)
-        {
-            <span class="starOff" style="height:30px; width:30px;"></span>
-        }
+<span class="starOn" style="height:30px; width:30px;"></span> }
+                for (var i = sumAvg; i < 5; i++)
+                {
+<span class="starOff" style="height:30px; width:30px;"></span> }
 
-    }
-    else
-    {
-        <span>No ratings yet</span>
-    }
+            }
+            else
+            {
+<span>No ratings yet</span>}
 
     @if (!User.IsInRole("Admin") && !User.IsInRole("Employee"))
     {
-        <button class="btn btn-success" style="float:right;" onclick="location.href='@Url.Action("AddToCart", "ShoppingCart", new { id = Model.ID })'">
-            Add to Cart
-            <i class="fa fa-shopping-cart"></i>
-                
-        </button>
-    }
+<button class="btn btn-success" style="float:right;" onclick="location.href='@Url.Action("AddToCart", "ShoppingCart", new { id = Model.ID })'">
+    Add to Cart
+    <i class="fa fa-shopping-cart"></i>
+
+</button>}
 
     <div class="prodet">
         <img src="@Url.Content(Model.ProductImage)" alt="" height="200" class="product product-img" style="float:right;position:relative; top:17px;" />
@@ -97,10 +91,9 @@
 
                     @if (User.IsInRole("User"))
                     {
-                        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Ratings", new { id = Model.ID })'">
-                            Make a review
-                        </button>
-                    }
+        <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Ratings", new { id = Model.ID })'">
+            Make a review
+        </button>}
 
                     <button type="button" name="btnLink" class="btn btn-primary" id="btnLink" data-toggle="modal" data-target="#Reviews">Reviews</button>
 
@@ -110,13 +103,12 @@
 
                     @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
                     {
-                        <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Edit", new { id = Model.ID })'">
-                            Edit
-                        </button>
+        <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Edit", new { id = Model.ID })'">
+            Edit
+        </button>
                         <button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Delete", new { id = Model.ID })'">
                             Delete
-                        </button>
-                    }
+                        </button>}
 
                 </p>
             </div>
@@ -148,81 +140,71 @@
                             {
                                 foreach (var item in Model.Ratings)
                                 {
-                                    <tr>
-                                        @* OM: if item is approved, show it to everyone *@
-                                        @if (item.IsApproved)
-                                        {
-                                            <td>
-                                                <b>@Html.DisplayFor(modelItem => item.UserName)</b>
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.RatingText)
-                                            </td>
-                                            <td>
-                                                @for (var i = 1; i <= item.Stars; i++)
-                                                {
-                                                    <span class="starOn" style="height:30px; width:30px;"></span>
-                                                }
-                                                @for (var i = (item.Stars + 1); i <= 5; i++)
-                                                {
-                                                    <span class="starOff" style="height:30px; width:30px;"></span>
-                                                }
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.ReviewCreated)
-                                            </td>
-                                            <td>
-                                                @if (item.UserName == User.Identity.Name || User.IsInRole("Admin"))
-                                                {
-                                                    @Html.ActionLink("Edit", "RatingDetail", "Admin", new { id = item.RatingId }, new { @class = "hyperlink" }) @:|
-                                                    @Html.ActionLink("Delete", "Delete", "Ratings", new { id = item.RatingId }, new { @class = "hyperlink" })
-                                                }
-                                            </td>
-                                        }
-                                        else
-                                        {
-                                            if (item.UserName == User.Identity.Name || User.IsInRole("Admin"))
-                                            {
-                                                <td>
-                                                    <b>@Html.DisplayFor(modelItem => item.UserName)</b>
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.RatingText)
-                                                </td>
+                <tr>
+                    @* OM: if item is approved, show it to everyone *@
+                    @if (item.IsApproved)
+                    {
+<td>
+    <b>@Html.DisplayFor(modelItem => item.UserName)</b>
+</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RatingText)
+                        </td>
                                                 <td>
                                                     @for (var i = 1; i <= item.Stars; i++)
                                                     {
-                                                        <span class="starOn" style="height:30px; width:30px;"></span>
-                                                    }
+                            <span class="starOn" style="height:30px; width:30px;"></span>}
                                                     @for (var i = (item.Stars + 1); i <= 5; i++)
                                                     {
-                                                        <span class="starOff" style="height:30px; width:30px;"></span>
-                                                    }
+                            <span class="starOff" style="height:30px; width:30px;"></span>}
                                                 </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.ReviewCreated)
-                                                </td>
-                                                if (User.IsInRole("Admin"))
-                                                {
-                                                    <td>
-                                                        <b> Not Approved </b>
-                                                    </td>
-                                                }
-                                                <td>
-                                                    @if (User.IsInRole("Admin"))
-                                                    {
-                                                        @Html.ActionLink("Edit", "RatingDetail", "Admin", new { id = item.RatingId }, new { @class = "hyperlink" }) @:|
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.ActionLink("Edit", "Edit", "Ratings", new { id = item.RatingId }, new { @class = "hyperlink" }) @:|
-                                                    }
-                                                    @Html.ActionLink("Delete", "Delete", "Ratings", new { id = item.RatingId }, new { @class = "hyperlink" })
-                                                </td>
-                                            }
-                                        }
-                                    </tr>
-                                }
+                                                                        <td>
+                                                                            @Html.DisplayFor(modelItem => item.ReviewCreated)
+                                                                        </td>
+                                                                                                <td>
+                                                                                                    @if (item.UserName == User.Identity.Name || User.IsInRole("Admin"))
+                                                                                                    {
+                                                                            @Html.ActionLink("Edit", "RatingDetail", "Admin", new { id = item.RatingId }, new { @class = "hyperlink" }) @:|
+                                                                            @Html.ActionLink("Delete", "Delete", "Ratings", new { id = item.RatingId }, new { @class = "hyperlink" })}
+                                                                                                </td> }
+                                                                                                                    else
+                                                                                                                    {
+                                                                                                                        if (item.UserName == User.Identity.Name || User.IsInRole("Admin"))
+                                                                                                                        {
+                                                                                                <td>
+                                                                                                    <b>@Html.DisplayFor(modelItem => item.UserName)</b>
+                                                                                                </td>
+                                                                                                                            <td>
+                                                                                                                                @Html.DisplayFor(modelItem => item.RatingText)
+                                                                                                                            </td>
+                                                                                                                                                        <td>
+                                                                                                                                                            @for (var i = 1; i <= item.Stars; i++)
+                                                                                                                                                            {
+                                                                                                                                <span class="starOn" style="height:30px; width:30px;"></span>}
+                                                                                                                                                            @for (var i = (item.Stars + 1); i <= 5; i++)
+                                                                                                                                                            {
+                                                                                                                                <span class="starOff" style="height:30px; width:30px;"></span>}
+                                                                                                                                                        </td>
+                                                                                                                                                                                    <td>
+                                                                                                                                                                                        @Html.DisplayFor(modelItem => item.ReviewCreated)
+                                                                                                                                                                                    </td> if (User.IsInRole("Admin"))
+                                                                                                                                                                                                                {
+                                                                                                                                                                                    <td>
+                                                                                                                                                                                        <b> Not Approved </b>
+                                                                                                                                                                                    </td> }
+                                                                                                                                                                                    <td>
+                                                                                                                                                                                        @if (User.IsInRole("Admin"))
+                                                                                                                                                                                        {
+                                                                                                                                                            @Html.ActionLink("Edit", "RatingDetail", "Admin", new { id = item.RatingId }, new { @class = "hyperlink" }) @:|
+                                                                                                                                                        }
+                                                                                                                                                        else
+                                                                                                                                                        {
+                                                                                                                            @Html.ActionLink("Edit", "Edit", "Ratings", new { id = item.RatingId }, new { @class = "hyperlink" }) @:|
+                                                                                                                        }
+                                                                                                                                                                                        @Html.ActionLink("Delete", "Delete", "Ratings", new { id = item.RatingId }, new { @class = "hyperlink" })
+                                                                                                                                                                                    </td>}
+                                                                                                                                                                                                        }
+                </tr> }
                             }
                             else
                             {
@@ -232,51 +214,45 @@
                                 {
                                     if (item.UserName == User.Identity.Name || User.IsInRole("Admin"))
                                     {
-                                        <td>
-                                            <b>@Html.DisplayFor(modelItem => item.UserName)</b>
-                                        </td>
+                <td>
+                    <b>@Html.DisplayFor(modelItem => item.UserName)</b>
+                </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.RatingText)
                                         </td>
-                                        <td>
-                                            @for (var i = 1; i <= item.Stars; i++)
-                                            {
-                                                <span class="starOn" style="height:30px; width:30px;"></span>
-                                            }
-                                            @for (var i = (item.Stars + 1); i <= 5; i++)
-                                            {
-                                                <span class="starOff" style="height:30px; width:30px;"></span>
-                                            }
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ReviewCreated)
-                                        </td>
-                                        if (User.IsInRole("Admin"))
-                                        {
-                                            <td>
-                                                <b> Not Approved </b>
-                                            </td>
-                                        }
-                                        <td>
-                                            @if (User.IsInRole("Admin"))
-                                            {
-                                                @Html.ActionLink("Edit", "RatingDetail", "Admin", new { id = item.RatingId }, new { @class = "hyperlink" }) @:|
-                                            }
-                                            else
-                                            {
-                                                @Html.ActionLink("Edit", "Edit", "Ratings", new { id = item.RatingId }, new { @class = "hyperlink" }) @:|
-                                            }
-                                            @Html.ActionLink("Delete", "Delete", "Ratings", new { id = item.RatingId }, new { @class = "hyperlink" })
-                                        </td>
-                                        userCanSeeUnapprovedRating = true;
+                                                                <td>
+                                                                    @for (var i = 1; i <= item.Stars; i++)
+                                                                    {
+                                            <span class="starOn" style="height:30px; width:30px;"></span>}
+                                                                    @for (var i = (item.Stars + 1); i <= 5; i++)
+                                                                    {
+                                            <span class="starOff" style="height:30px; width:30px;"></span>}
+                                                                </td>
+                                                                                        <td>
+                                                                                            @Html.DisplayFor(modelItem => item.ReviewCreated)
+                                                                                        </td> if (User.IsInRole("Admin"))
+                                                                                                                {
+                                                                                        <td>
+                                                                                            <b> Not Approved </b>
+                                                                                        </td> }
+                                                                                        <td>
+                                                                                            @if (User.IsInRole("Admin"))
+                                                                                            {
+                                                                    @Html.ActionLink("Edit", "RatingDetail", "Admin", new { id = item.RatingId }, new { @class = "hyperlink" }) @:|
+                                                                }
+                                                                else
+                                                                {
+                                        @Html.ActionLink("Edit", "Edit", "Ratings", new { id = item.RatingId }, new { @class = "hyperlink" }) @:|
                                     }
-                                    j++;
-                                }
-                                if (j == 0 && !userCanSeeUnapprovedRating)
-                                {
-                                    <h3>No ratings yet</h3>
-                                }
-                            }
+                                                                                            @Html.ActionLink("Delete", "Delete", "Ratings", new { id = item.RatingId }, new { @class = "hyperlink" })
+                                                                                        </td> userCanSeeUnapprovedRating = true;
+                                                                                                            }
+                                                                                                            j++;
+                                                                                                        }
+                                                                                                        if (j == 0 && !userCanSeeUnapprovedRating)
+                                                                                                        {
+                                                                                        <h3>No ratings yet</h3>}
+                                                                                                    }
                         </table>
                     </div>
                 </div>
@@ -287,7 +263,6 @@
 
     </div>
 </div>
-
 <script>
     $(document).ready(function () {
         if ('@TempData["AddedToCart"]' != "")
@@ -297,5 +272,11 @@
     else {
         $('.alert').hide();
     }
-});
+    });
+
+    $("#alerts").fadeTo(7000, 0).slideUp(500, function () {
+        $("#alerts").slideUp(500);
+    });
+
+
 </script>

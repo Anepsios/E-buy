@@ -35,11 +35,11 @@ namespace GroupProject.Controllers
                 price.Add(item.Product.Price);
                 itemList.items.Add(new Item()
                 {
-                    name = item.Product.Name,
+                    name = item.Product.Manufacturer.Name + " " + item.Product.Name,
                     price = price[count].ToString(),
                     quantity = item.Quantity.ToString(),
                     currency = "EUR",
-                    sku = item.ProductID.ToString()
+                    sku = "Product Sku: " + item.ProductID.ToString()
                 });
                 totalPrices.Add(price[count] * item.Quantity);
                 count++;
@@ -213,7 +213,7 @@ namespace GroupProject.Controllers
             {
                 var item = new Item();
 
-                item.name = cartItem.Product.Name;
+                item.name = cartItem.Product.Manufacturer.Name + " " + cartItem.Product.Name;
                 item.currency = "EUR";
                 item.price = cartItem.Product.Price.ToString();
                 item.quantity = cartItem.Quantity.ToString();
@@ -288,7 +288,7 @@ namespace GroupProject.Controllers
             pymnt.intent = "sale";
             pymnt.payer = payr;
             pymnt.transactions = transactionList;
-
+           
             try
             {
                

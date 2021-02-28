@@ -129,7 +129,6 @@ namespace GroupProject.Controllers
             var productApprovedRatingsCount = product.Ratings.Where(x => x.IsApproved == true).ToList().Count;
             ViewBag.RatingExist = productRatingsCount > 0;
             ViewBag.ApprovedRatingExist = productApprovedRatingsCount > 0;
-
             return View(product);
         }
 

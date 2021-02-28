@@ -10,6 +10,9 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace GroupProject.Controllers
 {
@@ -199,6 +202,21 @@ namespace GroupProject.Controllers
             body = body.Replace("{Table}", tableOfOrdersHead);
 
             bool IsSendEmail = SendEmail.EmailSend(model.Email, "Order Completed", body, true);
+
+            //const string accountSid = "ACfee7ea866687d2f127c1497d3fa1000e";
+            //const string authToken = "188d68c6c549b60eaac45742d838f595";
+
+            //TwilioClient.Init(accountSid, authToken);
+
+
+            //var to = new PhoneNumber("+306937872048");
+            //var totalprice = order[order.Count - 1].TotalPrice.ToString();
+            //var message = MessageResource.Create(
+            //    to,
+            //    from: new PhoneNumber("+12488261058"),
+            //    body: $"eBuyStores: Thank you {model.FirstName} {model.LastName},for your order. Order total:{totalprice}");
+
+
             if (IsSendEmail)
                 return View(id);
             return View("Error");
