@@ -146,19 +146,20 @@ namespace GroupProject.Controllers
                     // OM: Assign Role to User for whoever Registers
                     // OM: Finish registration and role assigning and then sign user in to get proper user functionalities tp work correctly (Authorization, cart)
                     await this.UserManager.AddToRoleAsync(user.Id, "User");
-
-                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code }, protocol: Request.Url.Scheme);
-                    string body = string.Empty;
-                    using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/AccountConfirmation.html")))
-                    {
-                        body = reader.ReadToEnd();
-                    }
-                    body = body.Replace("{ConfirmationLink}", callbackUrl);
-                    body = body.Replace("{UserName}", model.UserName);
-                    bool IsSendEmail = SendEmail.EmailSend(model.Email, "Confirm your account", body, true);
-                    if (IsSendEmail)
-                        return RedirectToAction("EmailSent", "Account");
+                  
+                        string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code }, protocol: Request.Url.Scheme);
+                        string body = string.Empty;
+                        using (StreamReader reader = new StreamReader(Server.MapPath("~/Email/AccountConfirmation.html")))
+                        {
+                            body = reader.ReadToEnd();
+                        }
+                        body = body.Replace("{ConfirmationLink}", callbackUrl);
+                        body = body.Replace("{UserName}", model.UserName);
+                        bool IsSendEmail = SendEmail.EmailSend(model.Email, "Confirm your account", body, true);
+                        if (IsSendEmail)
+                            return RedirectToAction("EmailSent", "Account");
+                   
                 }
                 AddErrors(result);
             }
