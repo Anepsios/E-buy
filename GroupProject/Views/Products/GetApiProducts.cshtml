@@ -1,12 +1,22 @@
-﻿
+﻿<style>
+    .azip {
+        color: blue;
+    }
+</style>
+@{ ViewBag.Title = "Api Results"; }
 <table class="table">
     <tr>
+        <th>No.</th>
         <th>Category</th>
         <th>Manufacturer</th>
         <th>Product Name</th>
         <th>Price</th>
     </tr>
 </table>
+<div class="row">
+    <ul class="manufac"></ul>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <ul class="counts"></ul>
+</div>
 
 @section ApiProducts{
 
@@ -15,16 +25,88 @@
         $(document).ready(function () {
             var product = '';
             $.getJSON("/api/productsapi", result => {
+                console.log(result);
                 $.each(result, (key, value) => {
                     console.log(value);
                     product = $('<tr>');
+                    product.append('<td>' + value.$id + '</td>')
                     product.append('<td>' + value.Category + '</td>')
                     product.append('<td>' + value.Manufacturer + '</td>')
                     product.append('<td> ' + value.Name + '</td>');
                     product.append('<td>' + value.Price + '€</td>');
                     $('.table').append(product);
                 })
+
             });
-        })
+
+            $(document).ready(function () {
+                $.getJSON("/api/productsapi", result => {
+                    var uniqueCategories = [];
+                    var uniqueCategoriesCounts = [];
+                    var myData = result;
+                    function getUnique() {
+                        // LOOP THROUGH ORIGINAL ARRAY AND PUT EACH DISTINCE VALUE IN THE UNIQUE ARRAY
+                        for (i = 0; i < myData.length; i++) {
+                            if (uniqueCategories.indexOf(myData[i].Category) === -1) {
+                                uniqueCategories.push(myData[i].Category);
+                                var action = '@Url.Action("Index", "Products", new { @SearchString = "", @SelectedCategory = "", @SelectedManufacturer = "" })';
+                                $('.counts').append('<li><a class="azip" href="' + action + "?SelectedCategory=" + myData[i].Category + '">' + myData[i].Category + '\'s</a></li>');
+                            }
+                        }
+                        getCounts();
+                    };
+
+                    function getCounts() {
+                        $.each(uniqueCategories, function (i, val) {
+                            var cat = 0; // RESET THE COUNT
+                            $.each(myData, function (i2, val2) {
+                                if (val === val2.Category) {
+                                    cat++ // ADD ONE
+                                };
+                            });
+                            $('.counts li').eq(i).append(': ' + cat + ' occurrences');
+                            uniqueCategoriesCounts.push(cat); // WHEN DONE ADD THIS COUNT TO THE ARRAY
+                        });
+                    };
+                    getUnique();
+
+                });
+            });
+            $(document).ready(function () {
+                $.getJSON("/api/productsapi", result => {
+                    var uniqueManufacturer = [];
+                    var uniqueManufacturerCounts = [];
+                    var myData = result;
+                    function getUnique() {
+                        // LOOP THROUGH ORIGINAL ARRAY AND PUT EACH DISTINCE VALUE IN THE UNIQUE ARRAY
+                        for (i = 0; i < myData.length; i++) {
+                            var manuf = myData[i].Manufacturer;
+                            if (uniqueManufacturer.indexOf(myData[i].Manufacturer) === -1) {
+                                uniqueManufacturer.push(myData[i].Manufacturer);
+                                var action = '@Url.Action("Index", "Products", new { @SearchString = "", @SelectedCategory = "", @SelectedManufacturer = "" })';
+                                $('.manufac').append('<li><a class="azip" href="' + action + "?SelectedManufacturer=" + myData[i].Manufacturer +'">' + myData[i].Manufacturer + '\'s</a></li>');
+                            }
+                        }
+                        getCounts();
+                    };
+
+                    function getCounts() {
+                        $.each(uniqueManufacturer, function (i, val) {
+                            var man = 0; // RESET THE COUNT
+                            $.each(myData, function (i2, val2) {
+                                if (val === val2.Manufacturer) {
+                                    man++ // ADD ONE
+                                };
+                            });
+                            $('.manufac li').eq(i).append(': ' + man + ' occurrences');
+                            uniqueManufacturerCounts.push(man); // WHEN DONE ADD THIS COUNT TO THE ARRAY
+                        });
+                    };
+                    getUnique();
+
+                });
+            });
+        });
+
     </script>
 }

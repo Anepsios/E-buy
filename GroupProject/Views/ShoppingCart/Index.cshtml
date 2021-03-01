@@ -11,7 +11,7 @@
 <script src="/signalr/hubs"></script>
 <script type="text/javascript">
 
-    $(function () {
+    @*$(function () {
         // Document.ready -> link up remove event handler
         $(".RemoveLink").click(function () {
             // Get the id from the link
@@ -71,7 +71,7 @@
                 });
             }
         });
-    });
+    });*@
     function GetUpdateMessage(updateMessage) {
         let message;
         if (updateMessage.includes('&quot;')) {
@@ -119,7 +119,7 @@
     {
 <tr id="row-@item.ID">
     <td>
-        @Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.ProductID }, new { @class = "hyperlink" })
+        @Html.ActionLink(item.Product.Manufacturer.Name + " " +item.Product.Name, "Details", "Products", new { id = item.ProductID }, new { @class = "hyperlink" })
     </td>
     <td>
         @item.Product.Price€

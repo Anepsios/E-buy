@@ -165,8 +165,8 @@
         @foreach (var item in Model.CartItems)
         {
 <tr id="row-@item.ID">
-    <td>
-        @Html.ActionLink(item.Product.Name, "Details", "Products", new { id = item.ProductID }, new { @class = "hyperlink" })
+    <td> 
+        @Html.ActionLink(item.Product.Manufacturer.Name + " " + item.Product.Name, "Details", "Products", new { id = item.ProductID }, new { @class = "hyperlink" })
     </td>
     <td>
         @item.Product.Price€
